@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "section_6PnLrM": {
@@ -996,6 +1005,9 @@
               "name": "Collection title",
               "settings": {
                 "text": "<h2>Meet the Family</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
                 "type_preset": "custom",
                 "font": "var(--font-heading--family)",
                 "font_size": "2.5rem",
@@ -1003,9 +1015,6 @@
                 "letter_spacing": "loose",
                 "case": "none",
                 "wrap": "pretty",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -1077,13 +1086,7 @@
             "swatches_family": {
               "type": "swatches",
               "name": "Swatches",
-              "settings": {
-                "alignment": "left",
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              }
+              "settings": {}
             },
             "price": {
               "type": "price",
@@ -1116,7 +1119,6 @@
           ]
         }
       },
-      "block_order": [],
       "name": "Meet the Family",
       "settings": {
         "collection": "",
