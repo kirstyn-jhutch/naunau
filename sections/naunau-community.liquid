@@ -1,0 +1,315 @@
+<section id="naunau-community" class="naunau-community">
+  <div class="naunau-community__inner">
+    <p class="naunau-community__eyebrow">Community</p>
+    <h2 class="naunau-community__heading">Join the <span>#NauNau</span> Community</h2>
+    <p class="naunau-community__subtitle">Tag us <a href="https://www.instagram.com/naunau.co.za/" target="_blank" rel="noopener">@naunau.co.za</a> for a chance to be featured!</p>
+
+    <div class="naunau-community__grid">
+      {%- for i in (1..6) -%}
+        {%- assign link_key = 'post_' | append: i | append: '_link' -%}
+        {%- assign img_key = 'post_' | append: i | append: '_image' -%}
+        {%- assign video_key = 'post_' | append: i | append: '_video' -%}
+        {%- assign post_link = section.settings[link_key] | default: 'https://www.instagram.com/naunau.co.za/' -%}
+        <a href="{{ post_link }}" target="_blank" rel="noopener" class="naunau-community__card">
+          {%- if section.settings[img_key] != blank -%}
+            {{ section.settings[img_key] | image_url: width: 600 | image_tag: class: 'naunau-community__img', loading: 'lazy' }}
+          {%- else -%}
+            <div class="naunau-community__placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7A9E7E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <span>Add post {{ i }}</span>
+            </div>
+          {%- endif -%}
+          {%- if section.settings[video_key] -%}
+            <div class="naunau-community__play-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+
+    <a href="https://www.instagram.com/naunau.co.za/" target="_blank" rel="noopener" class="naunau-community__cta">
+      Follow us on Instagram →
+    </a>
+  </div>
+</section>
+
+<style>
+  .naunau-community {
+    background: #FAF7F2;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .naunau-community__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .naunau-community__eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #7A9E7E;
+    margin-bottom: 0.75rem;
+  }
+
+  .naunau-community__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: #30493B;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+
+  .naunau-community__heading span {
+    color: #731A47;
+    font-style: italic;
+  }
+
+  .naunau-community__subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    color: #3D3D3D;
+    margin-bottom: 2.5rem;
+  }
+
+  .naunau-community__subtitle a {
+    color: #731A47;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .naunau-community__subtitle a:hover {
+    color: #30493B;
+  }
+
+  .naunau-community__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 2.5rem;
+  }
+
+  .naunau-community__card {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #E8E4DD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+  }
+
+  .naunau-community__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .naunau-community__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .naunau-community__placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: #9A8F7E;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .naunau-community__play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .naunau-community__play-icon svg {
+    margin-left: 3px;
+  }
+
+  .naunau-community__cta {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #FAF7F2;
+    background: #731A47;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .naunau-community__cta:hover {
+    background: #30493B;
+  }
+
+  @media (max-width: 768px) {
+    .naunau-community {
+      padding: 3rem 1.25rem;
+    }
+
+    .naunau-community__heading {
+      font-size: 1.75rem;
+    }
+
+    .naunau-community__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "NauNau Community",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Post 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "post_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "post_1_link",
+      "label": "Instagram link"
+    },
+    {
+      "type": "checkbox",
+      "id": "post_1_video",
+      "label": "Is this a video/reel?",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Post 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "post_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "post_2_link",
+      "label": "Instagram link"
+    },
+    {
+      "type": "checkbox",
+      "id": "post_2_video",
+      "label": "Is this a video/reel?",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Post 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "post_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "post_3_link",
+      "label": "Instagram link"
+    },
+    {
+      "type": "checkbox",
+      "id": "post_3_video",
+      "label": "Is this a video/reel?",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Post 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "post_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "post_4_link",
+      "label": "Instagram link"
+    },
+    {
+      "type": "checkbox",
+      "id": "post_4_video",
+      "label": "Is this a video/reel?",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Post 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "post_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "post_5_link",
+      "label": "Instagram link"
+    },
+    {
+      "type": "checkbox",
+      "id": "post_5_video",
+      "label": "Is this a video/reel?",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Post 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "post_6_image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "post_6_link",
+      "label": "Instagram link"
+    },
+    {
+      "type": "checkbox",
+      "id": "post_6_video",
+      "label": "Is this a video/reel?",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "NauNau Community"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,155 @@
+<section class="nn-eco">
+  <div class="nn-eco__container">
+    <div class="nn-eco__left">
+      <span class="nn-eco__eyebrow">Why it matters</span>
+      <h2 class="nn-eco__heading">Small swap.<br><em>Massive impact.</em></h2>
+      <p class="nn-eco__desc">Every NauNau bag replaces thousands of single-use plastics. Built to last, safer for your family and kinder to the planet.</p>
+      <a href="/#shopify-section-product_list_family" class="nn-eco__cta">Make the Swap &rarr;</a>
+    </div>
+    <div class="nn-eco__right">
+      <div class="nn-eco__stat-box">
+        <span class="nn-eco__stat-number">5,000&times;</span>
+        <span class="nn-eco__stat-label">More uses than a single-use plastic bag</span>
+      </div>
+      <div class="nn-eco__stat-box">
+        <span class="nn-eco__stat-number">450+</span>
+        <span class="nn-eco__stat-label">Years for a plastic bag to decompose</span>
+      </div>
+      <div class="nn-eco__stat-box">
+        <span class="nn-eco__stat-number">0%</span>
+        <span class="nn-eco__stat-label">BPA, PVC, or harmful chemicals</span>
+      </div>
+      <div class="nn-eco__stat-box">
+        <span class="nn-eco__stat-number">100%</span>
+        <span class="nn-eco__stat-label">Platinum food-grade silicone</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nn-eco {
+    background-color: #B5CEB7;
+    padding: 5rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nn-eco__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .nn-eco__eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #30493B;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .nn-eco__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.75rem;
+    font-weight: 400;
+    color: #30493B;
+    line-height: 1.15;
+    margin: 0 0 1.25rem 0;
+  }
+  .nn-eco__heading em {
+    color: #731A47;
+    font-style: italic;
+  }
+  .nn-eco__desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #30493B;
+    margin-bottom: 2rem;
+    max-width: 440px;
+  }
+  .nn-eco__cta {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #30493B;
+    background: #fff;
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .nn-eco__cta:hover {
+    background: #30493B;
+    color: #fff;
+  }
+  .nn-eco__right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .nn-eco__stat-box {
+    background: rgba(255,255,255,0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid #fff;
+    border-radius: 16px;
+    padding: 1.75rem 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .nn-eco__stat-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(48,73,59,0.12);
+  }
+  .nn-eco__stat-number {
+    display: block;
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: #30493B;
+    margin-bottom: 0.4rem;
+    line-height: 1;
+  }
+  .nn-eco__stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: #30493B;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .nn-eco { padding: 3rem 1.25rem; }
+    .nn-eco__container {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .nn-eco__heading { font-size: 2.25rem; }
+    .nn-eco__right {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+  }
+  @media (max-width: 480px) {
+    .nn-eco__right { grid-template-columns: 1fr; }
+    .nn-eco__stat-box { padding: 1.25rem 1rem; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "NauNau Eco",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "NauNau Eco"
+    }
+  ]
+}
+{% endschema %}

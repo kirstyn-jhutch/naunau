@@ -1,0 +1,159 @@
+<section class="nn-ideas" id="ideas">
+  <div class="nn-ideas__container">
+    <h2 class="nn-ideas__heading">More than just a bag.</h2>
+    <div class="nn-ideas__grid">
+
+      <div class="nn-ideas__card">
+        <span class="nn-ideas__tag nn-ideas__tag--berry">Meal Prep</span>
+        <h3 class="nn-ideas__card-title">Prep once, eat all week</h3>
+        <p class="nn-ideas__card-desc">Batch-cook your favourites and store them in NauNau bags. Grab, heat, done &mdash; weeknight dinners sorted.</p>
+        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
+      </div>
+
+      <div class="nn-ideas__card">
+        <span class="nn-ideas__tag nn-ideas__tag--green">Lunchbox</span>
+        <h3 class="nn-ideas__card-title">Lunchbox wins for picky eaters</h3>
+        <p class="nn-ideas__card-desc">Pack sandwiches, fruit, and snacks without the cling wrap chaos. Easy to clean, easy to repack.</p>
+        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
+      </div>
+
+      <div class="nn-ideas__card">
+        <span class="nn-ideas__tag nn-ideas__tag--berry">Freezer Tips</span>
+        <h3 class="nn-ideas__card-title">Freeze smarter, waste less</h3>
+        <p class="nn-ideas__card-desc">Flat-freeze soups, sauces, and smoothie packs. Stack them neatly and save space in your freezer.</p>
+        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
+      </div>
+
+      <div class="nn-ideas__card">
+        <span class="nn-ideas__tag nn-ideas__tag--green">Baby &amp; Kids</span>
+        <h3 class="nn-ideas__card-title">Safe storage for little ones</h3>
+        <p class="nn-ideas__card-desc">Store purees, snacks, and teething rusks in BPA-free silicone. Sterilise with boiling water &mdash; no stress.</p>
+        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
+      </div>
+
+      <div class="nn-ideas__card">
+        <span class="nn-ideas__tag nn-ideas__tag--berry">Travel</span>
+        <h3 class="nn-ideas__card-title">Your travel toiletry bag, sorted</h3>
+        <p class="nn-ideas__card-desc">Shampoo, sunscreen, snacks on the go. Leakproof seal means no surprises in your bag.</p>
+        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
+      </div>
+
+      <div class="nn-ideas__card">
+        <span class="nn-ideas__tag nn-ideas__tag--green">Recipes</span>
+        <h3 class="nn-ideas__card-title">Marinate like a pro</h3>
+        <p class="nn-ideas__card-desc">Toss your chicken, steak, or veggies into a NauNau bag with marinade. Seal, massage, fridge &mdash; done.</p>
+        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .nn-ideas {
+    background: #fff;
+    padding: 5rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nn-ideas__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .nn-ideas__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #30493B;
+    text-align: center;
+    margin: 0 0 3rem 0;
+  }
+  .nn-ideas__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .nn-ideas__card {
+    background: #FAF7F2;
+    border-radius: 16px;
+    padding: 2rem 1.75rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .nn-ideas__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .nn-ideas__tag {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px;
+    color: #fff;
+    margin-bottom: 1rem;
+    width: fit-content;
+  }
+  .nn-ideas__tag--berry {
+    background: #731A47;
+  }
+  .nn-ideas__tag--green {
+    background: #30493B;
+  }
+  .nn-ideas__card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #30493B;
+    margin: 0 0 0.6rem 0;
+  }
+  .nn-ideas__card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #3D3D3D;
+    margin: 0 0 1.25rem 0;
+    flex-grow: 1;
+  }
+  .nn-ideas__card-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #731A47;
+    text-decoration: none;
+  }
+  .nn-ideas__card-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 900px) {
+    .nn-ideas__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 560px) {
+    .nn-ideas { padding: 3rem 1.25rem; }
+    .nn-ideas__grid {
+      grid-template-columns: 1fr;
+    }
+    .nn-ideas__heading { font-size: 2rem; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "NauNau Ideas",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "NauNau Ideas"
+    }
+  ]
+}
+{% endschema %}

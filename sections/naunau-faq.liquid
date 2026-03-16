@@ -1,0 +1,253 @@
+<section class="nn-faq">
+  <div class="nn-faq__container">
+    <div class="nn-faq__left">
+      <span class="nn-faq__eyebrow">Support</span>
+      <h2 class="nn-faq__heading">Got<br><em>questions?</em></h2>
+      <p class="nn-faq__subline">We're always happy to help.</p>
+      <a href="mailto:kirstyn@naunau.co.za" class="nn-faq__email">kirstyn@naunau.co.za</a>
+    </div>
+    <div class="nn-faq__right">
+      <div class="nn-faq__item" data-faq-item>
+        <button class="nn-faq__question" data-faq-toggle>
+          <span>Are the bags really oven-safe?</span>
+          <span class="nn-faq__icon">+</span>
+        </button>
+        <div class="nn-faq__answer" data-faq-answer>
+          <div class="nn-faq__answer-inner">
+            <p>Yes, safe for oven, dishwasher, fridge, freezer, microwave, and air fryer. Handles &minus;40&deg;C to 220&deg;C. Do not let the bag touch a direct heating element or open flame.</p>
+          </div>
+        </div>
+      </div>
+      <div class="nn-faq__item" data-faq-item>
+        <button class="nn-faq__question" data-faq-toggle>
+          <span>How do I clean them?</span>
+          <span class="nn-faq__icon">+</span>
+        </button>
+        <div class="nn-faq__answer" data-faq-answer>
+          <div class="nn-faq__answer-inner">
+            <p>Hot soapy water, leave open to air dry. Dishwasher safe (top rack). For oily residue, warm soapy water works well.</p>
+          </div>
+        </div>
+      </div>
+      <div class="nn-faq__item" data-faq-item>
+        <button class="nn-faq__question" data-faq-toggle>
+          <span>What is your return policy?</span>
+          <span class="nn-faq__icon">+</span>
+        </button>
+        <div class="nn-faq__answer" data-faq-answer>
+          <div class="nn-faq__answer-inner">
+            <p>30-day return policy. Unused, original condition. Contact us to arrange.</p>
+          </div>
+        </div>
+      </div>
+      <div class="nn-faq__item" data-faq-item>
+        <button class="nn-faq__question" data-faq-toggle>
+          <span>How much does shipping cost?</span>
+          <span class="nn-faq__icon">+</span>
+        </button>
+        <div class="nn-faq__answer" data-faq-answer>
+          <div class="nn-faq__answer-inner">
+            <p>R75 flat rate, free over R500. Ships via The Courier Guy, 3&ndash;5 business days.</p>
+          </div>
+        </div>
+      </div>
+      <div class="nn-faq__item" data-faq-item>
+        <button class="nn-faq__question" data-faq-toggle>
+          <span>Are they safe for kids and babies?</span>
+          <span class="nn-faq__icon">+</span>
+        </button>
+        <div class="nn-faq__answer" data-faq-answer>
+          <div class="nn-faq__answer-inner">
+            <p>100% BPA-free and PVC-free. Food-grade silicone. Safe for lunchboxes, baby food, and sterilising baby products.</p>
+          </div>
+        </div>
+      </div>
+      <div class="nn-faq__item" data-faq-item>
+        <button class="nn-faq__question" data-faq-toggle>
+          <span>What can I use the bags for?</span>
+          <span class="nn-faq__icon">+</span>
+        </button>
+        <div class="nn-faq__answer" data-faq-answer>
+          <div class="nn-faq__answer-inner">
+            <p>Meal prep, marinating, freezing, snacks, school lunches, sous vide, travel toiletries, and more.</p>
+            <a href="#ideas" class="nn-faq__ideas-link">See more ideas for your bags &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nn-faq {
+    background: #FAF7F2;
+    padding: 5rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nn-faq__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .nn-faq__left {
+    position: sticky;
+    top: 6rem;
+  }
+  .nn-faq__eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9A8F7E;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .nn-faq__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.75rem;
+    font-weight: 400;
+    color: #30493B;
+    line-height: 1.15;
+    margin: 0 0 1rem 0;
+  }
+  .nn-faq__heading em {
+    color: #731A47;
+    font-style: italic;
+  }
+  .nn-faq__subline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    color: #3D3D3D;
+    margin-bottom: 1rem;
+  }
+  .nn-faq__email {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #731A47;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .nn-faq__email:hover {
+    color: #30493B;
+  }
+
+  /* Accordion */
+  .nn-faq__item {
+    border-bottom: 1px solid #E0DCD5;
+  }
+  .nn-faq__item:first-child {
+    border-top: 1px solid #E0DCD5;
+  }
+  .nn-faq__question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #30493B;
+    text-align: left;
+    gap: 1rem;
+  }
+  .nn-faq__question:hover {
+    color: #731A47;
+  }
+  .nn-faq__icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #9A8F7E;
+    transition: transform 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .nn-faq__item.is-open .nn-faq__icon {
+    transform: rotate(45deg);
+    color: #731A47;
+  }
+  .nn-faq__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .nn-faq__item.is-open .nn-faq__answer {
+    max-height: 300px;
+  }
+  .nn-faq__answer-inner {
+    padding: 0 0 1.25rem 0;
+  }
+  .nn-faq__answer-inner p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #3D3D3D;
+    margin: 0;
+  }
+  .nn-faq__ideas-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #731A47;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .nn-faq__ideas-link:hover {
+    color: #30493B;
+  }
+
+  @media (max-width: 768px) {
+    .nn-faq { padding: 3rem 1.25rem; }
+    .nn-faq__container {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .nn-faq__left {
+      position: static;
+    }
+    .nn-faq__heading { font-size: 2.25rem; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const items = document.querySelectorAll('[data-faq-item]');
+    items.forEach(function (item) {
+      const toggle = item.querySelector('[data-faq-toggle]');
+      toggle.addEventListener('click', function () {
+        const isOpen = item.classList.contains('is-open');
+        // Close all
+        items.forEach(function (i) {
+          i.classList.remove('is-open');
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('is-open');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "NauNau FAQ",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "NauNau FAQ"
+    }
+  ]
+}
+{% endschema %}

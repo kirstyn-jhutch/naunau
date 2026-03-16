@@ -27,12 +27,9 @@
     {%- render 'meta-tags' -%}
     {%- render 'stylesheets' -%}
     {%- render 'fonts' -%}
-
-    <!-- NauNau: Chewy Google Font for brand name -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital,wght@0,400;1,400&family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
@@ -42,6 +39,87 @@
     {% endif %}
 
     {{ content_for_header }}
+
+    <style>
+      /* Global font overrides */
+      body {
+        font-family: 'Poppins', sans-serif !important;
+      }
+
+      /* Hero line 1 - "Seal in the fun," */
+      [class*="text_bnhyzU"] h1 {
+        font-family: 'Chewy', cursive !important;
+        font-weight: normal !important;
+        color: #000000 !important;
+        font-size: 3.375rem !important;
+        margin-bottom: 0 !important;
+        line-height: 1.1 !important;
+      }
+
+      /* Hero line 2 - "enjoy it NauNau" */
+      [class*="text_bnhyzU"] h2 {
+        font-family: 'Chewy', cursive !important;
+        font-weight: normal !important;
+        color: #000000 !important;
+        font-size: 3.375rem !important;
+        margin-top: 0.15rem !important;
+        margin-bottom: 0 !important;
+        line-height: 1.1 !important;
+      }
+
+      /* NauNau brand name - bigger + maroon + bolder */
+      [class*="text_bnhyzU"] h2 strong {
+        color: #731a47 !important;
+        font-family: 'Chewy', cursive !important;
+        font-size: 4.2rem !important;
+        font-weight: bold !important;
+        letter-spacing: 0.02em !important;
+      }
+
+      /* Hero subtitle line 1 - Montserrat, olive green, bold */
+      [class*="text_bnhyzU"] p {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 1.125rem !important;
+        font-weight: 600 !important;
+        color: #556B2F !important;
+        letter-spacing: 0.05em !important;
+        text-transform: uppercase !important;
+        margin-top: 0.5rem !important;
+      }
+
+      /* Hero subtitle line 2 - Quicksand, black, bold */
+      [class*="text_bnhyzU"] p + p {
+        font-family: 'Quicksand', sans-serif !important;
+        text-transform: none !important;
+        font-style: italic !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        letter-spacing: normal !important;
+        color: #000000 !important;
+      }
+      /* Why You'll Love It - card headings in Chewy */
+      [class*="text_planetTitle"] h3,
+      [class*="text_leakTitle"] h3,
+      [class*="text_tempTitle"] h3,
+      [class*="text_endlessTitle"] h3 {
+        font-family: 'Chewy', cursive !important;
+        font-weight: normal !important;
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+      }
+
+      /* Why You'll Love It - section heading in Chewy */
+      [class*="text_whyHeading"] h2 {
+        font-family: 'Chewy', cursive !important;
+        font-weight: normal !important;
+      }
+
+      /* Hide account icon in header */
+      .account-popover,
+      .account-drawer-trigger {
+        display: none !important;
+      }
+    </style>
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">

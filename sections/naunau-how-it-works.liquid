@@ -1,0 +1,163 @@
+<section class="nn-hiw">
+  <div class="nn-hiw__container">
+    <span class="nn-hiw__eyebrow">Easy as that</span>
+    <h2 class="nn-hiw__heading">How It Works</h2>
+    <div class="nn-hiw__steps">
+      <div class="nn-hiw__step nn-hiw__step--first">
+        <span class="nn-hiw__step-bg-num">1</span>
+        <span class="nn-hiw__emoji">&#x1F966;</span>
+        <span class="nn-hiw__step-label">01</span>
+        <h3 class="nn-hiw__step-title">Fill It Up</h3>
+        <p class="nn-hiw__step-desc">Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think.</p>
+      </div>
+      <div class="nn-hiw__step">
+        <span class="nn-hiw__step-bg-num">2</span>
+        <span class="nn-hiw__emoji">&#x1F510;</span>
+        <span class="nn-hiw__step-label">02</span>
+        <h3 class="nn-hiw__step-title">Seal &amp; Lock</h3>
+        <p class="nn-hiw__step-desc">Click the leakproof seal shut. No spills, no soggy bags &mdash; stays fresh for longer.</p>
+      </div>
+      <div class="nn-hiw__step">
+        <span class="nn-hiw__step-bg-num">3</span>
+        <span class="nn-hiw__emoji">&#x1F321;&#xFE0F;</span>
+        <span class="nn-hiw__step-label">03</span>
+        <h3 class="nn-hiw__step-title">Freeze, Fridge or Oven</h3>
+        <p class="nn-hiw__step-desc">Use it your way &mdash; freezer, fridge, oven, microwave, or even sous vide. One bag, multiple ways.</p>
+      </div>
+      <div class="nn-hiw__step nn-hiw__step--last">
+        <span class="nn-hiw__step-bg-num">4</span>
+        <span class="nn-hiw__emoji">&#x2728;</span>
+        <span class="nn-hiw__step-label">04</span>
+        <h3 class="nn-hiw__step-title">Rinse &amp; Repeat</h3>
+        <p class="nn-hiw__step-desc">Pop it in the dishwasher for a quick clean, or hand wash with warm soapy water. Leave the bag open to dry fully for best results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nn-hiw {
+    background: #fff;
+    padding: 5rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nn-hiw__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .nn-hiw__eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9A8F7E;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .nn-hiw__heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #30493B;
+    margin: 0 0 3rem 0;
+  }
+  .nn-hiw__steps {
+    display: flex;
+    gap: 2px;
+  }
+  .nn-hiw__step {
+    flex: 1;
+    background: #F4F1EC;
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+  }
+  .nn-hiw__step:hover {
+    background: #C8DBC9;
+  }
+  .nn-hiw__step--first {
+    border-radius: 20px 0 0 20px;
+  }
+  .nn-hiw__step--last {
+    border-radius: 0 20px 20px 0;
+  }
+  .nn-hiw__step-bg-num {
+    position: absolute;
+    bottom: -10px;
+    right: 8px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 8rem;
+    font-weight: 400;
+    color: #C2B8A3;
+    opacity: 0.18;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .nn-hiw__emoji {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .nn-hiw__step-label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9A8F7E;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .nn-hiw__step-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #731A47;
+    margin: 0 0 0.6rem 0;
+    position: relative;
+    z-index: 1;
+  }
+  .nn-hiw__step-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3D3D3D;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    .nn-hiw { padding: 3rem 1.25rem; }
+    .nn-hiw__steps {
+      flex-direction: column;
+      gap: 2px;
+    }
+    .nn-hiw__step--first { border-radius: 20px 20px 0 0; }
+    .nn-hiw__step--last { border-radius: 0 0 20px 20px; }
+    .nn-hiw__step { padding: 2rem 1.25rem 1.5rem; }
+    .nn-hiw__step-bg-num { font-size: 5rem; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "NauNau How It Works",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "NauNau How It Works"
+    }
+  ]
+}
+{% endschema %}
