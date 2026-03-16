@@ -34,13 +34,14 @@
             "color_scheme": "",
             "background_media": "image",
             "video_position": "cover",
-            "background_image_position": "fit",
+            "background_image": "shopify://shop_images/fotos-still-produtos-5-837915c4e775edfbbf17644480485088-1024-1024.webp",
+            "background_image_position": "cover",
             "border": "none",
             "border_width": 10,
             "border_opacity": 100,
             "border_radius": 0,
             "toggle_overlay": true,
-            "overlay_color": "#fffaf78f",
+            "overlay_color": "#fffaf745",
             "overlay_style": "solid",
             "gradient_direction": "to top",
             "link": "",
@@ -948,15 +949,16 @@
         "section_height": "",
         "section_height_custom": 50,
         "color_scheme": "",
-        "background_media": "none",
+        "background_media": "image",
         "video_position": "cover",
+        "background_image": "shopify://shop_images/fotos-still-produtos-3-52c699369b75e1966117641708997281-1024-1024.webp",
         "background_image_position": "cover",
         "border": "none",
         "border_width": 1,
         "border_opacity": 100,
         "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
+        "toggle_overlay": true,
+        "overlay_color": "#fffaf773",
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 48,
@@ -1015,11 +1017,16 @@
                 "letter_spacing": "loose",
                 "case": "none",
                 "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1057,7 +1064,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "product_title": {
               "type": "product-title",
@@ -1081,12 +1089,22 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             },
             "swatches_family": {
               "type": "swatches",
               "name": "Swatches",
-              "settings": {}
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
             },
             "price": {
               "type": "price",
@@ -1108,7 +1126,8 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1127,6 +1146,7 @@
         "max_products": 4,
         "columns": 4,
         "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
         "columns_gap": 12,
         "rows_gap": 24,
         "icons_style": "arrow",
@@ -1147,16 +1167,29 @@
       "type": "naunau-how-it-works",
       "settings": {}
     },
+    "naunau_community": {
+      "type": "naunau-community",
+      "settings": {
+        "post_1_link": "",
+        "post_1_video": false,
+        "post_2_link": "",
+        "post_2_video": false,
+        "post_3_link": "",
+        "post_3_video": false,
+        "post_4_link": "",
+        "post_4_video": false,
+        "post_5_link": "",
+        "post_5_video": false,
+        "post_6_link": "",
+        "post_6_video": false
+      }
+    },
     "naunau_faq": {
       "type": "naunau-faq",
       "settings": {}
     },
     "naunau_ideas": {
       "type": "naunau-ideas",
-      "settings": {}
-    },
-    "naunau_community": {
-      "type": "naunau-community",
       "settings": {}
     }
   },
