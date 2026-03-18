@@ -119,6 +119,33 @@
       .account-drawer-trigger {
         display: none !important;
       }
+
+      /* Shrink header on scroll */
+      .header[data-sticky-state='active'] {
+        --header-height: 45px !important;
+        padding-block: 4px !important;
+        transition: all 0.3s ease !important;
+      }
+
+      .header[data-sticky-state='active'] .header__logo img,
+      .header[data-sticky-state='active'] .header__logo svg {
+        max-height: 35px !important;
+        transition: max-height 0.3s ease !important;
+      }
+
+      .header[data-sticky-state='active'] .header__row {
+        padding-block: 2px !important;
+      }
+
+      /* Smooth transition back when scrolling to top */
+      .header {
+        transition: all 0.3s ease !important;
+      }
+
+      .header .header__logo img,
+      .header .header__logo svg {
+        transition: max-height 0.3s ease !important;
+      }
     </style>
   </head>
 

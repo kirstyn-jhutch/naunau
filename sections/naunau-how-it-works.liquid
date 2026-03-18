@@ -18,7 +18,7 @@
 
 <style>
   .nn-hiw {
-    background: #fff;
+    background: {{ section.settings.bg_color }};
     padding: 5rem 2rem;
     font-family: 'DM Sans', sans-serif;
   }
@@ -146,6 +146,12 @@
       "id": "heading",
       "label": "Heading",
       "default": "How It Works"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
     }
   ],
   "blocks": [
@@ -162,14 +168,14 @@
         {
           "type": "text",
           "id": "title",
-          "label": "Title",
-          "default": "Step title"
+          "label": "Step title",
+          "default": "Fill It Up"
         },
         {
           "type": "textarea",
           "id": "description",
-          "label": "Description",
-          "default": "Step description"
+          "label": "Step description",
+          "default": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think."
         }
       ]
     }
@@ -178,38 +184,10 @@
     {
       "name": "NauNau How It Works",
       "blocks": [
-        {
-          "type": "step",
-          "settings": {
-            "emoji": "🥦",
-            "title": "Fill It Up",
-            "description": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think."
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "emoji": "🔐",
-            "title": "Seal & Lock",
-            "description": "Click the leakproof seal shut. No spills, no soggy bags — stays fresh for longer."
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "emoji": "🌡️",
-            "title": "Freeze, Fridge or Oven",
-            "description": "Use it your way — freezer, fridge, oven, microwave, or even sous vide. One bag, multiple ways."
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "emoji": "✨",
-            "title": "Rinse & Repeat",
-            "description": "Pop it in the dishwasher for a quick clean, or hand wash with warm soapy water. Leave the bag open to dry fully for best results."
-          }
-        }
+        { "type": "step", "settings": { "emoji": "🥦", "title": "Fill It Up", "description": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think." } },
+        { "type": "step", "settings": { "emoji": "🔐", "title": "Seal & Lock", "description": "Click the leakproof seal shut. No spills, no soggy bags — stays fresh for longer." } },
+        { "type": "step", "settings": { "emoji": "🌡️", "title": "Freeze, Fridge or Oven", "description": "Use it your way — freezer, fridge, oven, microwave, or even sous vide. One bag, multiple ways." } },
+        { "type": "step", "settings": { "emoji": "✨", "title": "Rinse & Repeat", "description": "Pop it in the dishwasher for a quick clean, or hand wash with warm soapy water. Leave the bag open to dry fully for best results." } }
       ]
     }
   ]
