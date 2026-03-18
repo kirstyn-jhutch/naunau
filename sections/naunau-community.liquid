@@ -1,4 +1,9 @@
-<section id="naunau-community" class="naunau-community">
+{%- style -%}
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {{ section.settings.body_font | font_face: font_display: 'swap' }}
+{%- endstyle -%}
+
+<section id="naunau-community" class="naunau-community" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
   <div class="naunau-community__inner">
     <p class="naunau-community__eyebrow">{{ section.settings.eyebrow }}</p>
     <h2 class="naunau-community__heading">{{ section.settings.heading }} <span>{{ section.settings.heading_highlight }}</span></h2>
@@ -39,6 +44,7 @@
     background: {{ section.settings.bg_color }};
     padding: {{ section.settings.padding_top }}px 2rem {{ section.settings.padding_bottom }}px;
     text-align: center;
+    font-family: {{ section.settings.body_font.family | default: 'DM Sans' }}, {{ section.settings.body_font.fallback_families | default: 'sans-serif' }};
   }
 
   .naunau-community__inner {
@@ -47,7 +53,6 @@
   }
 
   .naunau-community__eyebrow {
-    font-family: 'DM Sans', sans-serif;
     font-size: {{ section.settings.eyebrow_size }}px;
     font-weight: 600;
     text-transform: uppercase;
@@ -57,7 +62,7 @@
   }
 
   .naunau-community__heading {
-    font-family: 'DM Serif Display', serif;
+    font-family: {{ section.settings.heading_font.family | default: 'DM Serif Display' }}, {{ section.settings.heading_font.fallback_families | default: 'serif' }};
     font-size: {{ section.settings.heading_size }}px;
     color: {{ section.settings.heading_color }};
     margin-bottom: 0.5rem;
@@ -70,7 +75,6 @@
   }
 
   .naunau-community__subtitle {
-    font-family: 'DM Sans', sans-serif;
     font-size: {{ section.settings.body_size }}px;
     color: {{ section.settings.text_color }};
     margin-bottom: 2.5rem;
@@ -125,7 +129,6 @@
     align-items: center;
     gap: 0.75rem;
     color: {{ section.settings.eyebrow_color }};
-    font-family: 'DM Sans', sans-serif;
     font-size: 0.85rem;
   }
 
@@ -150,7 +153,6 @@
 
   .naunau-community__cta {
     display: inline-block;
-    font-family: 'DM Sans', sans-serif;
     font-weight: 600;
     font-size: 1rem;
     color: {{ section.settings.btn_text_color }};
@@ -238,13 +240,39 @@
     },
     {
       "type": "header",
-      "content": "Colors"
+      "content": "Background"
     },
     {
       "type": "color",
       "id": "bg_color",
       "label": "Background color",
       "default": "#FAF7F2"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Optional — overrides background color"
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
     },
     {
       "type": "color",
