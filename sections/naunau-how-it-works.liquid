@@ -1,36 +1,17 @@
 <section class="nn-hiw">
   <div class="nn-hiw__container">
-    <span class="nn-hiw__eyebrow">Easy as that</span>
-    <h2 class="nn-hiw__heading">How It Works</h2>
+    <span class="nn-hiw__eyebrow">{{ section.settings.eyebrow }}</span>
+    <h2 class="nn-hiw__heading">{{ section.settings.heading }}</h2>
     <div class="nn-hiw__steps">
-      <div class="nn-hiw__step nn-hiw__step--first">
-        <span class="nn-hiw__step-bg-num">1</span>
-        <span class="nn-hiw__emoji">&#x1F966;</span>
-        <span class="nn-hiw__step-label">01</span>
-        <h3 class="nn-hiw__step-title">Fill It Up</h3>
-        <p class="nn-hiw__step-desc">Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think.</p>
-      </div>
-      <div class="nn-hiw__step">
-        <span class="nn-hiw__step-bg-num">2</span>
-        <span class="nn-hiw__emoji">&#x1F510;</span>
-        <span class="nn-hiw__step-label">02</span>
-        <h3 class="nn-hiw__step-title">Seal &amp; Lock</h3>
-        <p class="nn-hiw__step-desc">Click the leakproof seal shut. No spills, no soggy bags &mdash; stays fresh for longer.</p>
-      </div>
-      <div class="nn-hiw__step">
-        <span class="nn-hiw__step-bg-num">3</span>
-        <span class="nn-hiw__emoji">&#x1F321;&#xFE0F;</span>
-        <span class="nn-hiw__step-label">03</span>
-        <h3 class="nn-hiw__step-title">Freeze, Fridge or Oven</h3>
-        <p class="nn-hiw__step-desc">Use it your way &mdash; freezer, fridge, oven, microwave, or even sous vide. One bag, multiple ways.</p>
-      </div>
-      <div class="nn-hiw__step nn-hiw__step--last">
-        <span class="nn-hiw__step-bg-num">4</span>
-        <span class="nn-hiw__emoji">&#x2728;</span>
-        <span class="nn-hiw__step-label">04</span>
-        <h3 class="nn-hiw__step-title">Rinse &amp; Repeat</h3>
-        <p class="nn-hiw__step-desc">Pop it in the dishwasher for a quick clean, or hand wash with warm soapy water. Leave the bag open to dry fully for best results.</p>
-      </div>
+      {%- for block in section.blocks -%}
+        <div class="nn-hiw__step {% if forloop.first %}nn-hiw__step--first{% endif %}{% if forloop.last %}nn-hiw__step--last{% endif %}" {{ block.shopify_attributes }}>
+          <span class="nn-hiw__step-bg-num">{{ forloop.index }}</span>
+          <span class="nn-hiw__emoji">{{ block.settings.emoji }}</span>
+          <span class="nn-hiw__step-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <h3 class="nn-hiw__step-title">{{ block.settings.title }}</h3>
+          <p class="nn-hiw__step-desc">{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 </section>
@@ -153,10 +134,83 @@
 {
   "name": "NauNau How It Works",
   "tag": "section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Easy as that"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How It Works"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji",
+          "default": "🥦"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Step title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Step description"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "NauNau How It Works"
+      "name": "NauNau How It Works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "emoji": "🥦",
+            "title": "Fill It Up",
+            "description": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "emoji": "🔐",
+            "title": "Seal & Lock",
+            "description": "Click the leakproof seal shut. No spills, no soggy bags — stays fresh for longer."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "emoji": "🌡️",
+            "title": "Freeze, Fridge or Oven",
+            "description": "Use it your way — freezer, fridge, oven, microwave, or even sous vide. One bag, multiple ways."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "emoji": "✨",
+            "title": "Rinse & Repeat",
+            "description": "Pop it in the dishwasher for a quick clean, or hand wash with warm soapy water. Leave the bag open to dry fully for best results."
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,79 +1,25 @@
 <section class="nn-faq">
   <div class="nn-faq__container">
     <div class="nn-faq__left">
-      <span class="nn-faq__eyebrow">Support</span>
-      <h2 class="nn-faq__heading">Got<br><em>questions?</em></h2>
-      <p class="nn-faq__subline">We're always happy to help.</p>
-      <a href="mailto:kirstyn@naunau.co.za" class="nn-faq__email">kirstyn@naunau.co.za</a>
+      <span class="nn-faq__eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="nn-faq__heading">{{ section.settings.heading }}<br><em>{{ section.settings.heading_italic }}</em></h2>
+      <p class="nn-faq__subline">{{ section.settings.subline }}</p>
+      <a href="mailto:{{ section.settings.email }}" class="nn-faq__email">{{ section.settings.email }}</a>
     </div>
     <div class="nn-faq__right">
-      <div class="nn-faq__item" data-faq-item>
-        <button class="nn-faq__question" data-faq-toggle>
-          <span>Are the bags really oven-safe?</span>
-          <span class="nn-faq__icon">+</span>
-        </button>
-        <div class="nn-faq__answer" data-faq-answer>
-          <div class="nn-faq__answer-inner">
-            <p>Yes, safe for oven, dishwasher, fridge, freezer, microwave, and air fryer. Handles &minus;40&deg;C to 220&deg;C. Do not let the bag touch a direct heating element or open flame.</p>
+      {%- for block in section.blocks -%}
+        <div class="nn-faq__item" data-faq-item {{ block.shopify_attributes }}>
+          <button class="nn-faq__question" data-faq-toggle>
+            <span>{{ block.settings.question }}</span>
+            <span class="nn-faq__icon">+</span>
+          </button>
+          <div class="nn-faq__answer" data-faq-answer>
+            <div class="nn-faq__answer-inner">
+              <p>{{ block.settings.answer }}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="nn-faq__item" data-faq-item>
-        <button class="nn-faq__question" data-faq-toggle>
-          <span>How do I clean them?</span>
-          <span class="nn-faq__icon">+</span>
-        </button>
-        <div class="nn-faq__answer" data-faq-answer>
-          <div class="nn-faq__answer-inner">
-            <p>Hot soapy water, leave open to air dry. Dishwasher safe (top rack). For oily residue, warm soapy water works well.</p>
-          </div>
-        </div>
-      </div>
-      <div class="nn-faq__item" data-faq-item>
-        <button class="nn-faq__question" data-faq-toggle>
-          <span>What is your return policy?</span>
-          <span class="nn-faq__icon">+</span>
-        </button>
-        <div class="nn-faq__answer" data-faq-answer>
-          <div class="nn-faq__answer-inner">
-            <p>30-day return policy. Unused, original condition. Contact us to arrange.</p>
-          </div>
-        </div>
-      </div>
-      <div class="nn-faq__item" data-faq-item>
-        <button class="nn-faq__question" data-faq-toggle>
-          <span>How much does shipping cost?</span>
-          <span class="nn-faq__icon">+</span>
-        </button>
-        <div class="nn-faq__answer" data-faq-answer>
-          <div class="nn-faq__answer-inner">
-            <p>R75 flat rate, free over R500. Ships via The Courier Guy, 3&ndash;5 business days.</p>
-          </div>
-        </div>
-      </div>
-      <div class="nn-faq__item" data-faq-item>
-        <button class="nn-faq__question" data-faq-toggle>
-          <span>Are they safe for kids and babies?</span>
-          <span class="nn-faq__icon">+</span>
-        </button>
-        <div class="nn-faq__answer" data-faq-answer>
-          <div class="nn-faq__answer-inner">
-            <p>100% BPA-free and PVC-free. Food-grade silicone. Safe for lunchboxes, baby food, and sterilising baby products.</p>
-          </div>
-        </div>
-      </div>
-      <div class="nn-faq__item" data-faq-item>
-        <button class="nn-faq__question" data-faq-toggle>
-          <span>What can I use the bags for?</span>
-          <span class="nn-faq__icon">+</span>
-        </button>
-        <div class="nn-faq__answer" data-faq-answer>
-          <div class="nn-faq__answer-inner">
-            <p>Meal prep, marinating, freezing, snacks, school lunches, sous vide, travel toiletries, and more.</p>
-            <a href="#ideas" class="nn-faq__ideas-link">See more ideas for your bags &rarr;</a>
-          </div>
-        </div>
-      </div>
+      {%- endfor -%}
     </div>
   </div>
 </section>
@@ -192,19 +138,6 @@
     color: #3D3D3D;
     margin: 0;
   }
-  .nn-faq__ideas-link {
-    display: inline-block;
-    margin-top: 0.75rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #731A47;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .nn-faq__ideas-link:hover {
-    color: #30493B;
-  }
 
   @media (max-width: 768px) {
     .nn-faq { padding: 3rem 1.25rem; }
@@ -243,10 +176,105 @@
 {
   "name": "NauNau FAQ",
   "tag": "section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Support"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Got"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (italic part)",
+      "default": "questions?"
+    },
+    {
+      "type": "text",
+      "id": "subline",
+      "label": "Subline",
+      "default": "We're always happy to help."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email address",
+      "default": "kirstyn@naunau.co.za"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Your question here"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Your answer here"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "NauNau FAQ"
+      "name": "NauNau FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Are the bags really oven-safe?",
+            "answer": "Yes, safe for oven, dishwasher, fridge, freezer, microwave, and air fryer. Handles −40°C to 220°C. Do not let the bag touch a direct heating element or open flame."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I clean them?",
+            "answer": "Hot soapy water, leave open to air dry. Dishwasher safe (top rack). For oily residue, warm soapy water works well."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "30-day return policy. Unused, original condition. Contact us to arrange."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How much does shipping cost?",
+            "answer": "R75 flat rate, free over R500. Ships via The Courier Guy, 3–5 business days."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Are they safe for kids and babies?",
+            "answer": "100% BPA-free and PVC-free. Food-grade silicone. Safe for lunchboxes, baby food, and sterilising baby products."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What can I use the bags for?",
+            "answer": "Meal prep, marinating, freezing, snacks, school lunches, sous vide, travel toiletries, and more."
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,15 +1,15 @@
 <section id="naunau-community" class="naunau-community">
   <div class="naunau-community__inner">
-    <p class="naunau-community__eyebrow">Community</p>
-    <h2 class="naunau-community__heading">Join the <span>#NauNau</span> Community</h2>
-    <p class="naunau-community__subtitle">Tag us <a href="https://www.instagram.com/naunau.co.za/" target="_blank" rel="noopener">@naunau.co.za</a> for a chance to be featured!</p>
+    <p class="naunau-community__eyebrow">{{ section.settings.eyebrow }}</p>
+    <h2 class="naunau-community__heading">{{ section.settings.heading }} <span>{{ section.settings.heading_highlight }}</span></h2>
+    <p class="naunau-community__subtitle">{{ section.settings.subtitle }} <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener">{{ section.settings.instagram_handle }}</a></p>
 
     <div class="naunau-community__grid">
       {%- for i in (1..6) -%}
         {%- assign link_key = 'post_' | append: i | append: '_link' -%}
         {%- assign img_key = 'post_' | append: i | append: '_image' -%}
         {%- assign video_key = 'post_' | append: i | append: '_video' -%}
-        {%- assign post_link = section.settings[link_key] | default: 'https://www.instagram.com/naunau.co.za/' -%}
+        {%- assign post_link = section.settings[link_key] | default: section.settings.instagram_url -%}
         <a href="{{ post_link }}" target="_blank" rel="noopener" class="naunau-community__card">
           {%- if section.settings[img_key] != blank -%}
             {{ section.settings[img_key] | image_url: width: 600 | image_tag: class: 'naunau-community__img', loading: 'lazy' }}
@@ -28,8 +28,8 @@
       {%- endfor -%}
     </div>
 
-    <a href="https://www.instagram.com/naunau.co.za/" target="_blank" rel="noopener" class="naunau-community__cta">
-      Follow us on Instagram →
+    <a href="{{ section.settings.cta_link | default: section.settings.instagram_url }}" target="_blank" rel="noopener" class="naunau-community__cta">
+      {{ section.settings.cta_text }}
     </a>
   </div>
 </section>
@@ -185,6 +185,53 @@
   "name": "NauNau Community",
   "tag": "section",
   "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Community"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join the"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading (highlighted part)",
+      "default": "#NauNau Community"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Tag us"
+    },
+    {
+      "type": "text",
+      "id": "instagram_handle",
+      "label": "Instagram handle",
+      "default": "@naunau.co.za"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL",
+      "default": "https://www.instagram.com/naunau.co.za/"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Follow us on Instagram →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
     {
       "type": "header",
       "content": "Post 1"

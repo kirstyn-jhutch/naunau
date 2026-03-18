@@ -1,28 +1,18 @@
 <section class="nn-eco">
   <div class="nn-eco__container">
     <div class="nn-eco__left">
-      <span class="nn-eco__eyebrow">Why it matters</span>
-      <h2 class="nn-eco__heading">Small swap.<br><em>Massive impact.</em></h2>
-      <p class="nn-eco__desc">Every NauNau bag replaces thousands of single-use plastics. Built to last, safer for your family and kinder to the planet.</p>
-      <a href="/#shopify-section-product_list_family" class="nn-eco__cta">Make the Swap &rarr;</a>
+      <span class="nn-eco__eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="nn-eco__heading">{{ section.settings.heading }}<br><em>{{ section.settings.heading_italic }}</em></h2>
+      <p class="nn-eco__desc">{{ section.settings.description }}</p>
+      <a href="{{ section.settings.cta_link }}" class="nn-eco__cta">{{ section.settings.cta_text }}</a>
     </div>
     <div class="nn-eco__right">
-      <div class="nn-eco__stat-box">
-        <span class="nn-eco__stat-number">5,000&times;</span>
-        <span class="nn-eco__stat-label">More uses than a single-use plastic bag</span>
-      </div>
-      <div class="nn-eco__stat-box">
-        <span class="nn-eco__stat-number">450+</span>
-        <span class="nn-eco__stat-label">Years for a plastic bag to decompose</span>
-      </div>
-      <div class="nn-eco__stat-box">
-        <span class="nn-eco__stat-number">0%</span>
-        <span class="nn-eco__stat-label">BPA, PVC, or harmful chemicals</span>
-      </div>
-      <div class="nn-eco__stat-box">
-        <span class="nn-eco__stat-number">100%</span>
-        <span class="nn-eco__stat-label">Platinum food-grade silicone</span>
-      </div>
+      {%- for block in section.blocks -%}
+        <div class="nn-eco__stat-box" {{ block.shopify_attributes }}>
+          <span class="nn-eco__stat-number">{{ block.settings.stat_number }}</span>
+          <span class="nn-eco__stat-label">{{ block.settings.stat_label }}</span>
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 </section>
@@ -145,10 +135,97 @@
 {
   "name": "NauNau Eco",
   "tag": "section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Why it matters"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Small swap."
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (italic part)",
+      "default": "Massive impact."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Every NauNau bag replaces thousands of single-use plastics. Built to last, safer for your family and kinder to the planet."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Make the Swap →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link",
+      "default": "/#shopify-section-product_list_family"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stat_number",
+          "label": "Number",
+          "default": "5,000×"
+        },
+        {
+          "type": "text",
+          "id": "stat_label",
+          "label": "Label",
+          "default": "More uses than a single-use plastic bag"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "NauNau Eco"
+      "name": "NauNau Eco",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "stat_number": "5,000×",
+            "stat_label": "More uses than a single-use plastic bag"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat_number": "450+",
+            "stat_label": "Years for a plastic bag to decompose"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat_number": "0%",
+            "stat_label": "BPA, PVC, or harmful chemicals"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "stat_number": "100%",
+            "stat_label": "Platinum food-grade silicone"
+          }
+        }
+      ]
     }
   ]
 }

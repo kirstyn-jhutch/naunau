@@ -1,50 +1,17 @@
 <section class="nn-ideas" id="ideas">
   <div class="nn-ideas__container">
-    <h2 class="nn-ideas__heading">More than just a bag.</h2>
+    <h2 class="nn-ideas__heading">{{ section.settings.heading }}</h2>
     <div class="nn-ideas__grid">
-
-      <div class="nn-ideas__card">
-        <span class="nn-ideas__tag nn-ideas__tag--berry">Meal Prep</span>
-        <h3 class="nn-ideas__card-title">Prep once, eat all week</h3>
-        <p class="nn-ideas__card-desc">Batch-cook your favourites and store them in NauNau bags. Grab, heat, done &mdash; weeknight dinners sorted.</p>
-        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
-      </div>
-
-      <div class="nn-ideas__card">
-        <span class="nn-ideas__tag nn-ideas__tag--green">Lunchbox</span>
-        <h3 class="nn-ideas__card-title">Lunchbox wins for picky eaters</h3>
-        <p class="nn-ideas__card-desc">Pack sandwiches, fruit, and snacks without the cling wrap chaos. Easy to clean, easy to repack.</p>
-        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
-      </div>
-
-      <div class="nn-ideas__card">
-        <span class="nn-ideas__tag nn-ideas__tag--berry">Freezer Tips</span>
-        <h3 class="nn-ideas__card-title">Freeze smarter, waste less</h3>
-        <p class="nn-ideas__card-desc">Flat-freeze soups, sauces, and smoothie packs. Stack them neatly and save space in your freezer.</p>
-        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
-      </div>
-
-      <div class="nn-ideas__card">
-        <span class="nn-ideas__tag nn-ideas__tag--green">Baby &amp; Kids</span>
-        <h3 class="nn-ideas__card-title">Safe storage for little ones</h3>
-        <p class="nn-ideas__card-desc">Store purees, snacks, and teething rusks in BPA-free silicone. Sterilise with boiling water &mdash; no stress.</p>
-        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
-      </div>
-
-      <div class="nn-ideas__card">
-        <span class="nn-ideas__tag nn-ideas__tag--berry">Travel</span>
-        <h3 class="nn-ideas__card-title">Your travel toiletry bag, sorted</h3>
-        <p class="nn-ideas__card-desc">Shampoo, sunscreen, snacks on the go. Leakproof seal means no surprises in your bag.</p>
-        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
-      </div>
-
-      <div class="nn-ideas__card">
-        <span class="nn-ideas__tag nn-ideas__tag--green">Recipes</span>
-        <h3 class="nn-ideas__card-title">Marinate like a pro</h3>
-        <p class="nn-ideas__card-desc">Toss your chicken, steak, or veggies into a NauNau bag with marinade. Seal, massage, fridge &mdash; done.</p>
-        <a href="#" class="nn-ideas__card-link">Read More &rarr;</a>
-      </div>
-
+      {%- for block in section.blocks -%}
+        <div class="nn-ideas__card" {{ block.shopify_attributes }}>
+          <span class="nn-ideas__tag {% if block.settings.tag_color == 'berry' %}nn-ideas__tag--berry{% else %}nn-ideas__tag--green{% endif %}">{{ block.settings.tag }}</span>
+          <h3 class="nn-ideas__card-title">{{ block.settings.title }}</h3>
+          <p class="nn-ideas__card-desc">{{ block.settings.description }}</p>
+          {%- if block.settings.link_text != blank -%}
+            <a href="{{ block.settings.link_url }}" class="nn-ideas__card-link">{{ block.settings.link_text }}</a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 </section>
@@ -149,10 +116,126 @@
 {
   "name": "NauNau Ideas",
   "tag": "section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "More than just a bag."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "idea",
+      "name": "Idea Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag label",
+          "default": "Meal Prep"
+        },
+        {
+          "type": "select",
+          "id": "tag_color",
+          "label": "Tag color",
+          "options": [
+            { "value": "berry", "label": "Berry" },
+            { "value": "green", "label": "Green" }
+          ],
+          "default": "berry"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Card title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Card description"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "Read More →"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "NauNau Ideas"
+      "name": "NauNau Ideas",
+      "blocks": [
+        {
+          "type": "idea",
+          "settings": {
+            "tag": "Meal Prep",
+            "tag_color": "berry",
+            "title": "Prep once, eat all week",
+            "description": "Batch-cook your favourites and store them in NauNau bags. Grab, heat, done — weeknight dinners sorted.",
+            "link_text": "Read More →"
+          }
+        },
+        {
+          "type": "idea",
+          "settings": {
+            "tag": "Lunchbox",
+            "tag_color": "green",
+            "title": "Lunchbox wins for picky eaters",
+            "description": "Pack sandwiches, fruit, and snacks without the cling wrap chaos. Easy to clean, easy to repack.",
+            "link_text": "Read More →"
+          }
+        },
+        {
+          "type": "idea",
+          "settings": {
+            "tag": "Freezer Tips",
+            "tag_color": "berry",
+            "title": "Freeze smarter, waste less",
+            "description": "Flat-freeze soups, sauces, and smoothie packs. Stack them neatly and save space in your freezer.",
+            "link_text": "Read More →"
+          }
+        },
+        {
+          "type": "idea",
+          "settings": {
+            "tag": "Baby & Kids",
+            "tag_color": "green",
+            "title": "Safe storage for little ones",
+            "description": "Store purees, snacks, and teething rusks in BPA-free silicone. Sterilise with boiling water — no stress.",
+            "link_text": "Read More →"
+          }
+        },
+        {
+          "type": "idea",
+          "settings": {
+            "tag": "Travel",
+            "tag_color": "berry",
+            "title": "Your travel toiletry bag, sorted",
+            "description": "Shampoo, sunscreen, snacks on the go. Leakproof seal means no surprises in your bag.",
+            "link_text": "Read More →"
+          }
+        },
+        {
+          "type": "idea",
+          "settings": {
+            "tag": "Recipes",
+            "tag_color": "green",
+            "title": "Marinate like a pro",
+            "description": "Toss your chicken, steak, or veggies into a NauNau bag with marinade. Seal, massage, fridge — done.",
+            "link_text": "Read More →"
+          }
+        }
+      ]
     }
   ]
 }
