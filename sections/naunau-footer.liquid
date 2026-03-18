@@ -1,0 +1,763 @@
+{%- style -%}
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {{ section.settings.link_font | font_face: font_display: 'swap' }}
+  {{ section.settings.newsletter_heading_font | font_face: font_display: 'swap' }}
+{%- endstyle -%}
+
+<footer
+  id="naunau-footer"
+  class="nn-footer"
+  style="
+    background-color: {{ section.settings.bg_color }};
+    {% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;{% endif %}
+    color: {{ section.settings.text_color }};
+  "
+>
+  <div class="nn-footer__inner" style="max-width: {{ section.settings.content_width }}px;">
+
+    {%- comment -%} ─── Link columns + newsletter row ─── {%- endcomment -%}
+    <div class="nn-footer__columns">
+
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+
+          {%- when 'link_column' -%}
+            <div class="nn-footer__col" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h3 class="nn-footer__col-heading" style="
+                  font-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+                  font-size: {{ section.settings.heading_size }}px;
+                  color: {{ section.settings.heading_color }};
+                  text-transform: {{ section.settings.heading_transform }};
+                  font-weight: {{ section.settings.heading_weight }};
+                  letter-spacing: {{ section.settings.heading_spacing }}px;
+                ">{{ block.settings.heading }}</h3>
+              {%- endif -%}
+              {%- if block.settings.menu != blank -%}
+                <ul class="nn-footer__links">
+                  {%- for link in block.settings.menu.links -%}
+                    <li>
+                      <a href="{{ link.url }}" class="nn-footer__link" style="
+                        font-family: {{ section.settings.link_font.family }}, {{ section.settings.link_font.fallback_families }};
+                        font-size: {{ section.settings.link_size }}px;
+                        color: {{ section.settings.link_color }};
+                      ">{{ link.title }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+
+          {%- when 'social' -%}
+            <div class="nn-footer__col nn-footer__col--social" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h3 class="nn-footer__col-heading" style="
+                  font-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+                  font-size: {{ section.settings.heading_size }}px;
+                  color: {{ section.settings.heading_color }};
+                  text-transform: {{ section.settings.heading_transform }};
+                  font-weight: {{ section.settings.heading_weight }};
+                  letter-spacing: {{ section.settings.heading_spacing }}px;
+                ">{{ block.settings.heading }}</h3>
+              {%- endif -%}
+              <div class="nn-footer__social-icons">
+                {%- if block.settings.facebook != blank -%}
+                  <a href="{{ block.settings.facebook }}" class="nn-footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                    <svg width="{{ block.settings.icon_size }}" height="{{ block.settings.icon_size }}" viewBox="0 0 24 24" fill="{{ section.settings.link_color }}"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.instagram != blank -%}
+                  <a href="{{ block.settings.instagram }}" class="nn-footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                    <svg width="{{ block.settings.icon_size }}" height="{{ block.settings.icon_size }}" viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.link_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.tiktok != blank -%}
+                  <a href="{{ block.settings.tiktok }}" class="nn-footer__social-link" aria-label="TikTok" target="_blank" rel="noopener">
+                    <svg width="{{ block.settings.icon_size }}" height="{{ block.settings.icon_size }}" viewBox="0 0 24 24" fill="{{ section.settings.link_color }}"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.63a8.26 8.26 0 0 0 4.76 1.5v-3.5a4.83 4.83 0 0 1-1-.06z"/></svg>
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.pinterest != blank -%}
+                  <a href="{{ block.settings.pinterest }}" class="nn-footer__social-link" aria-label="Pinterest" target="_blank" rel="noopener">
+                    <svg width="{{ block.settings.icon_size }}" height="{{ block.settings.icon_size }}" viewBox="0 0 24 24" fill="{{ section.settings.link_color }}"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.15 9.42 7.6 11.18-.1-.95-.2-2.41.04-3.45.22-.94 1.4-5.93 1.4-5.93s-.36-.71-.36-1.77c0-1.66.96-2.9 2.16-2.9 1.02 0 1.51.77 1.51 1.68 0 1.03-.65 2.56-.99 3.98-.28 1.19.6 2.16 1.77 2.16 2.13 0 3.77-2.25 3.77-5.49 0-2.87-2.06-4.87-5.01-4.87-3.41 0-5.42 2.56-5.42 5.21 0 1.03.4 2.14.89 2.74.1.12.11.22.08.34-.09.37-.29 1.19-.33 1.36-.05.22-.18.27-.41.16-1.53-.71-2.48-2.95-2.48-4.75 0-3.87 2.81-7.42 8.11-7.42 4.26 0 7.57 3.03 7.57 7.09 0 4.23-2.67 7.63-6.37 7.63-1.24 0-2.41-.65-2.81-1.41l-.77 2.92c-.28 1.07-1.03 2.41-1.54 3.23C9.56 23.81 10.74 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z"/></svg>
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.youtube != blank -%}
+                  <a href="{{ block.settings.youtube }}" class="nn-footer__social-link" aria-label="YouTube" target="_blank" rel="noopener">
+                    <svg width="{{ block.settings.icon_size }}" height="{{ block.settings.icon_size }}" viewBox="0 0 24 24" fill="{{ section.settings.link_color }}"><path d="M23.5 6.19a3 3 0 0 0-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 0 0 .5 6.19 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.81 3 3 0 0 0 2.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 0 0 2.11-2.12A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.81zM9.54 15.57V8.43L15.82 12l-6.28 3.57z"/></svg>
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.twitter != blank -%}
+                  <a href="{{ block.settings.twitter }}" class="nn-footer__social-link" aria-label="X / Twitter" target="_blank" rel="noopener">
+                    <svg width="{{ block.settings.icon_size }}" height="{{ block.settings.icon_size }}" viewBox="0 0 24 24" fill="{{ section.settings.link_color }}"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+
+          {%- when 'newsletter' -%}
+            <div class="nn-footer__col nn-footer__col--newsletter" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h3 class="nn-footer__col-heading" style="
+                  font-family: {{ section.settings.newsletter_heading_font.family }}, {{ section.settings.newsletter_heading_font.fallback_families }};
+                  font-size: {{ section.settings.heading_size }}px;
+                  color: {{ section.settings.heading_color }};
+                  text-transform: {{ section.settings.heading_transform }};
+                  font-weight: {{ section.settings.heading_weight }};
+                  letter-spacing: {{ section.settings.heading_spacing }}px;
+                ">{{ block.settings.heading }}</h3>
+              {%- endif -%}
+              {%- if block.settings.subtext != blank -%}
+                <p class="nn-footer__newsletter-sub" style="
+                  color: {{ section.settings.link_color }};
+                  font-size: {{ section.settings.link_size }}px;
+                  font-family: {{ section.settings.link_font.family }}, {{ section.settings.link_font.fallback_families }};
+                  margin-bottom: 16px;
+                ">{{ block.settings.subtext }}</p>
+              {%- endif -%}
+              {%- form 'customer', class: 'nn-footer__newsletter-form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <div class="nn-footer__newsletter-fields">
+                  <input
+                    type="email"
+                    name="contact[email]"
+                    placeholder="{{ block.settings.placeholder }}"
+                    required
+                    class="nn-footer__input"
+                    style="
+                      background: {{ block.settings.input_bg }};
+                      color: {{ block.settings.input_text_color }};
+                      border: 1px solid {{ block.settings.input_border_color }};
+                      border-radius: {{ block.settings.input_radius }}px;
+                      font-size: {{ section.settings.link_size }}px;
+                      font-family: {{ section.settings.link_font.family }}, {{ section.settings.link_font.fallback_families }};
+                    "
+                  >
+                  <button
+                    type="submit"
+                    class="nn-footer__subscribe-btn"
+                    style="
+                      background: {{ block.settings.btn_bg }};
+                      color: {{ block.settings.btn_text_color }};
+                      border-radius: {{ block.settings.input_radius }}px;
+                      font-size: {{ section.settings.link_size }}px;
+                      font-family: {{ section.settings.link_font.family }}, {{ section.settings.link_font.fallback_families }};
+                    "
+                  >{{ block.settings.btn_label }}</button>
+                </div>
+              {%- endform -%}
+            </div>
+
+          {%- when 'text_block' -%}
+            <div class="nn-footer__col" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h3 class="nn-footer__col-heading" style="
+                  font-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+                  font-size: {{ section.settings.heading_size }}px;
+                  color: {{ section.settings.heading_color }};
+                  text-transform: {{ section.settings.heading_transform }};
+                  font-weight: {{ section.settings.heading_weight }};
+                  letter-spacing: {{ section.settings.heading_spacing }}px;
+                ">{{ block.settings.heading }}</h3>
+              {%- endif -%}
+              <div class="nn-footer__text-content" style="
+                color: {{ section.settings.link_color }};
+                font-size: {{ section.settings.link_size }}px;
+                font-family: {{ section.settings.link_font.family }}, {{ section.settings.link_font.fallback_families }};
+              ">{{ block.settings.content }}</div>
+            </div>
+
+          {%- when 'image_block' -%}
+            <div class="nn-footer__col nn-footer__col--image" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                <img
+                  src="{{ block.settings.image | image_url: width: block.settings.width }}"
+                  alt="{{ block.settings.image.alt | default: '' }}"
+                  width="{{ block.settings.width }}"
+                  style="max-width: 100%;height: auto;"
+                >
+              {%- endif -%}
+            </div>
+
+        {%- endcase -%}
+      {%- endfor -%}
+
+    </div>
+
+    {%- comment -%} ─── Bottom bar ─── {%- endcomment -%}
+    {%- if section.settings.show_bottom_bar -%}
+      <div class="nn-footer__bottom" style="
+        border-top: 1px solid {{ section.settings.divider_color }};
+        margin-top: {{ section.settings.bottom_bar_spacing }}px;
+        padding-top: {{ section.settings.bottom_bar_spacing }}px;
+      ">
+        <div class="nn-footer__bottom-left">
+          {%- if section.settings.show_copyright -%}
+            <span class="nn-footer__copyright" style="
+              color: {{ section.settings.link_color }};
+              font-size: {{ section.settings.copyright_size }}px;
+              font-family: {{ section.settings.link_font.family }}, {{ section.settings.link_font.fallback_families }};
+            ">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+          {%- endif -%}
+        </div>
+        <div class="nn-footer__bottom-right">
+          {%- if section.settings.show_payment_icons -%}
+            <div class="nn-footer__payment-icons">
+              {%- for type in shop.enabled_payment_types -%}
+                {{ type | payment_type_svg_tag }}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+  </div>
+</footer>
+
+<style>
+  .nn-footer {
+    width: 100%;
+  }
+  .nn-footer__inner {
+    margin: 0 auto;
+    padding: {{ section.settings.padding_y }}px {{ section.settings.padding_x }}px;
+  }
+  .nn-footer__columns {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: {{ section.settings.column_gap }}px;
+  }
+  .nn-footer__col-heading {
+    margin: 0 0 16px 0;
+  }
+  .nn-footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .nn-footer__links li {
+    margin-bottom: 10px;
+  }
+  .nn-footer__link {
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nn-footer__link:hover {
+    opacity: 0.7;
+  }
+  .nn-footer__social-icons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .nn-footer__social-link {
+    display: inline-flex;
+    align-items: center;
+    transition: opacity 0.2s;
+  }
+  .nn-footer__social-link:hover {
+    opacity: 0.7;
+  }
+  .nn-footer__newsletter-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nn-footer__input {
+    padding: 12px 16px;
+    width: 100%;
+    outline: none;
+  }
+  .nn-footer__input::placeholder {
+    color: inherit;
+    opacity: 0.6;
+  }
+  .nn-footer__subscribe-btn {
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: opacity 0.2s;
+    width: 100%;
+  }
+  .nn-footer__subscribe-btn:hover {
+    opacity: 0.85;
+  }
+  .nn-footer__text-content {
+    line-height: 1.6;
+  }
+  .nn-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .nn-footer__payment-icons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .nn-footer__payment-icons svg {
+    height: 24px;
+    width: auto;
+  }
+
+  @media (max-width: 989px) {
+    .nn-footer__columns {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 749px) {
+    .nn-footer__columns {
+      grid-template-columns: 1fr;
+    }
+    .nn-footer__bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "NauNau Footer",
+  "tag": "section",
+  "class": "nn-footer-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "──── Background ────"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background colour",
+      "default": "#333333"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "──── Layout ────"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Desktop columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 10,
+      "max": 80,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content max-width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "default": 1200,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Vertical padding",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Horizontal padding",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "──── Column headings ────"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading colour",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "default": "700",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra-bold" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_transform",
+      "label": "Heading case",
+      "default": "lowercase",
+      "options": [
+        { "value": "none", "label": "Normal" },
+        { "value": "uppercase", "label": "UPPERCASE" },
+        { "value": "lowercase", "label": "lowercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Heading letter spacing",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "──── Links / body text ────"
+    },
+    {
+      "type": "font_picker",
+      "id": "link_font",
+      "label": "Link font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link colour",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "General text colour",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "link_size",
+      "label": "Link size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "default": 15,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "──── Newsletter heading font ────"
+    },
+    {
+      "type": "font_picker",
+      "id": "newsletter_heading_font",
+      "label": "Newsletter heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "header",
+      "content": "──── Bottom bar ────"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_bar",
+      "label": "Show bottom bar",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_copyright",
+      "label": "Show copyright",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "copyright_size",
+      "label": "Copyright font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "default": 13,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider colour",
+      "default": "#555555"
+    },
+    {
+      "type": "range",
+      "id": "bottom_bar_spacing",
+      "label": "Bottom bar spacing",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Link column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Shop"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "social",
+      "name": "Social icons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Social"
+        },
+        {
+          "type": "url",
+          "id": "facebook",
+          "label": "Facebook URL"
+        },
+        {
+          "type": "url",
+          "id": "instagram",
+          "label": "Instagram URL"
+        },
+        {
+          "type": "url",
+          "id": "tiktok",
+          "label": "TikTok URL"
+        },
+        {
+          "type": "url",
+          "id": "pinterest",
+          "label": "Pinterest URL"
+        },
+        {
+          "type": "url",
+          "id": "youtube",
+          "label": "YouTube URL"
+        },
+        {
+          "type": "url",
+          "id": "twitter",
+          "label": "X / Twitter URL"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon size",
+          "min": 16,
+          "max": 40,
+          "step": 2,
+          "default": 24,
+          "unit": "px"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter signup",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Sign up to our newsletter"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Subtext"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Email placeholder",
+          "default": "Enter your email"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Button label",
+          "default": "Subscribe"
+        },
+        {
+          "type": "color",
+          "id": "input_bg",
+          "label": "Input background",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "input_text_color",
+          "label": "Input text colour",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "input_border_color",
+          "label": "Input border colour",
+          "default": "#cccccc"
+        },
+        {
+          "type": "range",
+          "id": "input_radius",
+          "label": "Input corner radius",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "default": 4,
+          "unit": "px"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg",
+          "label": "Button background",
+          "default": "#1a1a2e"
+        },
+        {
+          "type": "color",
+          "id": "btn_text_color",
+          "label": "Button text colour",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "text_block",
+      "name": "Text block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Your text here</p>"
+        }
+      ]
+    },
+    {
+      "type": "image_block",
+      "name": "Image / Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "width",
+          "label": "Width",
+          "min": 50,
+          "max": 400,
+          "step": 10,
+          "default": 150,
+          "unit": "px"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NauNau Footer",
+      "blocks": [
+        {
+          "type": "link_column",
+          "settings": {
+            "heading": "Shop"
+          }
+        },
+        {
+          "type": "link_column",
+          "settings": {
+            "heading": "Help"
+          }
+        },
+        {
+          "type": "link_column",
+          "settings": {
+            "heading": "Company"
+          }
+        },
+        {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Sign up to our newsletter"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
