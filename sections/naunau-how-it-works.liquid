@@ -4,12 +4,12 @@
     <h2 class="nn-hiw__heading">{{ section.settings.heading }}</h2>
     <div class="nn-hiw__steps">
       {%- for block in section.blocks -%}
-        <div class="nn-hiw__step {% if forloop.first %}nn-hiw__step--first{% endif %}{% if forloop.last %}nn-hiw__step--last{% endif %}" {{ block.shopify_attributes }}>
+        <div class="nn-hiw__step {% if forloop.first %}nn-hiw__step--first{% endif %}{% if forloop.last %}nn-hiw__step--last{% endif %}" style="background: {{ block.settings.block_bg_color | default: section.settings.card_bg_color }};" {{ block.shopify_attributes }}>
           <span class="nn-hiw__step-bg-num">{{ forloop.index }}</span>
-          <span class="nn-hiw__emoji">{{ block.settings.emoji }}</span>
+          <span class="nn-hiw__emoji" style="font-size: {{ block.settings.block_emoji_size }}px;">{{ block.settings.emoji }}</span>
           <span class="nn-hiw__step-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-          <h3 class="nn-hiw__step-title">{{ block.settings.title }}</h3>
-          <p class="nn-hiw__step-desc">{{ block.settings.description }}</p>
+          <h3 class="nn-hiw__step-title" style="color: {{ block.settings.block_title_color | default: section.settings.accent_color }};font-size: {{ block.settings.block_title_size }}px;">{{ block.settings.title }}</h3>
+          <p class="nn-hiw__step-desc" style="color: {{ block.settings.block_text_color | default: section.settings.text_color }};font-size: {{ block.settings.block_body_size }}px;">{{ block.settings.description }}</p>
         </div>
       {%- endfor -%}
     </div>
@@ -328,6 +328,58 @@
           "id": "description",
           "label": "Step description",
           "default": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think."
+        },
+        {
+          "type": "header",
+          "content": "Block styling"
+        },
+        {
+          "type": "color",
+          "id": "block_bg_color",
+          "label": "Background color",
+          "default": "#F4F1EC"
+        },
+        {
+          "type": "color",
+          "id": "block_title_color",
+          "label": "Title color",
+          "default": "#731A47"
+        },
+        {
+          "type": "color",
+          "id": "block_text_color",
+          "label": "Description color",
+          "default": "#3D3D3D"
+        },
+        {
+          "type": "range",
+          "id": "block_emoji_size",
+          "label": "Emoji size",
+          "min": 16,
+          "max": 64,
+          "step": 2,
+          "unit": "px",
+          "default": 32
+        },
+        {
+          "type": "range",
+          "id": "block_title_size",
+          "label": "Title font size",
+          "min": 14,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 19
+        },
+        {
+          "type": "range",
+          "id": "block_body_size",
+          "label": "Description font size",
+          "min": 12,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14
         }
       ]
     }

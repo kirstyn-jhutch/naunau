@@ -10,9 +10,9 @@
     </div>
     <div class="nn-eco__right">
       {%- for block in section.blocks -%}
-        <div class="nn-eco__stat-box" {{ block.shopify_attributes }}>
-          <span class="nn-eco__stat-number">{{ block.settings.stat_number }}</span>
-          <span class="nn-eco__stat-label">{{ block.settings.stat_label }}</span>
+        <div class="nn-eco__stat-box" style="background: {{ block.settings.block_bg_color | default: section.settings.card_bg_color }};border-radius: {{ block.settings.block_radius }}px;" {{ block.shopify_attributes }}>
+          <span class="nn-eco__stat-number" style="color: {{ block.settings.block_number_color | default: section.settings.heading_color }};font-size: {{ block.settings.block_number_size }}px;">{{ block.settings.stat_number }}</span>
+          <span class="nn-eco__stat-label" style="color: {{ block.settings.block_label_color | default: section.settings.text_color }};font-size: {{ block.settings.block_label_size }}px;">{{ block.settings.stat_label }}</span>
         </div>
       {%- endfor -%}
     </div>
@@ -364,6 +364,58 @@
           "id": "stat_label",
           "label": "Stat description",
           "default": "More uses than a single-use plastic bag"
+        },
+        {
+          "type": "header",
+          "content": "Block styling"
+        },
+        {
+          "type": "color",
+          "id": "block_bg_color",
+          "label": "Background color",
+          "default": "#ffffff73"
+        },
+        {
+          "type": "color",
+          "id": "block_number_color",
+          "label": "Number color",
+          "default": "#30493B"
+        },
+        {
+          "type": "color",
+          "id": "block_label_color",
+          "label": "Label color",
+          "default": "#30493B"
+        },
+        {
+          "type": "range",
+          "id": "block_number_size",
+          "label": "Number font size",
+          "min": 20,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 36
+        },
+        {
+          "type": "range",
+          "id": "block_label_size",
+          "label": "Label font size",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "block_radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 16
         }
       ]
     }

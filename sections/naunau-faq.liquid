@@ -9,13 +9,13 @@
     <div class="nn-faq__right">
       {%- for block in section.blocks -%}
         <div class="nn-faq__item" data-faq-item {{ block.shopify_attributes }}>
-          <button class="nn-faq__question" data-faq-toggle>
+          <button class="nn-faq__question" data-faq-toggle style="color: {{ block.settings.block_question_color | default: section.settings.heading_color }};font-size: {{ block.settings.block_question_size }}px;">
             <span>{{ block.settings.question }}</span>
             <span class="nn-faq__icon">+</span>
           </button>
           <div class="nn-faq__answer" data-faq-answer>
             <div class="nn-faq__answer-inner">
-              <p>{{ block.settings.answer }}</p>
+              <p style="color: {{ block.settings.block_answer_color | default: section.settings.text_color }};font-size: {{ block.settings.block_answer_size }}px;">{{ block.settings.answer }}</p>
               {%- if block.settings.link_text != blank -%}
                 <a href="{{ block.settings.link_url }}" class="nn-faq__ideas-link">{{ block.settings.link_text }}</a>
               {%- endif -%}
@@ -360,6 +360,42 @@
           "type": "url",
           "id": "link_url",
           "label": "Optional link URL"
+        },
+        {
+          "type": "header",
+          "content": "Block styling"
+        },
+        {
+          "type": "color",
+          "id": "block_question_color",
+          "label": "Question color",
+          "default": "#30493B"
+        },
+        {
+          "type": "color",
+          "id": "block_answer_color",
+          "label": "Answer color",
+          "default": "#3D3D3D"
+        },
+        {
+          "type": "range",
+          "id": "block_question_size",
+          "label": "Question font size",
+          "min": 14,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 17
+        },
+        {
+          "type": "range",
+          "id": "block_answer_size",
+          "label": "Answer font size",
+          "min": 12,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 15
         }
       ]
     }
