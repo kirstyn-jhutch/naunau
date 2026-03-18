@@ -1,13 +1,20 @@
 {%- style -%}
+  {{ section.settings.eyebrow_font | font_face: font_display: 'swap' }}
+  {{ section.settings.heading_line_font | font_face: font_display: 'swap' }}
+  {{ section.settings.highlight_font | font_face: font_display: 'swap' }}
+  {{ section.settings.subtitle_font | font_face: font_display: 'swap' }}
   {{ section.settings.heading_font | font_face: font_display: 'swap' }}
   {{ section.settings.body_font | font_face: font_display: 'swap' }}
 {%- endstyle -%}
 
 <section id="naunau-community" class="naunau-community" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
   <div class="naunau-community__inner">
-    <p class="naunau-community__eyebrow">{{ section.settings.eyebrow }}</p>
-    <h2 class="naunau-community__heading">{{ section.settings.heading }} <span>{{ section.settings.heading_highlight }}</span></h2>
-    <p class="naunau-community__subtitle">{{ section.settings.subtitle }} <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener">{{ section.settings.instagram_handle }}</a></p>
+    <p class="naunau-community__eyebrow" style="color: {{ section.settings.eyebrow_color }};font-size: {{ section.settings.eyebrow_size }}px;font-family: {{ section.settings.eyebrow_font.family }}, {{ section.settings.eyebrow_font.fallback_families }};">{{ section.settings.eyebrow }}</p>
+    <h2 class="naunau-community__heading">
+      <span style="color: {{ section.settings.heading_line_color }};font-size: {{ section.settings.heading_line_size }}px;font-family: {{ section.settings.heading_line_font.family }}, {{ section.settings.heading_line_font.fallback_families }};">{{ section.settings.heading }}</span>
+      <span style="color: {{ section.settings.highlight_color }};font-size: {{ section.settings.highlight_size }}px;font-family: {{ section.settings.highlight_font.family }}, {{ section.settings.highlight_font.fallback_families }};font-style: italic;">{{ section.settings.heading_highlight }}</span>
+    </h2>
+    <p class="naunau-community__subtitle" style="color: {{ section.settings.subtitle_color }};font-size: {{ section.settings.subtitle_size }}px;font-family: {{ section.settings.subtitle_font.family }}, {{ section.settings.subtitle_font.fallback_families }};">{{ section.settings.subtitle }} <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener">{{ section.settings.instagram_handle }}</a></p>
 
     <div class="naunau-community__grid">
       {%- for i in (1..6) -%}
@@ -256,41 +263,13 @@
     },
     {
       "type": "header",
-      "content": "Fonts"
+      "content": "Eyebrow — Community"
     },
     {
       "type": "font_picker",
-      "id": "heading_font",
-      "label": "Heading font",
-      "default": "dm_serif_display_n4"
-    },
-    {
-      "type": "font_picker",
-      "id": "body_font",
-      "label": "Body font",
-      "default": "dm_sans_n4"
-    },
-    {
-      "type": "header",
-      "content": "Colors"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Heading color",
-      "default": "#30493B"
-    },
-    {
-      "type": "color",
-      "id": "accent_color",
-      "label": "Accent color (highlight, links)",
-      "default": "#731A47"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Body text color",
-      "default": "#3D3D3D"
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "default": "dm_sans_n6"
     },
     {
       "type": "color",
@@ -299,38 +278,130 @@
       "default": "#7A9E7E"
     },
     {
-      "type": "header",
-      "content": "Typography"
-    },
-    {
       "type": "range",
       "id": "eyebrow_size",
       "label": "Eyebrow font size",
       "min": 10,
-      "max": 20,
+      "max": 24,
       "step": 1,
       "unit": "px",
       "default": 13
     },
     {
+      "type": "header",
+      "content": "Heading — Join the"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_line_font",
+      "label": "Heading font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "heading_line_color",
+      "label": "Heading color",
+      "default": "#30493B"
+    },
+    {
       "type": "range",
-      "id": "heading_size",
+      "id": "heading_line_size",
       "label": "Heading font size",
-      "min": 24,
-      "max": 64,
+      "min": 20,
+      "max": 72,
       "step": 2,
       "unit": "px",
       "default": 40
     },
     {
+      "type": "header",
+      "content": "Heading highlight — #NauNau Community"
+    },
+    {
+      "type": "font_picker",
+      "id": "highlight_font",
+      "label": "Highlight font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color",
+      "default": "#731A47"
+    },
+    {
       "type": "range",
-      "id": "body_size",
-      "label": "Body font size",
+      "id": "highlight_size",
+      "label": "Highlight font size",
+      "min": 20,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Subtitle — Tag us"
+    },
+    {
+      "type": "font_picker",
+      "id": "subtitle_font",
+      "label": "Subtitle font",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#3D3D3D"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle font size",
       "min": 12,
-      "max": 20,
+      "max": 24,
       "step": 1,
       "unit": "px",
       "default": 17
+    },
+    {
+      "type": "header",
+      "content": "Fonts (fallback)"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font (general)",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font (general)",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "header",
+      "content": "Colors (fallback)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color (default)",
+      "default": "#30493B"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (links)",
+      "default": "#731A47"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#3D3D3D"
     },
     {
       "type": "header",

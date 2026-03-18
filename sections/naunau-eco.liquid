@@ -1,4 +1,8 @@
 {%- style -%}
+  {{ section.settings.eyebrow_font | font_face: font_display: 'swap' }}
+  {{ section.settings.line1_font | font_face: font_display: 'swap' }}
+  {{ section.settings.line2_font | font_face: font_display: 'swap' }}
+  {{ section.settings.desc_font | font_face: font_display: 'swap' }}
   {{ section.settings.heading_font | font_face: font_display: 'swap' }}
   {{ section.settings.body_font | font_face: font_display: 'swap' }}
 {%- endstyle -%}
@@ -6,9 +10,12 @@
 <section id="eco" class="nn-eco" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
   <div class="nn-eco__container">
     <div class="nn-eco__left">
-      <span class="nn-eco__eyebrow">{{ section.settings.eyebrow }}</span>
-      <h2 class="nn-eco__heading">{{ section.settings.heading_line1 }}<br><em>{{ section.settings.heading_line2 }}</em></h2>
-      <p class="nn-eco__desc">{{ section.settings.description }}</p>
+      <span class="nn-eco__eyebrow" style="color: {{ section.settings.eyebrow_color }};font-size: {{ section.settings.eyebrow_size }}px;font-family: {{ section.settings.eyebrow_font.family }}, {{ section.settings.eyebrow_font.fallback_families }};">{{ section.settings.eyebrow }}</span>
+      <h2 class="nn-eco__heading">
+        <span class="nn-eco__line1" style="color: {{ section.settings.line1_color }};font-size: {{ section.settings.line1_size }}px;font-family: {{ section.settings.line1_font.family }}, {{ section.settings.line1_font.fallback_families }};">{{ section.settings.heading_line1 }}</span><br>
+        <em class="nn-eco__line2" style="color: {{ section.settings.line2_color }};font-size: {{ section.settings.line2_size }}px;font-family: {{ section.settings.line2_font.family }}, {{ section.settings.line2_font.fallback_families }};">{{ section.settings.heading_line2 }}</em>
+      </h2>
+      <p class="nn-eco__desc" style="color: {{ section.settings.desc_color }};font-size: {{ section.settings.desc_size }}px;font-family: {{ section.settings.desc_font.family }}, {{ section.settings.desc_font.fallback_families }};">{{ section.settings.description }}</p>
       {%- if section.settings.cta_text != blank -%}
         <a href="{{ section.settings.cta_link }}" class="nn-eco__cta">{{ section.settings.cta_text }}</a>
       {%- endif -%}
@@ -256,34 +263,138 @@
     },
     {
       "type": "header",
-      "content": "Fonts"
+      "content": "Eyebrow — Why It Matters"
+    },
+    {
+      "type": "font_picker",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "default": "dm_sans_n6"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow color",
+      "default": "#30493B"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Heading Line 1"
+    },
+    {
+      "type": "font_picker",
+      "id": "line1_font",
+      "label": "Line 1 font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "line1_color",
+      "label": "Line 1 color",
+      "default": "#30493B"
+    },
+    {
+      "type": "range",
+      "id": "line1_size",
+      "label": "Line 1 font size",
+      "min": 20,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Heading Line 2 (italic)"
+    },
+    {
+      "type": "font_picker",
+      "id": "line2_font",
+      "label": "Line 2 font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "line2_color",
+      "label": "Line 2 color",
+      "default": "#731A47"
+    },
+    {
+      "type": "range",
+      "id": "line2_size",
+      "label": "Line 2 font size",
+      "min": 20,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Description text"
+    },
+    {
+      "type": "font_picker",
+      "id": "desc_font",
+      "label": "Description font",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Description color",
+      "default": "#30493B"
+    },
+    {
+      "type": "range",
+      "id": "desc_size",
+      "label": "Description font size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "header",
+      "content": "Fonts (fallback)"
     },
     {
       "type": "font_picker",
       "id": "heading_font",
-      "label": "Heading font",
+      "label": "Heading font (for stat cards)",
       "default": "dm_serif_display_n4"
     },
     {
       "type": "font_picker",
       "id": "body_font",
-      "label": "Body font",
+      "label": "Body font (general)",
       "default": "dm_sans_n4"
     },
     {
       "type": "header",
-      "content": "Colors"
+      "content": "Colors (fallback)"
     },
     {
       "type": "color",
       "id": "heading_color",
-      "label": "Heading color",
+      "label": "Heading color (stat cards)",
       "default": "#30493B"
     },
     {
       "type": "color",
       "id": "accent_color",
-      "label": "Accent color (italic text)",
+      "label": "Accent color",
       "default": "#731A47"
     },
     {
@@ -294,37 +405,7 @@
     },
     {
       "type": "header",
-      "content": "Typography"
-    },
-    {
-      "type": "range",
-      "id": "eyebrow_size",
-      "label": "Eyebrow font size",
-      "min": 10,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "default": 13
-    },
-    {
-      "type": "range",
-      "id": "heading_size",
-      "label": "Heading font size",
-      "min": 24,
-      "max": 64,
-      "step": 2,
-      "unit": "px",
-      "default": 44
-    },
-    {
-      "type": "range",
-      "id": "body_size",
-      "label": "Body font size",
-      "min": 12,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "default": 17
+      "content": "Stat card typography"
     },
     {
       "type": "range",

@@ -1,11 +1,12 @@
 {%- style -%}
+  {{ section.settings.heading_font_picker | font_face: font_display: 'swap' }}
   {{ section.settings.heading_font | font_face: font_display: 'swap' }}
   {{ section.settings.body_font | font_face: font_display: 'swap' }}
 {%- endstyle -%}
 
 <section class="nn-ideas" id="ideas" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
   <div class="nn-ideas__container">
-    <h2 class="nn-ideas__heading">{{ section.settings.heading }}</h2>
+    <h2 class="nn-ideas__heading" style="color: {{ section.settings.heading_color_picker }};font-size: {{ section.settings.heading_size }}px;font-family: {{ section.settings.heading_font_picker.family }}, {{ section.settings.heading_font_picker.fallback_families }};">{{ section.settings.heading }}</h2>
     <div class="nn-ideas__grid">
       {%- for block in section.blocks -%}
         {%- if block.type == 'idea' -%}
@@ -207,18 +208,34 @@
     },
     {
       "type": "header",
-      "content": "Fonts"
+      "content": "Heading — More than just a bag"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Heading font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_picker",
+      "label": "Heading color",
+      "default": "#30493B"
+    },
+    {
+      "type": "header",
+      "content": "Fonts (fallback)"
     },
     {
       "type": "font_picker",
       "id": "heading_font",
-      "label": "Heading font",
+      "label": "Heading font (cards)",
       "default": "dm_serif_display_n4"
     },
     {
       "type": "font_picker",
       "id": "body_font",
-      "label": "Body font",
+      "label": "Body font (general)",
       "default": "dm_sans_n4"
     },
     {
@@ -228,7 +245,7 @@
     {
       "type": "color",
       "id": "heading_color",
-      "label": "Heading color",
+      "label": "Card title color (default)",
       "default": "#30493B"
     },
     {

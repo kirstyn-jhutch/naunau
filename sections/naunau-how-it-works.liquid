@@ -1,12 +1,14 @@
 {%- style -%}
+  {{ section.settings.eyebrow_font | font_face: font_display: 'swap' }}
+  {{ section.settings.heading_font_picker | font_face: font_display: 'swap' }}
   {{ section.settings.heading_font | font_face: font_display: 'swap' }}
   {{ section.settings.body_font | font_face: font_display: 'swap' }}
 {%- endstyle -%}
 
 <section id="how-it-works" class="nn-hiw" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
   <div class="nn-hiw__container">
-    <span class="nn-hiw__eyebrow">{{ section.settings.eyebrow }}</span>
-    <h2 class="nn-hiw__heading">{{ section.settings.heading }}</h2>
+    <span class="nn-hiw__eyebrow" style="color: {{ section.settings.eyebrow_color }};font-size: {{ section.settings.eyebrow_size }}px;font-family: {{ section.settings.eyebrow_font.family }}, {{ section.settings.eyebrow_font.fallback_families }};">{{ section.settings.eyebrow }}</span>
+    <h2 class="nn-hiw__heading" style="color: {{ section.settings.heading_color }};font-size: {{ section.settings.heading_size }}px;font-family: {{ section.settings.heading_font_picker.family }}, {{ section.settings.heading_font_picker.fallback_families }};">{{ section.settings.heading }}</h2>
     <div class="nn-hiw__steps">
       {%- for block in section.blocks -%}
         {%- if block.type == 'step' -%}
@@ -229,23 +231,39 @@
     },
     {
       "type": "header",
-      "content": "Fonts"
+      "content": "Eyebrow — Easy as that"
     },
     {
       "type": "font_picker",
-      "id": "heading_font",
-      "label": "Heading font",
-      "default": "dm_serif_display_n4"
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "default": "dm_sans_n6"
     },
     {
-      "type": "font_picker",
-      "id": "body_font",
-      "label": "Body font",
-      "default": "dm_sans_n4"
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow color",
+      "default": "#9A8F7E"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
     },
     {
       "type": "header",
-      "content": "Colors"
+      "content": "Heading — How It Works"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Heading font",
+      "default": "dm_serif_display_n4"
     },
     {
       "type": "color",
@@ -254,10 +272,18 @@
       "default": "#30493B"
     },
     {
-      "type": "color",
-      "id": "eyebrow_color",
-      "label": "Eyebrow / label color",
-      "default": "#9A8F7E"
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading font size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Step card defaults"
     },
     {
       "type": "color",
@@ -276,30 +302,6 @@
       "id": "bg_number_color",
       "label": "Background number color",
       "default": "#C2B8A3"
-    },
-    {
-      "type": "header",
-      "content": "Typography"
-    },
-    {
-      "type": "range",
-      "id": "eyebrow_size",
-      "label": "Eyebrow font size",
-      "min": 10,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "default": 13
-    },
-    {
-      "type": "range",
-      "id": "heading_size",
-      "label": "Heading font size",
-      "min": 24,
-      "max": 64,
-      "step": 2,
-      "unit": "px",
-      "default": 40
     },
     {
       "type": "range",
@@ -330,6 +332,22 @@
       "step": 2,
       "unit": "px",
       "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Fonts (fallback)"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font (cards)",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font (general)",
+      "default": "dm_sans_n4"
     },
     {
       "type": "header",
