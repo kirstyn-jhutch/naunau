@@ -1172,22 +1172,22 @@
         "stat_TK8c8H": {
           "type": "stat",
           "settings": {
-            "stat_number": "5,000×",
-            "stat_label": "More uses than a single-use plastic bag"
+            "stat_number": "450+",
+            "stat_label": "Years for a plastic bag to decompose"
           }
         },
         "stat_JiqWbF": {
           "type": "stat",
           "settings": {
-            "stat_number": "5,000×",
-            "stat_label": "More uses than a single-use plastic bag"
+            "stat_number": "0%",
+            "stat_label": "BPA, PVC, or harmful chemicals"
           }
         },
         "stat_9p7cMw": {
           "type": "stat",
           "settings": {
-            "stat_number": "5,000×",
-            "stat_label": "More uses than a single-use plastic bag"
+            "stat_number": "100%",
+            "stat_label": "Platinum food-grade silicone"
           }
         }
       },
@@ -1222,25 +1222,25 @@
         "step_Q9H3YL": {
           "type": "step",
           "settings": {
-            "emoji": "🥦",
-            "title": "Fill It Up",
-            "description": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think."
+            "emoji": "🔐",
+            "title": "Seal & Lock",
+            "description": "Click the leakproof seal shut. No spills, no soggy bags — stays fresh for longer."
           }
         },
         "step_cLaenq": {
           "type": "step",
           "settings": {
-            "emoji": "🥦",
-            "title": "Fill It Up",
-            "description": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think."
+            "emoji": "🌡️",
+            "title": "Freeze, Fridge or Oven",
+            "description": "Use it your way — freezer, fridge, oven, microwave, or even sous vide. One bag, multiple ways."
           }
         },
         "step_HY8T9R": {
           "type": "step",
           "settings": {
-            "emoji": "🥦",
-            "title": "Fill It Up",
-            "description": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think."
+            "emoji": "✨",
+            "title": "Rinse & Repeat",
+            "description": "Pop it in the dishwasher for a quick clean, or hand wash with warm soapy water. Leave the bag open to dry fully for best results."
           }
         }
       },
@@ -1259,6 +1259,13 @@
     "naunau_community": {
       "type": "naunau-community",
       "settings": {
+        "eyebrow": "Community",
+        "heading": "Join the",
+        "heading_highlight": "#NauNau Community",
+        "subtitle": "Tag us",
+        "instagram_handle": "@naunau.co.za",
+        "instagram_url": "https://www.instagram.com/naunau.co.za/",
+        "cta_text": "Follow us on Instagram →",
         "post_1_link": "",
         "post_1_video": false,
         "post_2_link": "",
@@ -1279,8 +1286,8 @@
         "faq_6iBbqN": {
           "type": "faq",
           "settings": {
-            "question": "Your question here?",
-            "answer": "Your answer here.",
+            "question": "Are the bags really oven-safe?",
+            "answer": "Yes, safe for oven, dishwasher, fridge, freezer, microwave, and air fryer. Handles −40°C to 220°C. Do not let the bag touch a direct heating element or open flame.",
             "link_text": "",
             "link_url": ""
           }
@@ -1288,8 +1295,8 @@
         "faq_6ik78P": {
           "type": "faq",
           "settings": {
-            "question": "Your question here?",
-            "answer": "Your answer here.",
+            "question": "How do I clean them?",
+            "answer": "Hot soapy water, leave open to air dry. Dishwasher safe (top rack). For oily residue, warm soapy water works well.",
             "link_text": "",
             "link_url": ""
           }
@@ -1297,8 +1304,8 @@
         "faq_ryxKdK": {
           "type": "faq",
           "settings": {
-            "question": "Your question here?",
-            "answer": "Your answer here.",
+            "question": "What is your return policy?",
+            "answer": "30-day return policy. Unused, original condition. Contact us to arrange.",
             "link_text": "",
             "link_url": ""
           }
@@ -1306,8 +1313,8 @@
         "faq_aX7YcA": {
           "type": "faq",
           "settings": {
-            "question": "Your question here?",
-            "answer": "Your answer here.",
+            "question": "How much does shipping cost?",
+            "answer": "R75 flat rate, free over R500. Ships via The Courier Guy, 3–5 business days.",
             "link_text": "",
             "link_url": ""
           }
@@ -1315,8 +1322,8 @@
         "faq_nVtR8H": {
           "type": "faq",
           "settings": {
-            "question": "Your question here?",
-            "answer": "Your answer here.",
+            "question": "Are they safe for kids and babies?",
+            "answer": "100% BPA-free and PVC-free. Food-grade silicone. Safe for lunchboxes, baby food, and sterilising baby products.",
             "link_text": "",
             "link_url": ""
           }
@@ -1324,10 +1331,10 @@
         "faq_AyLJY6": {
           "type": "faq",
           "settings": {
-            "question": "Your question here?",
-            "answer": "Your answer here.",
-            "link_text": "",
-            "link_url": ""
+            "question": "What can I use the bags for?",
+            "answer": "Meal prep, marinating, freezing, snacks, school lunches, sous vide, travel toiletries, and more.",
+            "link_text": "See more ideas for your bags →",
+            "link_url": "#ideas"
           }
         }
       },
@@ -1365,10 +1372,10 @@
         "idea_tNt6mg": {
           "type": "idea",
           "settings": {
-            "category": "Meal Prep",
-            "tag_color": "berry",
-            "title": "Prep once, eat all week",
-            "description": "Batch-cook your favourites and store them in NauNau bags. Grab, heat, done — weeknight dinners sorted.",
+            "category": "Lunchbox",
+            "tag_color": "green",
+            "title": "Lunchbox wins for picky eaters",
+            "description": "Pack sandwiches, fruit, and snacks without the cling wrap chaos. Easy to clean, easy to repack.",
             "link_text": "Read More →",
             "link_url": ""
           }
@@ -1376,10 +1383,10 @@
         "idea_yUybAQ": {
           "type": "idea",
           "settings": {
-            "category": "Meal Prep",
+            "category": "Freezer Tips",
             "tag_color": "berry",
-            "title": "Prep once, eat all week",
-            "description": "Batch-cook your favourites and store them in NauNau bags. Grab, heat, done — weeknight dinners sorted.",
+            "title": "Freeze smarter, waste less",
+            "description": "Flat-freeze soups, sauces, and smoothie packs. Stack them neatly and save space in your freezer.",
             "link_text": "Read More →",
             "link_url": ""
           }
@@ -1387,10 +1394,10 @@
         "idea_TCCEBC": {
           "type": "idea",
           "settings": {
-            "category": "Meal Prep",
-            "tag_color": "berry",
-            "title": "Prep once, eat all week",
-            "description": "Batch-cook your favourites and store them in NauNau bags. Grab, heat, done — weeknight dinners sorted.",
+            "category": "Baby & Kids",
+            "tag_color": "green",
+            "title": "Safe storage for little ones",
+            "description": "Store purees, snacks, and teething rusks in BPA-free silicone. Sterilise with boiling water — no stress.",
             "link_text": "Read More →",
             "link_url": ""
           }
@@ -1398,10 +1405,10 @@
         "idea_B6cKYn": {
           "type": "idea",
           "settings": {
-            "category": "Meal Prep",
+            "category": "Travel",
             "tag_color": "berry",
-            "title": "Prep once, eat all week",
-            "description": "Batch-cook your favourites and store them in NauNau bags. Grab, heat, done — weeknight dinners sorted.",
+            "title": "Your travel toiletry bag, sorted",
+            "description": "Shampoo, sunscreen, snacks on the go. Leakproof seal means no surprises in your bag.",
             "link_text": "Read More →",
             "link_url": ""
           }
@@ -1409,10 +1416,10 @@
         "idea_iUybtn": {
           "type": "idea",
           "settings": {
-            "category": "Meal Prep",
-            "tag_color": "berry",
-            "title": "Prep once, eat all week",
-            "description": "Batch-cook your favourites and store them in NauNau bags. Grab, heat, done — weeknight dinners sorted.",
+            "category": "Recipes",
+            "tag_color": "green",
+            "title": "Marinate like a pro",
+            "description": "Toss your chicken, steak, or veggies into a NauNau bag with marinade. Seal, massage, fridge — done.",
             "link_text": "Read More →",
             "link_url": ""
           }
