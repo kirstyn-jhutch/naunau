@@ -19,7 +19,7 @@
 <style>
   .nn-hiw {
     background: {{ section.settings.bg_color }};
-    padding: 5rem 2rem;
+    padding: {{ section.settings.padding_top }}px 2rem {{ section.settings.padding_bottom }}px;
     font-family: 'DM Sans', sans-serif;
   }
   .nn-hiw__container {
@@ -29,28 +29,28 @@
   }
   .nn-hiw__eyebrow {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
+    font-size: {{ section.settings.eyebrow_size }}px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: #9A8F7E;
+    color: {{ section.settings.eyebrow_color }};
     margin-bottom: 0.5rem;
     display: block;
   }
   .nn-hiw__heading {
     font-family: 'DM Serif Display', serif;
-    font-size: 2.5rem;
+    font-size: {{ section.settings.heading_size }}px;
     font-weight: 400;
-    color: #30493B;
+    color: {{ section.settings.heading_color }};
     margin: 0 0 3rem 0;
   }
   .nn-hiw__steps {
     display: flex;
-    gap: 2px;
+    gap: {{ section.settings.step_gap }}px;
   }
   .nn-hiw__step {
     flex: 1;
-    background: #F4F1EC;
+    background: {{ section.settings.card_bg_color }};
     padding: 2.5rem 1.5rem 2rem;
     text-align: left;
     position: relative;
@@ -58,13 +58,13 @@
     transition: background 0.3s ease;
   }
   .nn-hiw__step:hover {
-    background: #C8DBC9;
+    background: {{ section.settings.card_hover_color }};
   }
   .nn-hiw__step--first {
-    border-radius: 20px 0 0 20px;
+    border-radius: {{ section.settings.card_radius }}px 0 0 {{ section.settings.card_radius }}px;
   }
   .nn-hiw__step--last {
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 {{ section.settings.card_radius }}px {{ section.settings.card_radius }}px 0;
   }
   .nn-hiw__step-bg-num {
     position: absolute;
@@ -73,7 +73,7 @@
     font-family: 'DM Serif Display', serif;
     font-size: 8rem;
     font-weight: 400;
-    color: #C2B8A3;
+    color: {{ section.settings.bg_number_color }};
     opacity: 0.18;
     line-height: 1;
     pointer-events: none;
@@ -81,7 +81,7 @@
   }
   .nn-hiw__emoji {
     display: block;
-    font-size: 2rem;
+    font-size: {{ section.settings.emoji_size }}px;
     margin-bottom: 1rem;
     position: relative;
     z-index: 1;
@@ -93,25 +93,25 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #9A8F7E;
+    color: {{ section.settings.eyebrow_color }};
     margin-bottom: 0.5rem;
     position: relative;
     z-index: 1;
   }
   .nn-hiw__step-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.2rem;
+    font-size: {{ section.settings.step_title_size }}px;
     font-weight: 400;
-    color: #731A47;
+    color: {{ section.settings.accent_color }};
     margin: 0 0 0.6rem 0;
     position: relative;
     z-index: 1;
   }
   .nn-hiw__step-desc {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: {{ section.settings.body_size }}px;
     line-height: 1.6;
-    color: #3D3D3D;
+    color: {{ section.settings.text_color }};
     margin: 0;
     position: relative;
     z-index: 1;
@@ -121,10 +121,10 @@
     .nn-hiw { padding: 3rem 1.25rem; }
     .nn-hiw__steps {
       flex-direction: column;
-      gap: 2px;
+      gap: {{ section.settings.step_gap }}px;
     }
-    .nn-hiw__step--first { border-radius: 20px 20px 0 0; }
-    .nn-hiw__step--last { border-radius: 0 0 20px 20px; }
+    .nn-hiw__step--first { border-radius: {{ section.settings.card_radius }}px {{ section.settings.card_radius }}px 0 0; }
+    .nn-hiw__step--last { border-radius: 0 0 {{ section.settings.card_radius }}px {{ section.settings.card_radius }}px; }
     .nn-hiw__step { padding: 2rem 1.25rem 1.5rem; }
     .nn-hiw__step-bg-num { font-size: 5rem; }
   }
@@ -135,6 +135,10 @@
   "name": "NauNau How It Works",
   "tag": "section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
     {
       "type": "text",
       "id": "eyebrow",
@@ -148,10 +152,158 @@
       "default": "How It Works"
     },
     {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
       "type": "color",
       "id": "bg_color",
       "label": "Background color",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#30493B"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow / label color",
+      "default": "#9A8F7E"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Step title color",
+      "default": "#731A47"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#3D3D3D"
+    },
+    {
+      "type": "color",
+      "id": "bg_number_color",
+      "label": "Background number color",
+      "default": "#C2B8A3"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading font size",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "step_title_size",
+      "label": "Step title font size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "emoji_size",
+      "label": "Emoji size",
+      "min": 16,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Step cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#F4F1EC"
+    },
+    {
+      "type": "color",
+      "id": "card_hover_color",
+      "label": "Card hover background",
+      "default": "#C8DBC9"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "step_gap",
+      "label": "Gap between steps",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
     }
   ],
   "blocks": [

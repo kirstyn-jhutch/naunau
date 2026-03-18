@@ -4,7 +4,9 @@
       <span class="nn-eco__eyebrow">{{ section.settings.eyebrow }}</span>
       <h2 class="nn-eco__heading">{{ section.settings.heading_line1 }}<br><em>{{ section.settings.heading_line2 }}</em></h2>
       <p class="nn-eco__desc">{{ section.settings.description }}</p>
-      <a href="{{ section.settings.cta_link }}" class="nn-eco__cta">{{ section.settings.cta_text }}</a>
+      {%- if section.settings.cta_text != blank -%}
+        <a href="{{ section.settings.cta_link }}" class="nn-eco__cta">{{ section.settings.cta_text }}</a>
+      {%- endif -%}
     </div>
     <div class="nn-eco__right">
       {%- for block in section.blocks -%}
@@ -20,7 +22,7 @@
 <style>
   .nn-eco {
     background-color: {{ section.settings.bg_color }};
-    padding: 5rem 2rem;
+    padding: {{ section.settings.padding_top }}px 2rem {{ section.settings.padding_bottom }}px;
     font-family: 'DM Sans', sans-serif;
   }
   .nn-eco__container {
@@ -33,19 +35,19 @@
   }
   .nn-eco__eyebrow {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
+    font-size: {{ section.settings.eyebrow_size }}px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: #30493B;
+    color: {{ section.settings.text_color }};
     margin-bottom: 0.75rem;
     display: block;
   }
   .nn-eco__heading {
     font-family: 'DM Serif Display', serif;
-    font-size: 2.75rem;
+    font-size: {{ section.settings.heading_size }}px;
     font-weight: 400;
-    color: #30493B;
+    color: {{ section.settings.heading_color }};
     line-height: 1.15;
     margin: 0 0 1.25rem 0;
   }
@@ -55,9 +57,9 @@
   }
   .nn-eco__desc {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1.05rem;
+    font-size: {{ section.settings.body_size }}px;
     line-height: 1.7;
-    color: #30493B;
+    color: {{ section.settings.text_color }};
     margin-bottom: 2rem;
     max-width: 440px;
   }
@@ -66,50 +68,52 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #30493B;
-    background: #fff;
+    color: {{ section.settings.btn_text_color }};
+    background: {{ section.settings.btn_bg_color }};
     border: none;
     padding: 0.85rem 2rem;
-    border-radius: 50px;
+    border-radius: {{ section.settings.btn_radius }}px;
     text-decoration: none;
     transition: all 0.3s ease;
     cursor: pointer;
   }
   .nn-eco__cta:hover {
-    background: #30493B;
-    color: #fff;
+    background: {{ section.settings.heading_color }};
+    color: {{ section.settings.btn_bg_color }};
   }
   .nn-eco__right {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: {{ section.settings.card_gap }}px;
   }
   .nn-eco__stat-box {
-    background: rgba(255,255,255,0.45);
+    background: {{ section.settings.card_bg_color }};
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid #fff;
-    border-radius: 16px;
+    border: 1px solid {{ section.settings.card_border_color }};
+    border-radius: {{ section.settings.card_radius }}px;
     padding: 1.75rem 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .nn-eco__stat-box:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(48,73,59,0.12);
+  .nn-eco__stat-box:hover,
+  .nn-eco__stat-box:active {
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(48,73,59,0.15);
+    z-index: 1;
   }
   .nn-eco__stat-number {
     display: block;
     font-family: 'DM Serif Display', serif;
-    font-size: 2.25rem;
+    font-size: {{ section.settings.stat_number_size }}px;
     font-weight: 400;
-    color: #30493B;
+    color: {{ section.settings.heading_color }};
     margin-bottom: 0.4rem;
     line-height: 1;
   }
   .nn-eco__stat-label {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    color: #30493B;
+    font-size: {{ section.settings.stat_label_size }}px;
+    color: {{ section.settings.text_color }};
     line-height: 1.5;
   }
 
@@ -119,7 +123,7 @@
       grid-template-columns: 1fr;
       gap: 2.5rem;
     }
-    .nn-eco__heading { font-size: 2.25rem; }
+    .nn-eco__heading { font-size: calc({{ section.settings.heading_size }}px * 0.8); }
     .nn-eco__right {
       grid-template-columns: 1fr 1fr;
       gap: 0.75rem;
@@ -187,9 +191,161 @@
     },
     {
       "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#30493B"
+    },
+    {
+      "type": "color",
       "id": "accent_color",
       "label": "Accent color (italic text)",
       "default": "#731A47"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#30493B"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading font size",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "stat_number_size",
+      "label": "Stat number font size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "stat_label_size",
+      "label": "Stat label font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button text color",
+      "default": "#30493B"
+    },
+    {
+      "type": "range",
+      "id": "btn_radius",
+      "label": "Button corner radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Stat cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#ffffff73"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card corner radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap between cards",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
     }
   ],
   "blocks": [
