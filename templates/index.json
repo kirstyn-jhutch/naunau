@@ -32,7 +32,7 @@
             "custom_height": 100,
             "inherit_color_scheme": true,
             "color_scheme": "",
-            "background_media": "image",
+            "background_media": "none",
             "video_position": "cover",
             "background_image": "shopify://shop_images/fotos-still-produtos-5-837915c4e775edfbbf17644480485088-1024-1024.webp",
             "background_image_position": "cover",
@@ -40,7 +40,7 @@
             "border_width": 10,
             "border_opacity": 100,
             "border_radius": 0,
-            "toggle_overlay": true,
+            "toggle_overlay": false,
             "overlay_color": "#fffaf745",
             "overlay_style": "solid",
             "gradient_direction": "to top",
@@ -224,15 +224,16 @@
         "section_height": "large",
         "section_height_custom": 50,
         "color_scheme": "",
-        "background_media": "none",
+        "background_media": "image",
         "video_position": "cover",
+        "background_image": "shopify://shop_images/fotos-still-produtos-5-837915c4e775edfbbf17644480485088-1024-1024.webp",
         "background_image_position": "cover",
         "border": "none",
         "border_width": 1,
         "border_opacity": 100,
         "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
+        "toggle_overlay": true,
+        "overlay_color": "#faf7f245",
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 12,
@@ -1166,28 +1167,52 @@
           "type": "stat",
           "settings": {
             "stat_number": "5,000×",
-            "stat_label": "More uses than a single-use plastic bag"
+            "stat_label": "More uses than a single-use plastic bag",
+            "block_bg_color": "#ffffff73",
+            "block_number_color": "#30493b",
+            "block_label_color": "#30493b",
+            "block_number_size": 36,
+            "block_label_size": 14,
+            "block_radius": 16
           }
         },
         "stat_TK8c8H": {
           "type": "stat",
           "settings": {
             "stat_number": "450+",
-            "stat_label": "Years for a plastic bag to decompose"
+            "stat_label": "Years for a plastic bag to decompose",
+            "block_bg_color": "#ffffff73",
+            "block_number_color": "#30493b",
+            "block_label_color": "#30493b",
+            "block_number_size": 36,
+            "block_label_size": 14,
+            "block_radius": 16
           }
         },
         "stat_JiqWbF": {
           "type": "stat",
           "settings": {
             "stat_number": "0%",
-            "stat_label": "BPA, PVC, or harmful chemicals"
+            "stat_label": "BPA, PVC, or harmful chemicals",
+            "block_bg_color": "#ffffff73",
+            "block_number_color": "#30493b",
+            "block_label_color": "#30493b",
+            "block_number_size": 36,
+            "block_label_size": 14,
+            "block_radius": 16
           }
         },
         "stat_9p7cMw": {
           "type": "stat",
           "settings": {
             "stat_number": "100%",
-            "stat_label": "Platinum food-grade silicone"
+            "stat_label": "Platinum food-grade silicone",
+            "block_bg_color": "#ffffff73",
+            "block_number_color": "#30493b",
+            "block_label_color": "#30493b",
+            "block_number_size": 36,
+            "block_label_size": 14,
+            "block_radius": 16
           }
         }
       },
@@ -1205,7 +1230,25 @@
         "cta_text": "Make the Swap →",
         "cta_link": "",
         "bg_color": "#b5ceb7",
-        "accent_color": "#731a47"
+        "heading_font": "dm_serif_display_n4",
+        "body_font": "dm_sans_n4",
+        "heading_color": "#30493b",
+        "accent_color": "#731a47",
+        "text_color": "#30493b",
+        "eyebrow_size": 13,
+        "heading_size": 44,
+        "body_size": 17,
+        "stat_number_size": 36,
+        "stat_label_size": 14,
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#30493b",
+        "btn_radius": 50,
+        "card_bg_color": "#ffffff73",
+        "card_border_color": "#ffffff",
+        "card_radius": 16,
+        "card_gap": 16,
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "naunau_how_it_works": {
@@ -1216,7 +1259,13 @@
           "settings": {
             "emoji": "🥦",
             "title": "Fill It Up",
-            "description": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think."
+            "description": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think.",
+            "block_bg_color": "#f4f1ec",
+            "block_title_color": "#731a47",
+            "block_text_color": "#3d3d3d",
+            "block_emoji_size": 32,
+            "block_title_size": 19,
+            "block_body_size": 14
           }
         },
         "step_Q9H3YL": {
@@ -1224,7 +1273,13 @@
           "settings": {
             "emoji": "🔐",
             "title": "Seal & Lock",
-            "description": "Click the leakproof seal shut. No spills, no soggy bags — stays fresh for longer."
+            "description": "Click the leakproof seal shut. No spills, no soggy bags — stays fresh for longer.",
+            "block_bg_color": "#f4f1ec",
+            "block_title_color": "#731a47",
+            "block_text_color": "#3d3d3d",
+            "block_emoji_size": 32,
+            "block_title_size": 19,
+            "block_body_size": 14
           }
         },
         "step_cLaenq": {
@@ -1232,7 +1287,13 @@
           "settings": {
             "emoji": "🌡️",
             "title": "Freeze, Fridge or Oven",
-            "description": "Use it your way — freezer, fridge, oven, microwave, or even sous vide. One bag, multiple ways."
+            "description": "Use it your way — freezer, fridge, oven, microwave, or even sous vide. One bag, multiple ways.",
+            "block_bg_color": "#f4f1ec",
+            "block_title_color": "#731a47",
+            "block_text_color": "#3d3d3d",
+            "block_emoji_size": 32,
+            "block_title_size": 19,
+            "block_body_size": 14
           }
         },
         "step_HY8T9R": {
@@ -1240,7 +1301,13 @@
           "settings": {
             "emoji": "✨",
             "title": "Rinse & Repeat",
-            "description": "Pop it in the dishwasher for a quick clean, or hand wash with warm soapy water. Leave the bag open to dry fully for best results."
+            "description": "Pop it in the dishwasher for a quick clean, or hand wash with warm soapy water. Leave the bag open to dry fully for best results.",
+            "block_bg_color": "#f4f1ec",
+            "block_title_color": "#731a47",
+            "block_text_color": "#3d3d3d",
+            "block_emoji_size": 32,
+            "block_title_size": 19,
+            "block_body_size": 14
           }
         }
       },
@@ -1253,19 +1320,30 @@
       "settings": {
         "eyebrow": "Easy as that",
         "heading": "How It Works",
-        "bg_color": "#ffffff"
+        "bg_color": "#ffffff",
+        "heading_font": "dm_serif_display_n4",
+        "body_font": "dm_sans_n4",
+        "heading_color": "#30493b",
+        "eyebrow_color": "#9a8f7e",
+        "accent_color": "#731a47",
+        "text_color": "#3d3d3d",
+        "bg_number_color": "#c2b8a3",
+        "eyebrow_size": 13,
+        "heading_size": 40,
+        "step_title_size": 19,
+        "body_size": 14,
+        "emoji_size": 32,
+        "card_bg_color": "#f4f1ec",
+        "card_hover_color": "#c8dbc9",
+        "card_radius": 20,
+        "step_gap": 2,
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "naunau_community": {
       "type": "naunau-community",
       "settings": {
-        "eyebrow": "Community",
-        "heading": "Join the",
-        "heading_highlight": "#NauNau Community",
-        "subtitle": "Tag us",
-        "instagram_handle": "@naunau.co.za",
-        "instagram_url": "https://www.instagram.com/naunau.co.za/",
-        "cta_text": "Follow us on Instagram →",
         "post_1_link": "",
         "post_1_video": false,
         "post_2_link": "",
@@ -1289,7 +1367,11 @@
             "question": "Are the bags really oven-safe?",
             "answer": "Yes, safe for oven, dishwasher, fridge, freezer, microwave, and air fryer. Handles −40°C to 220°C. Do not let the bag touch a direct heating element or open flame.",
             "link_text": "",
-            "link_url": ""
+            "link_url": "",
+            "block_question_color": "#30493b",
+            "block_answer_color": "#3d3d3d",
+            "block_question_size": 17,
+            "block_answer_size": 15
           }
         },
         "faq_6ik78P": {
@@ -1298,7 +1380,11 @@
             "question": "How do I clean them?",
             "answer": "Hot soapy water, leave open to air dry. Dishwasher safe (top rack). For oily residue, warm soapy water works well.",
             "link_text": "",
-            "link_url": ""
+            "link_url": "",
+            "block_question_color": "#30493b",
+            "block_answer_color": "#3d3d3d",
+            "block_question_size": 17,
+            "block_answer_size": 15
           }
         },
         "faq_ryxKdK": {
@@ -1307,7 +1393,11 @@
             "question": "What is your return policy?",
             "answer": "30-day return policy. Unused, original condition. Contact us to arrange.",
             "link_text": "",
-            "link_url": ""
+            "link_url": "",
+            "block_question_color": "#30493b",
+            "block_answer_color": "#3d3d3d",
+            "block_question_size": 17,
+            "block_answer_size": 15
           }
         },
         "faq_aX7YcA": {
@@ -1316,7 +1406,11 @@
             "question": "How much does shipping cost?",
             "answer": "R75 flat rate, free over R500. Ships via The Courier Guy, 3–5 business days.",
             "link_text": "",
-            "link_url": ""
+            "link_url": "",
+            "block_question_color": "#30493b",
+            "block_answer_color": "#3d3d3d",
+            "block_question_size": 17,
+            "block_answer_size": 15
           }
         },
         "faq_nVtR8H": {
@@ -1325,7 +1419,11 @@
             "question": "Are they safe for kids and babies?",
             "answer": "100% BPA-free and PVC-free. Food-grade silicone. Safe for lunchboxes, baby food, and sterilising baby products.",
             "link_text": "",
-            "link_url": ""
+            "link_url": "",
+            "block_question_color": "#30493b",
+            "block_answer_color": "#3d3d3d",
+            "block_question_size": 17,
+            "block_answer_size": 15
           }
         },
         "faq_AyLJY6": {
@@ -1334,7 +1432,11 @@
             "question": "What can I use the bags for?",
             "answer": "Meal prep, marinating, freezing, snacks, school lunches, sous vide, travel toiletries, and more.",
             "link_text": "See more ideas for your bags →",
-            "link_url": "#ideas"
+            "link_url": "#ideas",
+            "block_question_color": "#30493b",
+            "block_answer_color": "#3d3d3d",
+            "block_question_size": 17,
+            "block_answer_size": 15
           }
         }
       },
@@ -1352,7 +1454,20 @@
         "heading_line2": "questions?",
         "subline": "We're always happy to help.",
         "email": "kirstyn@naunau.co.za",
-        "bg_color": "#faf7f2"
+        "bg_color": "#faf7f2",
+        "heading_font": "dm_serif_display_n4",
+        "body_font": "dm_sans_n4",
+        "heading_color": "#30493b",
+        "accent_color": "#731a47",
+        "text_color": "#3d3d3d",
+        "eyebrow_color": "#9a8f7e",
+        "divider_color": "#e0dcd5",
+        "eyebrow_size": 13,
+        "heading_size": 44,
+        "question_size": 17,
+        "body_size": 15,
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "naunau_ideas": {
@@ -1366,7 +1481,14 @@
             "title": "Prep once, eat all week",
             "description": "Batch-cook your favourites and store them in NauNau bags. Grab, heat, done — weeknight dinners sorted.",
             "link_text": "Read More →",
-            "link_url": ""
+            "link_url": "",
+            "block_bg_color": "#faf7f2",
+            "block_title_color": "#30493b",
+            "block_text_color": "#3d3d3d",
+            "block_link_color": "#731a47",
+            "block_title_size": 19,
+            "block_body_size": 14,
+            "block_radius": 16
           }
         },
         "idea_tNt6mg": {
@@ -1377,7 +1499,14 @@
             "title": "Lunchbox wins for picky eaters",
             "description": "Pack sandwiches, fruit, and snacks without the cling wrap chaos. Easy to clean, easy to repack.",
             "link_text": "Read More →",
-            "link_url": ""
+            "link_url": "",
+            "block_bg_color": "#faf7f2",
+            "block_title_color": "#30493b",
+            "block_text_color": "#3d3d3d",
+            "block_link_color": "#731a47",
+            "block_title_size": 19,
+            "block_body_size": 14,
+            "block_radius": 16
           }
         },
         "idea_yUybAQ": {
@@ -1388,7 +1517,14 @@
             "title": "Freeze smarter, waste less",
             "description": "Flat-freeze soups, sauces, and smoothie packs. Stack them neatly and save space in your freezer.",
             "link_text": "Read More →",
-            "link_url": ""
+            "link_url": "",
+            "block_bg_color": "#faf7f2",
+            "block_title_color": "#30493b",
+            "block_text_color": "#3d3d3d",
+            "block_link_color": "#731a47",
+            "block_title_size": 19,
+            "block_body_size": 14,
+            "block_radius": 16
           }
         },
         "idea_TCCEBC": {
@@ -1399,7 +1535,14 @@
             "title": "Safe storage for little ones",
             "description": "Store purees, snacks, and teething rusks in BPA-free silicone. Sterilise with boiling water — no stress.",
             "link_text": "Read More →",
-            "link_url": ""
+            "link_url": "",
+            "block_bg_color": "#faf7f2",
+            "block_title_color": "#30493b",
+            "block_text_color": "#3d3d3d",
+            "block_link_color": "#731a47",
+            "block_title_size": 19,
+            "block_body_size": 14,
+            "block_radius": 16
           }
         },
         "idea_B6cKYn": {
@@ -1410,7 +1553,14 @@
             "title": "Your travel toiletry bag, sorted",
             "description": "Shampoo, sunscreen, snacks on the go. Leakproof seal means no surprises in your bag.",
             "link_text": "Read More →",
-            "link_url": ""
+            "link_url": "",
+            "block_bg_color": "#faf7f2",
+            "block_title_color": "#30493b",
+            "block_text_color": "#3d3d3d",
+            "block_link_color": "#731a47",
+            "block_title_size": 19,
+            "block_body_size": 14,
+            "block_radius": 16
           }
         },
         "idea_iUybtn": {
@@ -1421,7 +1571,14 @@
             "title": "Marinate like a pro",
             "description": "Toss your chicken, steak, or veggies into a NauNau bag with marinade. Seal, massage, fridge — done.",
             "link_text": "Read More →",
-            "link_url": ""
+            "link_url": "",
+            "block_bg_color": "#faf7f2",
+            "block_title_color": "#30493b",
+            "block_text_color": "#3d3d3d",
+            "block_link_color": "#731a47",
+            "block_title_size": 19,
+            "block_body_size": 14,
+            "block_radius": 16
           }
         }
       },
@@ -1435,7 +1592,23 @@
       ],
       "settings": {
         "heading": "More than just a bag.",
-        "bg_color": "#ffffff"
+        "bg_color": "#ffffff",
+        "heading_font": "dm_serif_display_n4",
+        "body_font": "dm_sans_n4",
+        "heading_color": "#30493b",
+        "text_color": "#3d3d3d",
+        "link_color": "#731a47",
+        "tag_berry_color": "#731a47",
+        "tag_green_color": "#30493b",
+        "heading_size": 40,
+        "card_title_size": 19,
+        "body_size": 14,
+        "columns": 3,
+        "card_bg_color": "#faf7f2",
+        "card_radius": 16,
+        "card_gap": 24,
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     }
   },
