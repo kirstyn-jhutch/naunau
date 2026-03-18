@@ -3,7 +3,7 @@
   {{ section.settings.body_font | font_face: font_display: 'swap' }}
 {%- endstyle -%}
 
-<section class="nn-hiw" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
+<section id="how-it-works" class="nn-hiw" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
   <div class="nn-hiw__container">
     <span class="nn-hiw__eyebrow">{{ section.settings.eyebrow }}</span>
     <h2 class="nn-hiw__heading">{{ section.settings.heading }}</h2>

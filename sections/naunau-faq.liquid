@@ -3,7 +3,7 @@
   {{ section.settings.body_font | font_face: font_display: 'swap' }}
 {%- endstyle -%}
 
-<section class="nn-faq" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
+<section id="faq" class="nn-faq" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
   <div class="nn-faq__container">
     <div class="nn-faq__left">
       <span class="nn-faq__eyebrow">{{ section.settings.eyebrow }}</span>
