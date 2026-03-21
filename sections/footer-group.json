@@ -76,10 +76,10 @@
         "social_top": {
           "type": "social-links",
           "settings": {
-            "instagram_url": "https://www.instagram.com/naunau.co.za/?hl=en",
-            "tiktok_url": "https://www.tiktok.com",
             "facebook_url": "",
+            "instagram_url": "https://www.instagram.com/naunau.co.za/?hl=en",
             "youtube_url": "",
+            "tiktok_url": "https://www.tiktok.com",
             "twitter_url": "",
             "threads_url": "",
             "linkedin_url": "",
@@ -96,9 +96,14 @@
           "type": "logo",
           "settings": {
             "inverse": false,
+            "font": "heading",
             "unit": "pixel",
+            "percent_width": 100,
             "pixel_height": 48,
             "custom_mobile_size": false,
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_height_mobile": 120,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -109,8 +114,8 @@
         "menu_col1": {
           "type": "menu",
           "settings": {
-            "menu": "footer-shop",
-            "heading": "",
+            "menu": "footer",
+            "heading": "Shop",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -130,7 +135,7 @@
           "type": "menu",
           "settings": {
             "menu": "footer-resources",
-            "heading": "",
+            "heading": "Resources",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
