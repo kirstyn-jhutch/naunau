@@ -88,25 +88,59 @@
 
 {%- comment -%} NauNau footer customisations {%- endcomment -%}
 <style>
-  /* Social icons row: centered and bigger */
+  /* Footer background: dark green */
+  #shopify-section-footer_socials,
+  #shopify-section-footer_main {
+    background-color: #30493B !important;
+  }
+  #shopify-section-footer_socials .section-background,
+  #shopify-section-footer_main .section-background {
+    background-color: #30493B !important;
+  }
+
+  /* All text white */
+  #shopify-section-footer_socials,
+  #shopify-section-footer_socials *,
+  #shopify-section-footer_main,
+  #shopify-section-footer_main * {
+    color: #ffffff !important;
+  }
+
+  /* Social icons row: centered and much bigger */
   #shopify-section-footer_socials .footer-content {
     justify-items: center;
   }
   #shopify-section-footer_socials .social-icons__wrapper {
     justify-content: center;
-    gap: 24px;
+    gap: 32px;
   }
   #shopify-section-footer_socials .social-icons__icon {
-    width: 36px !important;
-    height: 36px !important;
+    width: 56px !important;
+    height: 56px !important;
   }
   #shopify-section-footer_socials .social-icons__icon-wrapper {
     height: auto;
   }
+  /* Social icon colour: white */
+  #shopify-section-footer_socials .social-icons__icon path,
+  #shopify-section-footer_socials .social-icons__icon rect,
+  #shopify-section-footer_socials .social-icons__icon line,
+  #shopify-section-footer_socials .social-icons__icon circle {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+  }
 
-  /* Logo block: ensure black colour */
+  /* Logo: white */
   #shopify-section-footer_main .logo-block__image {
-    filter: brightness(0);
+    filter: brightness(0) invert(1);
+  }
+
+  /* Links white + hover */
+  #shopify-section-footer_main a {
+    color: #ffffff !important;
+  }
+  #shopify-section-footer_main a:hover {
+    opacity: 0.7;
   }
 </style>
 
