@@ -1260,98 +1260,6 @@
         "padding_bottom": 80
       }
     },
-    "naunau_how_it_works": {
-      "type": "naunau-how-it-works",
-      "blocks": {
-        "step_wDTkBH": {
-          "type": "step",
-          "settings": {
-            "emoji": "🥦",
-            "title": "Fill It Up",
-            "description": "Pack in your favourite snacks, meal preps, or leftovers. These bags fit more than you'd think.",
-            "block_bg_color": "#f4f1ec",
-            "block_title_color": "#731a47",
-            "block_text_color": "#3d3d3d",
-            "block_emoji_size": 32,
-            "block_title_size": 19,
-            "block_body_size": 14
-          }
-        },
-        "step_Q9H3YL": {
-          "type": "step",
-          "settings": {
-            "emoji": "🔐",
-            "title": "Seal & Lock",
-            "description": "Click the leakproof seal shut. No spills, no soggy bags — stays fresh for longer.",
-            "block_bg_color": "#f4f1ec",
-            "block_title_color": "#731a47",
-            "block_text_color": "#3d3d3d",
-            "block_emoji_size": 32,
-            "block_title_size": 19,
-            "block_body_size": 14
-          }
-        },
-        "step_cLaenq": {
-          "type": "step",
-          "settings": {
-            "emoji": "🌡️",
-            "title": "Freeze, Fridge or Oven",
-            "description": "Use it your way — freezer, fridge, oven, microwave, or even sous vide. One bag, multiple ways.",
-            "block_bg_color": "#f4f1ec",
-            "block_title_color": "#731a47",
-            "block_text_color": "#3d3d3d",
-            "block_emoji_size": 32,
-            "block_title_size": 19,
-            "block_body_size": 14
-          }
-        },
-        "step_HY8T9R": {
-          "type": "step",
-          "settings": {
-            "emoji": "✨",
-            "title": "Rinse & Repeat",
-            "description": "Pop it in the dishwasher for a quick clean, or hand wash with warm soapy water. Leave the bag open to dry fully for best results.",
-            "block_bg_color": "#f4f1ec",
-            "block_title_color": "#731a47",
-            "block_text_color": "#3d3d3d",
-            "block_emoji_size": 32,
-            "block_title_size": 19,
-            "block_body_size": 14
-          }
-        }
-      },
-      "block_order": [
-        "step_wDTkBH",
-        "step_Q9H3YL",
-        "step_cLaenq",
-        "step_HY8T9R"
-      ],
-      "settings": {
-        "eyebrow": "Easy as that",
-        "heading": "How It Works",
-        "bg_color": "#ffffff",
-        "eyebrow_font": "dm_sans_n6",
-        "eyebrow_color": "#9a8f7e",
-        "eyebrow_size": 13,
-        "heading_font_picker": "dm_serif_display_n4",
-        "heading_color": "#30493b",
-        "heading_size": 40,
-        "accent_color": "#731a47",
-        "text_color": "#3d3d3d",
-        "bg_number_color": "#c2b8a3",
-        "step_title_size": 19,
-        "body_size": 14,
-        "emoji_size": 32,
-        "heading_font": "dm_serif_display_n4",
-        "body_font": "dm_sans_n4",
-        "card_bg_color": "#f4f1ec",
-        "card_hover_color": "#c8dbc9",
-        "card_radius": 20,
-        "step_gap": 2,
-        "padding_top": 80,
-        "padding_bottom": 80
-      }
-    },
     "naunau_community": {
       "type": "naunau-community",
       "settings": {
@@ -1640,7 +1548,6 @@
     "section_whyLoveIt",
     "product_list_family",
     "naunau_eco",
-    "naunau_how_it_works",
     "naunau_community",
     "naunau_faq",
     "naunau_ideas"
