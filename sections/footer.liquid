@@ -86,6 +86,30 @@
   }
 {% endstylesheet %}
 
+{%- comment -%} NauNau footer customisations {%- endcomment -%}
+<style>
+  /* Social icons row: centered and bigger */
+  #shopify-section-footer_socials .footer-content {
+    justify-items: center;
+  }
+  #shopify-section-footer_socials .social-icons__wrapper {
+    justify-content: center;
+    gap: 24px;
+  }
+  #shopify-section-footer_socials .social-icons__icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  #shopify-section-footer_socials .social-icons__icon-wrapper {
+    height: auto;
+  }
+
+  /* Logo block: ensure black colour */
+  #shopify-section-footer_main .logo-block__image {
+    filter: brightness(0);
+  }
+</style>
+
 {% schema %}
 {
   "name": "t:names.footer",
