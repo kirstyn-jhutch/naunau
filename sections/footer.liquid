@@ -108,18 +108,26 @@
 
   /* Social icons: full width row, centered, very big */
   footer .social-icons__wrapper {
+    --icon-size-lg: 120px !important;
     justify-content: center !important;
     gap: 48px !important;
     width: 100% !important;
     grid-column: 1 / -1 !important;
     padding: 30px 0 !important;
   }
-  footer .social-icons__icon {
+  footer .social-icons__icon-wrapper,
+  footer .social-icons__icon-wrapper:has(.social-icons__icon path) {
     width: 120px !important;
     height: 120px !important;
   }
-  footer .social-icons__icon-wrapper {
-    height: auto !important;
+  footer .social-icons__icon {
+    width: 120px !important;
+    height: 120px !important;
+    display: block !important;
+  }
+  footer .social-icons__icon svg {
+    width: 120px !important;
+    height: 120px !important;
   }
   /* Social icon colour: white */
   footer .social-icons__icon path,
