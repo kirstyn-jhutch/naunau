@@ -20,8 +20,8 @@
   assign val1 = meta_width | default: block.settings.stat1_value
   assign val2 = meta_height | default: block.settings.stat2_value
   assign val3 = meta_weight | default: block.settings.stat3_value
-  assign val4 = meta_capacity | default: block.settings.stat4_value
-  assign val5 = meta_depth | default: block.settings.stat5_value
+  assign val4 = meta_depth | default: block.settings.stat4_value
+  assign val5 = meta_capacity | default: block.settings.stat5_value
 %}
 
 <div class="nn-specs spacing-style" style="{% render 'spacing-style', settings: block.settings %}" {{ block.shopify_attributes }}>
@@ -311,46 +311,47 @@
     },
     {
       "type": "header",
-      "content": "──── Stat 4 — Capacity ────"
+      "content": "──── Stat 4 — Depth ────"
     },
     {
       "type": "text",
       "id": "stat4_label",
       "label": "Label",
-      "default": "CAPACITY"
+      "default": "DEPTH"
     },
     {
       "type": "text",
       "id": "stat4_value",
-      "label": "Fallback value (overridden by metafield custom.spec_capacity)",
-      "default": "400"
+      "label": "Fallback value (overridden by metafield custom.spec_depth)",
+      "default": "0.5"
     },
     {
       "type": "text",
       "id": "stat4_unit",
       "label": "Unit",
-      "default": "ml"
+      "default": "cm"
     },
     {
       "type": "header",
-      "content": "──── Stat 5 — Depth ────"
+      "content": "──── Stat 5 — Capacity ────"
     },
     {
       "type": "text",
       "id": "stat5_label",
       "label": "Label",
-      "default": "DEPTH"
+      "default": "CAPACITY"
     },
     {
       "type": "text",
       "id": "stat5_value",
-      "label": "Fallback value (overridden by metafield custom.spec_depth)"
+      "label": "Fallback value (overridden by metafield custom.spec_capacity)",
+      "default": "400"
     },
     {
       "type": "text",
       "id": "stat5_unit",
       "label": "Unit",
-      "default": "cm"
+      "default": "ml"
     },
     {
       "type": "header",
