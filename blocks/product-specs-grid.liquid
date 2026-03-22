@@ -36,10 +36,8 @@
   {%- endif -%}
 
   <div class="nn-specs__grid" style="
-    display: grid;
-    grid-template-columns: repeat(5, auto);
+    display: flex;
     gap: {{ block.settings.gap }}px;
-    width: fit-content;
   ">
     {%- if block.settings.stat1_label != blank and val1 != blank -%}
       <div class="nn-specs__cell" style="
@@ -396,17 +394,17 @@
       "min": 0,
       "max": 24,
       "step": 1,
-      "default": 8,
+      "default": 6,
       "unit": "px"
     },
     {
       "type": "range",
       "id": "cell_padding",
       "label": "Cell padding",
-      "min": 8,
+      "min": 2,
       "max": 32,
       "step": 2,
-      "default": 6,
+      "default": 4,
       "unit": "px"
     },
     {
@@ -433,10 +431,10 @@
       "type": "range",
       "id": "label_size",
       "label": "Label size",
-      "min": 6,
+      "min": 5,
       "max": 16,
       "step": 1,
-      "default": 8,
+      "default": 7,
       "unit": "px"
     },
     {
@@ -449,20 +447,20 @@
       "type": "range",
       "id": "value_size",
       "label": "Value size",
-      "min": 12,
+      "min": 10,
       "max": 48,
       "step": 1,
-      "default": 15,
+      "default": 13,
       "unit": "px"
     },
     {
       "type": "range",
       "id": "unit_size",
       "label": "Unit size",
-      "min": 8,
+      "min": 6,
       "max": 24,
       "step": 1,
-      "default": 10,
+      "default": 9,
       "unit": "px"
     },
     {
