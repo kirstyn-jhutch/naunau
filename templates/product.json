@@ -108,18 +108,6 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "review_pzw7fn": {
-                  "type": "review",
-                  "settings": {
-                    "stars_style": "shaded",
-                    "show_number": true,
-                    "rating_color": "primary",
-                    "type_preset": "paragraph",
-                    "width": "100%",
-                    "alignment": "left"
-                  },
-                  "blocks": {}
-                },
                 "text_DQhnJA": {
                   "type": "text",
                   "name": "Byline",
@@ -196,7 +184,6 @@
                 }
               },
               "block_order": [
-                "review_pzw7fn",
                 "text_DQhnJA",
                 "text_rmfzht",
                 "price_XqcpTF"
@@ -296,6 +283,48 @@
                 "buy_buttons_6p8c63"
               ]
             },
+            "product_specs_grid_VtJJYa": {
+              "type": "product-specs-grid",
+              "name": "NauNau Specs Grid",
+              "settings": {
+                "heading": "",
+                "heading_size": 14,
+                "heading_color": "#1a1a1a",
+                "stat1_label": "WIDTH",
+                "stat1_value": "25",
+                "stat1_unit": "cm",
+                "stat2_label": "HEIGHT",
+                "stat2_value": "26",
+                "stat2_unit": "cm",
+                "stat3_label": "WEIGHT",
+                "stat3_value": "238",
+                "stat3_unit": "g",
+                "stat4_label": "CAPACITY",
+                "stat4_value": "2000",
+                "stat4_unit": "ml",
+                "stat5_label": "DEPTH",
+                "stat5_value": "",
+                "stat5_unit": "cm",
+                "stat6_label": "",
+                "stat6_value": "",
+                "stat6_unit": "",
+                "cell_bg": "#f5f5f0",
+                "cell_border": "#e0e0d8",
+                "cell_radius": 7,
+                "cell_padding": 10,
+                "gap": 4,
+                "label_color": "#888888",
+                "label_size": 8,
+                "value_color": "#1a1a1a",
+                "value_size": 19,
+                "unit_size": 11,
+                "padding-block-start": 6,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "text_LbbLqQ": {
               "type": "text",
               "name": "Product description",
@@ -321,55 +350,13 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "product_specs_grid_GxDmzg": {
-              "type": "product-specs-grid",
-              "name": "NauNau Specs Grid",
-              "settings": {
-                "heading": "",
-                "heading_size": 14,
-                "heading_color": "#1A1A1A",
-                "stat1_label": "WIDTH",
-                "stat1_value": "20",
-                "stat1_unit": "cm",
-                "stat2_label": "HEIGHT",
-                "stat2_value": "13",
-                "stat2_unit": "cm",
-                "stat3_label": "WEIGHT",
-                "stat3_value": "105",
-                "stat3_unit": "g",
-                "stat4_label": "CAPACITY",
-                "stat4_value": "400",
-                "stat4_unit": "ml",
-                "stat5_label": "DEPTH",
-                "stat5_value": "",
-                "stat5_unit": "cm",
-                "stat6_label": "",
-                "stat6_value": "",
-                "stat6_unit": "",
-                "cell_bg": "#f5f5f0",
-                "cell_border": "#e0e0d8",
-                "cell_radius": 7,
-                "cell_padding": 10,
-                "gap": 4,
-                "label_color": "#888888",
-                "label_size": 8,
-                "value_color": "#1A1A1A",
-                "value_size": 19,
-                "unit_size": 11,
-                "padding-block-start": 6,
-                "padding-block-end": 8,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             }
           },
           "block_order": [
             "group_4we3XL",
             "group_dTHcXb",
-            "text_LbbLqQ",
-            "product_specs_grid_GxDmzg"
+            "product_specs_grid_VtJJYa",
+            "text_LbbLqQ"
           ]
         }
       },
