@@ -1,0 +1,420 @@
+{%- style -%}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Chewy&display=swap');
+  {{ section.settings.eyebrow_font | font_face: font_display: 'swap' }}
+  {{ section.settings.line1_font | font_face: font_display: 'swap' }}
+  {{ section.settings.subtitle_font | font_face: font_display: 'swap' }}
+{%- endstyle -%}
+
+<div
+  class="nn-page-hero"
+  style="
+    background-color: {{ section.settings.bg_color }};
+    {% if section.settings.bg_image != blank %}
+      background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');
+      background-size: cover;
+      background-position: center;
+    {% endif %}
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_x }}px {{ section.settings.padding_bottom }}px;
+  "
+>
+  {%- comment -%} Gradient overlay {%- endcomment -%}
+  {%- if section.settings.show_gradient -%}
+    <div class="nn-page-hero__overlay" style="
+      background: radial-gradient(ellipse at 70% 30%, {{ section.settings.gradient_color_1 }} 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, {{ section.settings.gradient_color_2 }} 0%, transparent 55%);
+    "></div>
+  {%- endif -%}
+
+  <div class="nn-page-hero__content" style="max-width: {{ section.settings.content_width }}px;text-align: {{ section.settings.alignment }};">
+
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="nn-page-hero__eyebrow" style="
+        font-family: {{ section.settings.eyebrow_font.family }}, {{ section.settings.eyebrow_font.fallback_families }};
+        font-size: {{ section.settings.eyebrow_size }}px;
+        color: {{ section.settings.eyebrow_color }};
+        letter-spacing: {{ section.settings.eyebrow_spacing }}em;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-bottom: {{ section.settings.eyebrow_gap }}px;
+      ">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+
+    <h1 class="nn-page-hero__heading">
+      {%- if section.settings.line1 != blank -%}
+        <span class="nn-page-hero__line1" style="
+          font-family: {{ section.settings.line1_font.family }}, {{ section.settings.line1_font.fallback_families }};
+          font-size: {{ section.settings.line1_size }}px;
+          color: {{ section.settings.line1_color }};
+          font-weight: {{ section.settings.line1_weight }};
+          font-style: {{ section.settings.line1_style }};
+          display: block;
+          line-height: 1.15;
+        ">{{ section.settings.line1 }}</span>
+      {%- endif -%}
+      {%- if section.settings.line2 != blank -%}
+        <span class="nn-page-hero__line2" style="
+          font-family: 'Chewy', cursive;
+          font-size: {{ section.settings.line2_size }}px;
+          color: {{ section.settings.line2_color }};
+          font-weight: 400;
+          font-style: {{ section.settings.line2_style }};
+          display: block;
+          line-height: 1.15;
+        ">{{ section.settings.line2 }}</span>
+      {%- endif -%}
+    </h1>
+
+    {%- if section.settings.subtitle != blank -%}
+      <p class="nn-page-hero__subtitle" style="
+        font-family: {{ section.settings.subtitle_font.family }}, {{ section.settings.subtitle_font.fallback_families }};
+        font-size: {{ section.settings.subtitle_size }}px;
+        color: {{ section.settings.subtitle_color }};
+        font-weight: {{ section.settings.subtitle_weight }};
+        max-width: {{ section.settings.subtitle_max_width }}px;
+        {% if section.settings.alignment == 'center' %}margin: {{ section.settings.subtitle_gap }}px auto 0;{% else %}margin-top: {{ section.settings.subtitle_gap }}px;{% endif %}
+        line-height: 1.6;
+      ">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<style>
+  .nn-page-hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .nn-page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .nn-page-hero__content {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+  }
+  .nn-page-hero__heading {
+    margin: 0;
+    padding: 0;
+  }
+  @media (max-width: 749px) {
+    .nn-page-hero__line1 {
+      font-size: clamp(1.8rem, 8vw, 3rem) !important;
+    }
+    .nn-page-hero__line2 {
+      font-size: clamp(1.8rem, 8vw, 3rem) !important;
+    }
+    .nn-page-hero__subtitle {
+      font-size: clamp(0.85rem, 3.5vw, 1rem) !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "NauNau Page Hero",
+  "tag": "section",
+  "class": "nn-page-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "──── Background ────"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background colour",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gradient",
+      "label": "Show gradient overlay",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Gradient colour 1 (top-right)",
+      "default": "#7A9E7E2E"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Gradient colour 2 (bottom-left)",
+      "default": "#C4714A21"
+    },
+    {
+      "type": "header",
+      "content": "──── Layout ────"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Centre" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content max-width",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "default": 700,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 20,
+      "max": 150,
+      "step": 5,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 20,
+      "max": 150,
+      "step": 5,
+      "default": 70,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Side padding",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "──── Eyebrow text ────"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "NauNau Care Guide"
+    },
+    {
+      "type": "font_picker",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow colour",
+      "default": "#B5CEB8"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow size",
+      "min": 9,
+      "max": 20,
+      "step": 1,
+      "default": 11,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_spacing",
+      "label": "Eyebrow letter spacing",
+      "min": 0,
+      "max": 0.4,
+      "step": 0.05,
+      "default": 0.2,
+      "unit": "em"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_gap",
+      "label": "Space below eyebrow",
+      "min": 5,
+      "max": 40,
+      "step": 1,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "──── Heading Line 1 ────"
+    },
+    {
+      "type": "text",
+      "id": "line1",
+      "label": "Line 1",
+      "default": "Love your bags,"
+    },
+    {
+      "type": "font_picker",
+      "id": "line1_font",
+      "label": "Line 1 font",
+      "default": "playfair_display_n7"
+    },
+    {
+      "type": "color",
+      "id": "line1_color",
+      "label": "Line 1 colour",
+      "default": "#FFFDF9"
+    },
+    {
+      "type": "range",
+      "id": "line1_size",
+      "label": "Line 1 size",
+      "min": 20,
+      "max": 80,
+      "step": 1,
+      "default": 52,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "line1_weight",
+      "label": "Line 1 weight",
+      "default": "700",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "line1_style",
+      "label": "Line 1 style",
+      "default": "normal",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "italic", "label": "Italic" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "──── Heading Line 2 (Chewy) ────"
+    },
+    {
+      "type": "text",
+      "id": "line2",
+      "label": "Line 2",
+      "default": "and they'll love you back."
+    },
+    {
+      "type": "color",
+      "id": "line2_color",
+      "label": "Line 2 colour",
+      "default": "#E8A882"
+    },
+    {
+      "type": "range",
+      "id": "line2_size",
+      "label": "Line 2 size",
+      "min": 20,
+      "max": 80,
+      "step": 1,
+      "default": 52,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "line2_style",
+      "label": "Line 2 style",
+      "default": "italic",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "italic", "label": "Italic" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "──── Subtitle ────"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "A little TLC goes a long way. Here's everything you need to keep your NauNau bags fresh, clean, and lasting for years — not landfills."
+    },
+    {
+      "type": "font_picker",
+      "id": "subtitle_font",
+      "label": "Subtitle font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle colour",
+      "default": "#D9D4CC"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "subtitle_weight",
+      "label": "Subtitle weight",
+      "default": "300",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "subtitle_max_width",
+      "label": "Subtitle max-width",
+      "min": 300,
+      "max": 700,
+      "step": 10,
+      "default": 480,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_gap",
+      "label": "Space above subtitle",
+      "min": 5,
+      "max": 40,
+      "step": 1,
+      "default": 20,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NauNau Page Hero"
+    }
+  ]
+}
+{% endschema %}
