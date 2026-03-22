@@ -2525,10 +2525,10 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 
 /* ─── NauNau colour variant button overrides ─── */
 
-/* Clear button: white fill, black border, black text */
+/* Clear button: white fill, thin black border, black text */
 .variant-option__button-label[data-option-value="clear"] {
   background-color: #FFFFFF !important;
-  border: 1.5px solid #1A1A1A !important;
+  border: 1px solid #c0c0c0 !important;
   color: #1A1A1A !important;
 }
 
@@ -2560,7 +2560,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 .variant-option__button-label[data-option-value="berry"]:has(:checked),
 .variant-option__button-label[data-option-value="sage"]:has(:checked) {
   transform: scale(1.12);
-  border: 2.5px solid #1A1A1A !important;
+  border: 1.5px solid #1A1A1A !important;
   outline: none !important;
   z-index: 2;
   position: relative;
