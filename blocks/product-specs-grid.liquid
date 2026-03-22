@@ -36,8 +36,10 @@
   {%- endif -%}
 
   <div class="nn-specs__grid" style="
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: {{ block.settings.gap }}px;
+    max-width: 420px;
   ">
     {%- if block.settings.stat1_label != blank and val1 != blank -%}
       <div class="nn-specs__cell" style="
