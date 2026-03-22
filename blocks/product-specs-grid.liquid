@@ -39,7 +39,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: {{ block.settings.gap }}px;
-    max-width: 420px;
+    max-width: 300px;
   ">
     {%- if block.settings.stat1_label != blank and val1 != blank -%}
       <div class="nn-specs__cell" style="
@@ -55,7 +55,7 @@
           letter-spacing: 0.08em;
           font-weight: 500;
           display: block;
-          margin-bottom: 2px;
+          margin-bottom: 1px;
         ">{{ block.settings.stat1_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
@@ -84,7 +84,7 @@
           letter-spacing: 0.08em;
           font-weight: 500;
           display: block;
-          margin-bottom: 2px;
+          margin-bottom: 1px;
         ">{{ block.settings.stat2_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
@@ -113,7 +113,7 @@
           letter-spacing: 0.08em;
           font-weight: 500;
           display: block;
-          margin-bottom: 2px;
+          margin-bottom: 1px;
         ">{{ block.settings.stat3_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
@@ -142,7 +142,7 @@
           letter-spacing: 0.08em;
           font-weight: 500;
           display: block;
-          margin-bottom: 2px;
+          margin-bottom: 1px;
         ">{{ block.settings.stat4_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
@@ -171,7 +171,7 @@
           letter-spacing: 0.08em;
           font-weight: 500;
           display: block;
-          margin-bottom: 2px;
+          margin-bottom: 1px;
         ">{{ block.settings.stat5_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
@@ -200,7 +200,7 @@
           letter-spacing: 0.08em;
           font-weight: 500;
           display: block;
-          margin-bottom: 2px;
+          margin-bottom: 1px;
         ">{{ block.settings.stat6_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
@@ -436,7 +436,7 @@
       "min": 5,
       "max": 16,
       "step": 1,
-      "default": 7,
+      "default": 6,
       "unit": "px"
     },
     {
@@ -452,7 +452,7 @@
       "min": 10,
       "max": 48,
       "step": 1,
-      "default": 13,
+      "default": 11,
       "unit": "px"
     },
     {
@@ -462,7 +462,7 @@
       "min": 6,
       "max": 24,
       "step": 1,
-      "default": 9,
+      "default": 7,
       "unit": "px"
     },
     {
