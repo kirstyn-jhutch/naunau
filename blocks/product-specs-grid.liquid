@@ -39,7 +39,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: {{ block.settings.gap }}px;
-    max-width: 300px;
+    max-width: 380px;
   ">
     {%- if block.settings.stat1_label != blank and val1 != blank -%}
       <div class="nn-specs__cell" style="
@@ -52,20 +52,25 @@
           font-size: {{ block.settings.label_size }}px;
           color: {{ block.settings.label_color }};
           text-transform: uppercase;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.06em;
           font-weight: 500;
           display: block;
-          margin-bottom: 1px;
+          margin-bottom: 0px;
+          line-height: 1.2;
+          white-space: nowrap;
         ">{{ block.settings.stat1_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
         ">{{ val1 }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
+          white-space: nowrap;
         "> {{ block.settings.stat1_unit }}</span>
       </div>
     {%- endif -%}
@@ -81,20 +86,25 @@
           font-size: {{ block.settings.label_size }}px;
           color: {{ block.settings.label_color }};
           text-transform: uppercase;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.06em;
           font-weight: 500;
           display: block;
-          margin-bottom: 1px;
+          margin-bottom: 0px;
+          line-height: 1.2;
+          white-space: nowrap;
         ">{{ block.settings.stat2_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
         ">{{ val2 }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
+          white-space: nowrap;
         "> {{ block.settings.stat2_unit }}</span>
       </div>
     {%- endif -%}
@@ -110,20 +120,25 @@
           font-size: {{ block.settings.label_size }}px;
           color: {{ block.settings.label_color }};
           text-transform: uppercase;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.06em;
           font-weight: 500;
           display: block;
-          margin-bottom: 1px;
+          margin-bottom: 0px;
+          line-height: 1.2;
+          white-space: nowrap;
         ">{{ block.settings.stat3_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
         ">{{ val3 }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
+          white-space: nowrap;
         "> {{ block.settings.stat3_unit }}</span>
       </div>
     {%- endif -%}
@@ -139,20 +154,25 @@
           font-size: {{ block.settings.label_size }}px;
           color: {{ block.settings.label_color }};
           text-transform: uppercase;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.06em;
           font-weight: 500;
           display: block;
-          margin-bottom: 1px;
+          margin-bottom: 0px;
+          line-height: 1.2;
+          white-space: nowrap;
         ">{{ block.settings.stat4_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
         ">{{ val4 }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
+          white-space: nowrap;
         "> {{ block.settings.stat4_unit }}</span>
       </div>
     {%- endif -%}
@@ -168,20 +188,25 @@
           font-size: {{ block.settings.label_size }}px;
           color: {{ block.settings.label_color }};
           text-transform: uppercase;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.06em;
           font-weight: 500;
           display: block;
-          margin-bottom: 1px;
+          margin-bottom: 0px;
+          line-height: 1.2;
+          white-space: nowrap;
         ">{{ block.settings.stat5_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
         ">{{ val5 }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
+          white-space: nowrap;
         "> {{ block.settings.stat5_unit }}</span>
       </div>
     {%- endif -%}
@@ -197,20 +222,25 @@
           font-size: {{ block.settings.label_size }}px;
           color: {{ block.settings.label_color }};
           text-transform: uppercase;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.06em;
           font-weight: 500;
           display: block;
-          margin-bottom: 1px;
+          margin-bottom: 0px;
+          line-height: 1.2;
+          white-space: nowrap;
         ">{{ block.settings.stat6_label }}</span>
         <span class="nn-specs__value" style="
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
         ">{{ block.settings.stat6_value }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
+          white-space: nowrap;
         "> {{ block.settings.stat6_unit }}</span>
       </div>
     {%- endif -%}
