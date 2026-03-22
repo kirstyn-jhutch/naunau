@@ -486,7 +486,7 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "Details",
-                    "open_by_default": false,
+                    "open_by_default": true,
                     "icon": "none",
                     "width": 20
                   },
@@ -525,7 +525,7 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "Shipping",
-                    "open_by_default": false,
+                    "open_by_default": true,
                     "icon": "none",
                     "width": 20
                   },
@@ -564,7 +564,7 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "Care & Tips",
-                    "open_by_default": false,
+                    "open_by_default": true,
                     "icon": "none",
                     "width": 20
                   },
