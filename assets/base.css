@@ -2523,6 +2523,36 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   color: rgb(var(--color-variant-text-rgb) / var(--opacity-60));
 }
 
+/* ─── NauNau colour swatch overrides ─── */
+.swatch--nn-clear {
+  background: #FFFFFF !important;
+  border: 1.5px solid #1A1A1A !important;
+}
+.swatch--nn-berry {
+  background: #731a47 !important;
+  border: 1px solid rgba(0,0,0,0.15) !important;
+}
+.swatch--nn-sage {
+  background: #30493b !important;
+  border: 1px solid rgba(0,0,0,0.15) !important;
+}
+
+/* NauNau selected swatch state */
+.variant-option__button-label--has-swatch:has(:checked) {
+  transform: scale(1.15);
+  outline: 2.5px solid #1A1A1A !important;
+  outline-offset: 3px;
+  z-index: 2;
+  position: relative;
+}
+
+/* NauNau unselected swatch state — lighter border, normal size */
+.variant-option__button-label--has-swatch:not(:has(:checked)) {
+  transform: scale(1);
+  outline: none !important;
+}
+/* ─── End NauNau swatch overrides ─── */
+
 .variant-option__button-label input {
   /* remove the checkbox from the page flow */
   position: absolute;
