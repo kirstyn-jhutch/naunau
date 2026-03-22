@@ -673,7 +673,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Little bag, big love</p>",
+            "text": "<p>Little bag, big LOVE</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
