@@ -37,8 +37,9 @@
 
   <div class="nn-specs__grid" style="
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, auto);
     gap: {{ block.settings.gap }}px;
+    width: fit-content;
   ">
     {%- if block.settings.stat1_label != blank and val1 != blank -%}
       <div class="nn-specs__cell" style="
