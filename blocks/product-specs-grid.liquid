@@ -3,6 +3,25 @@
   if request.visual_preview_mode and product_resource == blank
     assign product_resource = collections.all.products.first
   endif
+
+  comment
+    Read product metafields — fall back to block settings if blank
+    Metafield namespace: custom
+    Fields: spec_width, spec_height, spec_depth, spec_weight, spec_capacity
+    Each stores just the number value (e.g. "20")
+  endcomment
+
+  assign meta_width = product_resource.metafields.custom.spec_width.value
+  assign meta_height = product_resource.metafields.custom.spec_height.value
+  assign meta_depth = product_resource.metafields.custom.spec_depth.value
+  assign meta_weight = product_resource.metafields.custom.spec_weight.value
+  assign meta_capacity = product_resource.metafields.custom.spec_capacity.value
+
+  assign val1 = meta_width | default: block.settings.stat1_value
+  assign val2 = meta_height | default: block.settings.stat2_value
+  assign val3 = meta_weight | default: block.settings.stat3_value
+  assign val4 = meta_capacity | default: block.settings.stat4_value
+  assign val5 = meta_depth | default: block.settings.stat5_value
 %}
 
 <div class="nn-specs spacing-style" style="{% render 'spacing-style', settings: block.settings %}" {{ block.shopify_attributes }}>
@@ -21,7 +40,7 @@
     grid-template-columns: 1fr 1fr;
     gap: {{ block.settings.gap }}px;
   ">
-    {%- if block.settings.stat1_label != blank -%}
+    {%- if block.settings.stat1_label != blank and val1 != blank -%}
       <div class="nn-specs__cell" style="
         background: {{ block.settings.cell_bg }};
         border: 1px solid {{ block.settings.cell_border }};
@@ -41,16 +60,16 @@
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
-        ">{{ block.settings.stat1_value }}</span>
+        ">{{ val1 }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
-        ">{{ block.settings.stat1_unit }}</span>
+        "> {{ block.settings.stat1_unit }}</span>
       </div>
     {%- endif -%}
 
-    {%- if block.settings.stat2_label != blank -%}
+    {%- if block.settings.stat2_label != blank and val2 != blank -%}
       <div class="nn-specs__cell" style="
         background: {{ block.settings.cell_bg }};
         border: 1px solid {{ block.settings.cell_border }};
@@ -70,16 +89,16 @@
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
-        ">{{ block.settings.stat2_value }}</span>
+        ">{{ val2 }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
-        ">{{ block.settings.stat2_unit }}</span>
+        "> {{ block.settings.stat2_unit }}</span>
       </div>
     {%- endif -%}
 
-    {%- if block.settings.stat3_label != blank -%}
+    {%- if block.settings.stat3_label != blank and val3 != blank -%}
       <div class="nn-specs__cell" style="
         background: {{ block.settings.cell_bg }};
         border: 1px solid {{ block.settings.cell_border }};
@@ -99,16 +118,16 @@
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
-        ">{{ block.settings.stat3_value }}</span>
+        ">{{ val3 }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
-        ">{{ block.settings.stat3_unit }}</span>
+        "> {{ block.settings.stat3_unit }}</span>
       </div>
     {%- endif -%}
 
-    {%- if block.settings.stat4_label != blank -%}
+    {%- if block.settings.stat4_label != blank and val4 != blank -%}
       <div class="nn-specs__cell" style="
         background: {{ block.settings.cell_bg }};
         border: 1px solid {{ block.settings.cell_border }};
@@ -128,16 +147,16 @@
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
-        ">{{ block.settings.stat4_value }}</span>
+        ">{{ val4 }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
-        ">{{ block.settings.stat4_unit }}</span>
+        "> {{ block.settings.stat4_unit }}</span>
       </div>
     {%- endif -%}
 
-    {%- if block.settings.stat5_label != blank -%}
+    {%- if block.settings.stat5_label != blank and val5 != blank -%}
       <div class="nn-specs__cell" style="
         background: {{ block.settings.cell_bg }};
         border: 1px solid {{ block.settings.cell_border }};
@@ -157,16 +176,16 @@
           font-size: {{ block.settings.value_size }}px;
           color: {{ block.settings.value_color }};
           font-weight: 700;
-        ">{{ block.settings.stat5_value }}</span>
+        ">{{ val5 }}</span>
         <span class="nn-specs__unit" style="
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
-        ">{{ block.settings.stat5_unit }}</span>
+        "> {{ block.settings.stat5_unit }}</span>
       </div>
     {%- endif -%}
 
-    {%- if block.settings.stat6_label != blank -%}
+    {%- if block.settings.stat6_label != blank and block.settings.stat6_value != blank -%}
       <div class="nn-specs__cell" style="
         background: {{ block.settings.cell_bg }};
         border: 1px solid {{ block.settings.cell_border }};
@@ -191,7 +210,7 @@
           font-size: {{ block.settings.unit_size }}px;
           color: {{ block.settings.label_color }};
           font-weight: 400;
-        ">{{ block.settings.stat6_unit }}</span>
+        "> {{ block.settings.stat6_unit }}</span>
       </div>
     {%- endif -%}
   </div>
@@ -226,7 +245,7 @@
     },
     {
       "type": "header",
-      "content": "──── Stat 1 ────"
+      "content": "──── Stat 1 — Width ────"
     },
     {
       "type": "text",
@@ -237,7 +256,7 @@
     {
       "type": "text",
       "id": "stat1_value",
-      "label": "Value",
+      "label": "Fallback value (overridden by metafield custom.spec_width)",
       "default": "20"
     },
     {
@@ -248,7 +267,7 @@
     },
     {
       "type": "header",
-      "content": "──── Stat 2 ────"
+      "content": "──── Stat 2 — Height ────"
     },
     {
       "type": "text",
@@ -259,7 +278,7 @@
     {
       "type": "text",
       "id": "stat2_value",
-      "label": "Value",
+      "label": "Fallback value (overridden by metafield custom.spec_height)",
       "default": "13"
     },
     {
@@ -270,7 +289,7 @@
     },
     {
       "type": "header",
-      "content": "──── Stat 3 ────"
+      "content": "──── Stat 3 — Weight ────"
     },
     {
       "type": "text",
@@ -281,7 +300,7 @@
     {
       "type": "text",
       "id": "stat3_value",
-      "label": "Value",
+      "label": "Fallback value (overridden by metafield custom.spec_weight)",
       "default": "105"
     },
     {
@@ -292,7 +311,7 @@
     },
     {
       "type": "header",
-      "content": "──── Stat 4 ────"
+      "content": "──── Stat 4 — Capacity ────"
     },
     {
       "type": "text",
@@ -303,7 +322,7 @@
     {
       "type": "text",
       "id": "stat4_value",
-      "label": "Value",
+      "label": "Fallback value (overridden by metafield custom.spec_capacity)",
       "default": "400"
     },
     {
@@ -314,26 +333,28 @@
     },
     {
       "type": "header",
-      "content": "──── Stat 5 ────"
+      "content": "──── Stat 5 — Depth ────"
     },
     {
       "type": "text",
       "id": "stat5_label",
-      "label": "Label"
+      "label": "Label",
+      "default": "DEPTH"
     },
     {
       "type": "text",
       "id": "stat5_value",
-      "label": "Value"
+      "label": "Fallback value (overridden by metafield custom.spec_depth)"
     },
     {
       "type": "text",
       "id": "stat5_unit",
-      "label": "Unit"
+      "label": "Unit",
+      "default": "cm"
     },
     {
       "type": "header",
-      "content": "──── Stat 6 ────"
+      "content": "──── Stat 6 — Extra ────"
     },
     {
       "type": "text",
