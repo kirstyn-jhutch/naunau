@@ -2555,22 +2555,13 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   color: #1A1A1A !important;
 }
 
-/* NauNau selected state: scale up + dark border */
+/* NauNau selected state: no scale, no bold outline */
 .variant-option__button-label[data-option-value="clear"]:has(:checked),
 .variant-option__button-label[data-option-value="berry"]:has(:checked),
 .variant-option__button-label[data-option-value="sage"]:has(:checked) {
-  transform: scale(1.15);
-  outline: 2.5px solid #1A1A1A !important;
-  outline-offset: 3px;
-  z-index: 2;
-  position: relative;
-}
-
-/* NauNau unselected state: normal size, no outline */
-.variant-option__button-label[data-option-value="clear"]:not(:has(:checked)),
-.variant-option__button-label[data-option-value="berry"]:not(:has(:checked)),
-.variant-option__button-label[data-option-value="sage"]:not(:has(:checked)) {
-  transform: scale(1);
+  transform: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* Hide the pill background for NauNau colour buttons */
