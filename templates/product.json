@@ -570,48 +570,7 @@
                   ]
                 }
               },
-              "accordion_row_details": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Details",
-                    "open_by_default": false,
-                    "icon": "none",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_details": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>{{ closest.product.description }}</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-primary--family)",
-                        "font_size": "",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_details"
-                  ]
-                }
-              },
               "block_order": [
-                "accordion_row_details",
                 "accordion_row_pLJCxh",
                 "accordion_row_KTR3xE",
                 "accordion_row_VjrDKP"
@@ -646,7 +605,7 @@
         "video_position": "cover",
         "background_image_position": "cover",
         "border": "none",
-        "border_width": 1,
+        "border_width": 0,
         "border_opacity": 100,
         "border_radius": 0,
         "toggle_overlay": false,
@@ -826,6 +785,7 @@
         "color_scheme": "scheme-4",
         "background_media": "image",
         "video_position": "cover",
+        "background_image": "shopify://shop_images/b3497db43accac20a0949bee4de933b5.jpg",
         "background_image_position": "cover",
         "border": "none",
         "border_width": 1,
