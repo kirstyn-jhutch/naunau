@@ -1,53 +1,206 @@
 <div class="nn-rev" style="padding:{{ block.settings.padding_y }}px 0;">
-  {%- if block.settings.heading != blank -%}
-    <h2 style="font-family:'Chewy',cursive;font-size:{{ block.settings.heading_size }}px;color:{{ block.settings.heading_color }};text-align:center;margin:0 0 24px;">{{ block.settings.heading }}</h2>
-  {%- endif -%}
+  <div class="nn-rev__box" style="background:{{ block.settings.box_bg }};border:2px solid {{ block.settings.box_border }};border-radius:{{ block.settings.box_radius }}px;padding:{{ block.settings.box_padding }}px;overflow:hidden;">
 
-  <div class="nn-rev__grid" style="display:grid;grid-template-columns:repeat({{ block.settings.columns }},1fr);gap:{{ block.settings.card_gap }}px;">
-
-    {%- if block.settings.name_1 != blank -%}
-      <div style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_1 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
-        {%- if block.settings.title_1 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_1 }}</h3>{%- endif -%}
-        <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_1 }}</p>
-        <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
-          <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_1 | slice: 0 | upcase }}</div>
-          <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_1 }}</span>{%- if block.settings.verified_1 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
-        </div>
-      </div>
+    {%- if block.settings.heading != blank -%}
+      <h2 style="font-family:'Chewy',cursive;font-size:{{ block.settings.heading_size }}px;color:{{ block.settings.heading_color }};text-align:center;margin:0 0 24px;">{{ block.settings.heading }}</h2>
     {%- endif -%}
 
-    {%- if block.settings.name_2 != blank -%}
-      <div style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_2 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
-        {%- if block.settings.title_2 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_2 }}</h3>{%- endif -%}
-        <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_2 }}</p>
-        <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
-          <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_2 | slice: 0 | upcase }}</div>
-          <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_2 }}</span>{%- if block.settings.verified_2 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
-        </div>
-      </div>
-    {%- endif -%}
+    <div class="nn-rev__carousel" id="nn-rev-carousel-{{ block.id }}">
+      <div class="nn-rev__track">
 
-    {%- if block.settings.name_3 != blank -%}
-      <div style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_3 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
-        {%- if block.settings.title_3 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_3 }}</h3>{%- endif -%}
-        <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_3 }}</p>
-        <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
-          <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_3 | slice: 0 | upcase }}</div>
-          <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_3 }}</span>{%- if block.settings.verified_3 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
-        </div>
+        {%- if block.settings.name_1 != blank -%}
+          <div class="nn-rev__slide" style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_1 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
+            {%- if block.settings.title_1 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_1 }}</h3>{%- endif -%}
+            <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_1 }}</p>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
+              <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_1 | slice: 0 | upcase }}</div>
+              <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_1 }}</span>{%- if block.settings.verified_1 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if block.settings.name_2 != blank -%}
+          <div class="nn-rev__slide" style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_2 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
+            {%- if block.settings.title_2 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_2 }}</h3>{%- endif -%}
+            <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_2 }}</p>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
+              <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_2 | slice: 0 | upcase }}</div>
+              <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_2 }}</span>{%- if block.settings.verified_2 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if block.settings.name_3 != blank -%}
+          <div class="nn-rev__slide" style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_3 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
+            {%- if block.settings.title_3 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_3 }}</h3>{%- endif -%}
+            <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_3 }}</p>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
+              <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_3 | slice: 0 | upcase }}</div>
+              <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_3 }}</span>{%- if block.settings.verified_3 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if block.settings.name_4 != blank -%}
+          <div class="nn-rev__slide" style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_4 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
+            {%- if block.settings.title_4 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_4 }}</h3>{%- endif -%}
+            <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_4 }}</p>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
+              <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_4 | slice: 0 | upcase }}</div>
+              <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_4 }}</span>{%- if block.settings.verified_4 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if block.settings.name_5 != blank -%}
+          <div class="nn-rev__slide" style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_5 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
+            {%- if block.settings.title_5 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_5 }}</h3>{%- endif -%}
+            <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_5 }}</p>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
+              <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_5 | slice: 0 | upcase }}</div>
+              <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_5 }}</span>{%- if block.settings.verified_5 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if block.settings.name_6 != blank -%}
+          <div class="nn-rev__slide" style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_6 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
+            {%- if block.settings.title_6 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_6 }}</h3>{%- endif -%}
+            <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_6 }}</p>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
+              <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_6 | slice: 0 | upcase }}</div>
+              <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_6 }}</span>{%- if block.settings.verified_6 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
+            </div>
+          </div>
+        {%- endif -%}
+
       </div>
-    {%- endif -%}
+
+      <div class="nn-rev__dots" id="nn-rev-dots-{{ block.id }}"></div>
+    </div>
 
   </div>
 </div>
 
 <style>
-  @media (max-width: 989px) { .nn-rev__grid { grid-template-columns: repeat(2, 1fr) !important; } }
-  @media (max-width: 749px) { .nn-rev__grid { grid-template-columns: 1fr !important; } }
+  .nn-rev__carousel {
+    position: relative;
+    overflow: hidden;
+  }
+  .nn-rev__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s ease;
+  }
+  .nn-rev__slide {
+    min-width: calc(33.333% - 11px);
+    flex-shrink: 0;
+  }
+  .nn-rev__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .nn-rev__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s;
+  }
+  .nn-rev__dot.active {
+    background: {{ block.settings.box_border }};
+  }
+  @media (max-width: 989px) {
+    .nn-rev__slide { min-width: calc(50% - 8px); }
+  }
+  @media (max-width: 749px) {
+    .nn-rev__slide { min-width: 100%; }
+  }
 </style>
+
+<script>
+  (function() {
+    var id = '{{ block.id }}';
+    var carousel = document.getElementById('nn-rev-carousel-' + id);
+    if (!carousel) return;
+    var track = carousel.querySelector('.nn-rev__track');
+    var slides = carousel.querySelectorAll('.nn-rev__slide');
+    var dotsWrap = document.getElementById('nn-rev-dots-' + id);
+    if (!slides.length) return;
+
+    var perView = 3;
+    var current = 0;
+
+    function getPerView() {
+      if (window.innerWidth <= 749) return 1;
+      if (window.innerWidth <= 989) return 2;
+      return 3;
+    }
+
+    function totalPages() {
+      return Math.ceil(slides.length / perView);
+    }
+
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      var pages = totalPages();
+      for (var i = 0; i < pages; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'nn-rev__dot' + (i === current ? ' active' : '');
+        dot.setAttribute('aria-label', 'Page ' + (i + 1));
+        dot.dataset.page = i;
+        dot.addEventListener('click', function() {
+          current = parseInt(this.dataset.page);
+          move();
+        });
+        dotsWrap.appendChild(dot);
+      }
+    }
+
+    function move() {
+      var slideW = slides[0].offsetWidth + 16;
+      var offset = current * perView * slideW;
+      var maxOffset = track.scrollWidth - carousel.offsetWidth;
+      if (offset > maxOffset) offset = maxOffset;
+      track.style.transform = 'translateX(-' + offset + 'px)';
+      var dots = dotsWrap.querySelectorAll('.nn-rev__dot');
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function autoPlay() {
+      current++;
+      if (current >= totalPages()) current = 0;
+      move();
+    }
+
+    function init() {
+      perView = getPerView();
+      current = 0;
+      buildDots();
+      move();
+    }
+
+    init();
+    window.addEventListener('resize', init);
+    var interval = setInterval(autoPlay, {{ block.settings.auto_speed }}000);
+
+    carousel.addEventListener('mouseenter', function() { clearInterval(interval); });
+    carousel.addEventListener('mouseleave', function() { interval = setInterval(autoPlay, {{ block.settings.auto_speed }}000); });
+  })();
+</script>
 
 {% schema %}
 {
@@ -76,23 +229,44 @@
       "default": "#1a1a1a"
     },
     {
-      "type": "range",
-      "id": "columns",
-      "label": "Columns",
-      "min": 1,
-      "max": 4,
-      "step": 1,
-      "default": 3
+      "type": "header",
+      "content": "── Green box ──"
+    },
+    {
+      "type": "color",
+      "id": "box_bg",
+      "label": "Box background",
+      "default": "#f0f5f0"
+    },
+    {
+      "type": "color",
+      "id": "box_border",
+      "label": "Box border colour",
+      "default": "#30493b"
     },
     {
       "type": "range",
-      "id": "card_gap",
-      "label": "Gap",
-      "min": 8,
+      "id": "box_radius",
+      "label": "Box corner radius",
+      "min": 0,
       "max": 30,
       "step": 2,
       "default": 16,
       "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "box_padding",
+      "label": "Box padding",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "── Cards ──"
     },
     {
       "type": "color",
@@ -127,6 +301,19 @@
       "id": "text_color",
       "label": "Text colour",
       "default": "#555555"
+    },
+    {
+      "type": "header",
+      "content": "── Carousel ──"
+    },
+    {
+      "type": "range",
+      "id": "auto_speed",
+      "label": "Auto-scroll seconds",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 4
     },
     {
       "type": "range",
@@ -246,6 +433,117 @@
     {
       "type": "checkbox",
       "id": "verified_3",
+      "label": "Verified buyer",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "── Review 4 ──"
+    },
+    {
+      "type": "text",
+      "id": "name_4",
+      "label": "Name",
+      "default": "Liam T."
+    },
+    {
+      "type": "range",
+      "id": "stars_4",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Title",
+      "default": "Perfect for school lunches"
+    },
+    {
+      "type": "textarea",
+      "id": "text_4",
+      "label": "Review text",
+      "default": "My kids love picking their colours. Leak-proof and easy to open — even for little hands."
+    },
+    {
+      "type": "checkbox",
+      "id": "verified_4",
+      "label": "Verified buyer",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "── Review 5 ──"
+    },
+    {
+      "type": "text",
+      "id": "name_5",
+      "label": "Name",
+      "default": "Zanele N."
+    },
+    {
+      "type": "range",
+      "id": "stars_5",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_5",
+      "label": "Title",
+      "default": "Obsessed with the berry colour"
+    },
+    {
+      "type": "textarea",
+      "id": "text_5",
+      "label": "Review text",
+      "default": "They look stunning in my kitchen. So happy to support a South African brand doing good."
+    },
+    {
+      "type": "checkbox",
+      "id": "verified_5",
+      "label": "Verified buyer",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "── Review 6 ──"
+    },
+    {
+      "type": "text",
+      "id": "name_6",
+      "label": "Name",
+      "default": "Emma R."
+    },
+    {
+      "type": "range",
+      "id": "stars_6",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_6",
+      "label": "Title",
+      "default": "Replaced all my zip-locks"
+    },
+    {
+      "type": "textarea",
+      "id": "text_6",
+      "label": "Review text",
+      "default": "Haven't bought a single plastic bag since getting these. They pay for themselves so quickly."
+    },
+    {
+      "type": "checkbox",
+      "id": "verified_6",
       "label": "Verified buyer",
       "default": true
     }
