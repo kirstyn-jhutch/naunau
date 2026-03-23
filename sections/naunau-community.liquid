@@ -1,33 +1,21 @@
-{%- style -%}
-  {{ section.settings.eyebrow_font | font_face: font_display: 'swap' }}
-  {{ section.settings.heading_line_font | font_face: font_display: 'swap' }}
-  {{ section.settings.highlight_font | font_face: font_display: 'swap' }}
-  {{ section.settings.subtitle_font | font_face: font_display: 'swap' }}
-  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
-  {{ section.settings.body_font | font_face: font_display: 'swap' }}
-{%- endstyle -%}
-
-<section id="naunau-community" class="naunau-community" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
+<section id="naunau-community" class="naunau-community">
   <div class="naunau-community__inner">
-    <p class="naunau-community__eyebrow" style="color: {{ section.settings.eyebrow_color }};font-size: {{ section.settings.eyebrow_size }}px;font-family: {{ section.settings.eyebrow_font.family }}, {{ section.settings.eyebrow_font.fallback_families }};">{{ section.settings.eyebrow }}</p>
-    <h2 class="naunau-community__heading">
-      <span style="color: {{ section.settings.heading_line_color }};font-size: {{ section.settings.heading_line_size }}px;font-family: {{ section.settings.heading_line_font.family }}, {{ section.settings.heading_line_font.fallback_families }};">{{ section.settings.heading }}</span>
-      <span style="color: {{ section.settings.highlight_color }};font-size: {{ section.settings.highlight_size }}px;font-family: {{ section.settings.highlight_font.family }}, {{ section.settings.highlight_font.fallback_families }};font-style: italic;">{{ section.settings.heading_highlight }}</span>
-    </h2>
-    <p class="naunau-community__subtitle" style="color: {{ section.settings.subtitle_color }};font-size: {{ section.settings.subtitle_size }}px;font-family: {{ section.settings.subtitle_font.family }}, {{ section.settings.subtitle_font.fallback_families }};">{{ section.settings.subtitle }} <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener">{{ section.settings.instagram_handle }}</a></p>
+    <p class="naunau-community__eyebrow">Community</p>
+    <h2 class="naunau-community__heading">Join the <span>#NauNau</span> Community</h2>
+    <p class="naunau-community__subtitle">Tag us <a href="https://www.instagram.com/naunau.co.za/" target="_blank" rel="noopener">@naunau.co.za</a> for a chance to be featured!</p>
 
     <div class="naunau-community__grid">
       {%- for i in (1..6) -%}
         {%- assign link_key = 'post_' | append: i | append: '_link' -%}
         {%- assign img_key = 'post_' | append: i | append: '_image' -%}
         {%- assign video_key = 'post_' | append: i | append: '_video' -%}
-        {%- assign post_link = section.settings[link_key] | default: section.settings.instagram_url -%}
+        {%- assign post_link = section.settings[link_key] | default: 'https://www.instagram.com/naunau.co.za/' -%}
         <a href="{{ post_link }}" target="_blank" rel="noopener" class="naunau-community__card">
           {%- if section.settings[img_key] != blank -%}
             {{ section.settings[img_key] | image_url: width: 600 | image_tag: class: 'naunau-community__img', loading: 'lazy' }}
           {%- else -%}
             <div class="naunau-community__placeholder">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.eyebrow_color }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7A9E7E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               <span>Add post {{ i }}</span>
             </div>
           {%- endif -%}
@@ -40,18 +28,17 @@
       {%- endfor -%}
     </div>
 
-    <a href="{{ section.settings.cta_link | default: section.settings.instagram_url }}" target="_blank" rel="noopener" class="naunau-community__cta">
-      {{ section.settings.cta_text }}
+    <a href="https://www.instagram.com/naunau.co.za/" target="_blank" rel="noopener" class="naunau-community__cta">
+      Follow us on Instagram →
     </a>
   </div>
 </section>
 
 <style>
   .naunau-community {
-    background: {{ section.settings.bg_color }};
-    padding: {{ section.settings.padding_top }}px 2rem {{ section.settings.padding_bottom }}px;
+    background: #FAF7F2;
+    padding: 5rem 2rem;
     text-align: center;
-    font-family: {{ section.settings.body_font.family | default: 'DM Sans' }}, {{ section.settings.body_font.fallback_families | default: 'sans-serif' }};
   }
 
   .naunau-community__inner {
@@ -60,57 +47,59 @@
   }
 
   .naunau-community__eyebrow {
-    font-size: {{ section.settings.eyebrow_size }}px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: {{ section.settings.eyebrow_color }};
+    color: #7A9E7E;
     margin-bottom: 0.75rem;
   }
 
   .naunau-community__heading {
-    font-family: {{ section.settings.heading_font.family | default: 'DM Serif Display' }}, {{ section.settings.heading_font.fallback_families | default: 'serif' }};
-    font-size: {{ section.settings.heading_size }}px;
-    color: {{ section.settings.heading_color }};
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: #30493B;
     margin-bottom: 0.5rem;
     font-weight: 400;
   }
 
   .naunau-community__heading span {
-    color: {{ section.settings.accent_color }};
+    color: #731A47;
     font-style: italic;
   }
 
   .naunau-community__subtitle {
-    font-size: {{ section.settings.body_size }}px;
-    color: {{ section.settings.text_color }};
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    color: #3D3D3D;
     margin-bottom: 2.5rem;
   }
 
   .naunau-community__subtitle a {
-    color: {{ section.settings.accent_color }};
+    color: #731A47;
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 3px;
   }
 
   .naunau-community__subtitle a:hover {
-    color: {{ section.settings.heading_color }};
+    color: #30493B;
   }
 
   .naunau-community__grid {
     display: grid;
-    grid-template-columns: repeat({{ section.settings.grid_columns }}, 1fr);
-    gap: {{ section.settings.grid_gap }}px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
     margin-bottom: 2.5rem;
   }
 
   .naunau-community__card {
     position: relative;
     aspect-ratio: 1;
-    border-radius: {{ section.settings.card_radius }}px;
+    border-radius: 12px;
     overflow: hidden;
-    background: {{ section.settings.placeholder_bg }};
+    background: #E8E4DD;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,7 +124,8 @@
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
-    color: {{ section.settings.eyebrow_color }};
+    color: #9A8F7E;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.85rem;
   }
 
@@ -160,18 +150,19 @@
 
   .naunau-community__cta {
     display: inline-block;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 600;
     font-size: 1rem;
-    color: {{ section.settings.btn_text_color }};
-    background: {{ section.settings.btn_bg_color }};
+    color: #FAF7F2;
+    background: #731A47;
     padding: 0.85rem 2rem;
-    border-radius: {{ section.settings.btn_radius }}px;
+    border-radius: 50px;
     text-decoration: none;
     transition: background 0.3s ease;
   }
 
   .naunau-community__cta:hover {
-    background: {{ section.settings.heading_color }};
+    background: #30493B;
   }
 
   @media (max-width: 768px) {
@@ -180,7 +171,7 @@
     }
 
     .naunau-community__heading {
-      font-size: calc({{ section.settings.heading_size }}px * 0.7);
+      font-size: 1.75rem;
     }
 
     .naunau-community__grid {
@@ -194,304 +185,6 @@
   "name": "NauNau Community",
   "tag": "section",
   "settings": [
-    {
-      "type": "header",
-      "content": "Content"
-    },
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow text",
-      "default": "Community"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Join the"
-    },
-    {
-      "type": "text",
-      "id": "heading_highlight",
-      "label": "Heading (highlighted part)",
-      "default": "#NauNau Community"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Tag us"
-    },
-    {
-      "type": "text",
-      "id": "instagram_handle",
-      "label": "Instagram handle",
-      "default": "@naunau.co.za"
-    },
-    {
-      "type": "url",
-      "id": "instagram_url",
-      "label": "Instagram URL",
-      "default": "https://www.instagram.com/naunau.co.za/"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "Button text",
-      "default": "Follow us on Instagram →"
-    },
-    {
-      "type": "url",
-      "id": "cta_link",
-      "label": "Button link"
-    },
-    {
-      "type": "header",
-      "content": "Background"
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background color",
-      "default": "#FAF7F2"
-    },
-    {
-      "type": "image_picker",
-      "id": "bg_image",
-      "label": "Background image",
-      "info": "Optional — overrides background color"
-    },
-    {
-      "type": "header",
-      "content": "Eyebrow — Community"
-    },
-    {
-      "type": "font_picker",
-      "id": "eyebrow_font",
-      "label": "Eyebrow font",
-      "default": "dm_sans_n6"
-    },
-    {
-      "type": "color",
-      "id": "eyebrow_color",
-      "label": "Eyebrow color",
-      "default": "#7A9E7E"
-    },
-    {
-      "type": "range",
-      "id": "eyebrow_size",
-      "label": "Eyebrow font size",
-      "min": 10,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "default": 13
-    },
-    {
-      "type": "header",
-      "content": "Heading — Join the"
-    },
-    {
-      "type": "font_picker",
-      "id": "heading_line_font",
-      "label": "Heading font",
-      "default": "dm_serif_display_n4"
-    },
-    {
-      "type": "color",
-      "id": "heading_line_color",
-      "label": "Heading color",
-      "default": "#30493B"
-    },
-    {
-      "type": "range",
-      "id": "heading_line_size",
-      "label": "Heading font size",
-      "min": 20,
-      "max": 72,
-      "step": 2,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "header",
-      "content": "Heading highlight — #NauNau Community"
-    },
-    {
-      "type": "font_picker",
-      "id": "highlight_font",
-      "label": "Highlight font",
-      "default": "dm_serif_display_n4"
-    },
-    {
-      "type": "color",
-      "id": "highlight_color",
-      "label": "Highlight color",
-      "default": "#731A47"
-    },
-    {
-      "type": "range",
-      "id": "highlight_size",
-      "label": "Highlight font size",
-      "min": 20,
-      "max": 72,
-      "step": 2,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "header",
-      "content": "Subtitle — Tag us"
-    },
-    {
-      "type": "font_picker",
-      "id": "subtitle_font",
-      "label": "Subtitle font",
-      "default": "dm_sans_n4"
-    },
-    {
-      "type": "color",
-      "id": "subtitle_color",
-      "label": "Subtitle color",
-      "default": "#3D3D3D"
-    },
-    {
-      "type": "range",
-      "id": "subtitle_size",
-      "label": "Subtitle font size",
-      "min": 12,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "default": 17
-    },
-    {
-      "type": "header",
-      "content": "Fonts (fallback)"
-    },
-    {
-      "type": "font_picker",
-      "id": "heading_font",
-      "label": "Heading font (general)",
-      "default": "dm_serif_display_n4"
-    },
-    {
-      "type": "font_picker",
-      "id": "body_font",
-      "label": "Body font (general)",
-      "default": "dm_sans_n4"
-    },
-    {
-      "type": "header",
-      "content": "Colors (fallback)"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Heading color (default)",
-      "default": "#30493B"
-    },
-    {
-      "type": "color",
-      "id": "accent_color",
-      "label": "Accent color (links)",
-      "default": "#731A47"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Body text color",
-      "default": "#3D3D3D"
-    },
-    {
-      "type": "header",
-      "content": "Button"
-    },
-    {
-      "type": "color",
-      "id": "btn_bg_color",
-      "label": "Button background",
-      "default": "#731A47"
-    },
-    {
-      "type": "color",
-      "id": "btn_text_color",
-      "label": "Button text color",
-      "default": "#FAF7F2"
-    },
-    {
-      "type": "range",
-      "id": "btn_radius",
-      "label": "Button corner radius",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "default": 50
-    },
-    {
-      "type": "header",
-      "content": "Grid layout"
-    },
-    {
-      "type": "range",
-      "id": "grid_columns",
-      "label": "Columns (desktop)",
-      "min": 2,
-      "max": 4,
-      "step": 1,
-      "default": 3
-    },
-    {
-      "type": "range",
-      "id": "grid_gap",
-      "label": "Gap between posts",
-      "min": 4,
-      "max": 32,
-      "step": 2,
-      "unit": "px",
-      "default": 12
-    },
-    {
-      "type": "range",
-      "id": "card_radius",
-      "label": "Card corner radius",
-      "min": 0,
-      "max": 30,
-      "step": 1,
-      "unit": "px",
-      "default": 12
-    },
-    {
-      "type": "color",
-      "id": "placeholder_bg",
-      "label": "Empty card background",
-      "default": "#E8E4DD"
-    },
-    {
-      "type": "header",
-      "content": "Spacing"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Top padding",
-      "min": 0,
-      "max": 120,
-      "step": 4,
-      "unit": "px",
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Bottom padding",
-      "min": 0,
-      "max": 120,
-      "step": 4,
-      "unit": "px",
-      "default": 80
-    },
     {
       "type": "header",
       "content": "Post 1"
