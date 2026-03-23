@@ -4995,3 +4995,23 @@ product-recommendations:has([data-has-recommendations='false']) {
     translate: 0px var(--atc-destination, 0px);
   }
 }
+
+/* ── NauNau sticky add-to-cart overrides ── */
+.sticky-add-to-cart__button,
+.sticky-add-to-cart__button.button {
+  background-color: #30493b !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-family: 'Chewy', cursive !important;
+  font-size: 16px !important;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s ease;
+}
+.sticky-add-to-cart__button:hover,
+.sticky-add-to-cart__button.button:hover {
+  background-color: #3d5c4a !important;
+}
+.sticky-add-to-cart__title {
+  font-family: 'Chewy', cursive !important;
+}
