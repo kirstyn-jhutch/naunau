@@ -67,13 +67,18 @@
     margin-bottom: 12px;
     line-height: 1.05;
     letter-spacing: -1px;
-    background: linear-gradient(135deg, {{ btn_color }}, #6b8f71, #b8ceba);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     white-space: nowrap;
-    transform: rotate(-2deg);
-    display: inline-block;
+  }
+  .naunau-quiz .quiz-heading-svg {
+    width: 100%;
+    overflow: visible;
+    display: block;
+    margin: 0 auto;
+  }
+  .naunau-quiz .quiz-heading-svg text {
+    font-family: 'Chewy', cursive;
+    font-size: 52px;
+    fill: url(#quiz-heading-gradient);
   }
   .naunau-quiz .quiz-subtitle {
     font-family: 'DM Sans', sans-serif;
@@ -245,7 +250,19 @@
 <div class="naunau-quiz">
   <div class="quiz-container">
     <div class="quiz-header">
-      <h1 class="quiz-heading">{{ heading }}</h1>
+      <svg class="quiz-heading-svg" viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="quiz-curve" d="M 50,140 Q 400,20 750,140" fill="none" />
+          <linearGradient id="quiz-heading-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="{{ btn_color }}" />
+            <stop offset="50%" stop-color="#6b8f71" />
+            <stop offset="100%" stop-color="#b8ceba" />
+          </linearGradient>
+        </defs>
+        <text>
+          <textPath href="#quiz-curve" startOffset="50%" text-anchor="middle">{{ heading }}</textPath>
+        </text>
+      </svg>
       <p class="quiz-subtitle">{{ subtitle }}</p>
     </div>
 
