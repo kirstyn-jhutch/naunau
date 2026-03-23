@@ -1,11 +1,13 @@
 {% liquid
   assign bags_per_naunau = section.settings.bags_per_naunau | default: 260
+  assign heading = section.settings.heading | default: "NauNau Plastic Counter"
+  assign info_text = section.settings.info_text | default: "Each NauNau replaces roughly 260 single-use bags over its lifetime"
   assign counter_label = section.settings.counter_label | default: "plastic bags replaced so far 🌍"
-  assign subheading = section.settings.subheading | default: "Each NauNau replaces roughly 260 single-use bags over its lifetime"
+  assign subheading = section.settings.subheading | default: "See how much plastic you're replacing — enter your bag count"
   assign button_label = section.settings.button_label | default: "Calculate"
 %}
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chewy&family=Playfair+Display:ital@1&family=DM+Sans:wght@400;500;700&display=swap">
 
 <style>
   .naunau-plastic-counter {
@@ -14,52 +16,63 @@
     width: 100%;
   }
   .naunau-plastic-counter .counter-inner {
-    max-width: 600px;
+    max-width: 40%;
     margin: 0 auto;
+  }
+  .naunau-plastic-counter .section-heading {
+    font-family: 'Chewy', cursive;
+    font-size: 32px;
+    color: #30493b;
+    margin-bottom: 8px;
+  }
+  .naunau-plastic-counter .info-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 28px;
+    line-height: 1.5;
   }
   .naunau-plastic-counter .counter-display {
     background: #1A1A1A;
     border-radius: 20px;
-    padding: 50px 40px 40px;
-    margin-bottom: 30px;
+    padding: 40px 30px 32px;
+    margin-bottom: 24px;
   }
   .naunau-plastic-counter .big-number {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 96px;
+    font-size: 80px;
     color: #b8ceba;
     line-height: 1;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     letter-spacing: -2px;
     transition: all 0.3s ease;
   }
   .naunau-plastic-counter .counter-label {
     font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     color: #b8ceba;
     opacity: 0.8;
   }
   .naunau-plastic-counter .subheading {
     font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     color: #444;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
     line-height: 1.5;
   }
   .naunau-plastic-counter .calc-row {
     display: flex;
-    gap: 12px;
-    max-width: 420px;
-    margin: 0 auto;
+    gap: 10px;
   }
   .naunau-plastic-counter .calc-input {
     flex: 1;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 16px 20px;
+    padding: 14px 16px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     color: #1a1a1a;
     outline: none;
     transition: border-color 0.2s;
@@ -81,9 +94,9 @@
     color: #fff;
     border: none;
     border-radius: 10px;
-    padding: 16px 32px;
+    padding: 14px 28px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     cursor: pointer;
     transition: opacity 0.2s;
@@ -92,25 +105,36 @@
   .naunau-plastic-counter .calc-button:hover {
     opacity: 0.85;
   }
+  @media (max-width: 900px) {
+    .naunau-plastic-counter .counter-inner {
+      max-width: 90%;
+    }
+  }
   @media (max-width: 600px) {
     .naunau-plastic-counter {
       padding: 40px 16px;
     }
     .naunau-plastic-counter .big-number {
-      font-size: 64px;
+      font-size: 56px;
     }
     .naunau-plastic-counter .counter-display {
-      padding: 40px 24px 32px;
+      padding: 32px 20px 24px;
       border-radius: 16px;
     }
     .naunau-plastic-counter .calc-row {
       flex-direction: column;
+    }
+    .naunau-plastic-counter .counter-inner {
+      max-width: 100%;
     }
   }
 </style>
 
 <div class="naunau-plastic-counter">
   <div class="counter-inner">
+    <h2 class="section-heading">{{ heading }}</h2>
+    <p class="info-text">{{ info_text }}</p>
+
     <div class="counter-display">
       <div class="big-number" data-bags-per="{{ bags_per_naunau }}">0</div>
       <div class="counter-label">{{ counter_label }}</div>
@@ -137,15 +161,25 @@
       return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 
-    document.addEventListener('click', function(e) {
-      var btn = e.target.closest('.naunau-plastic-counter .calc-button');
-      if (!btn) return;
-      var container = btn.closest('.naunau-plastic-counter');
+    function doCalculate(container) {
       var input = container.querySelector('.calc-input');
       var bigNumber = container.querySelector('.big-number');
       var bagsPerNaunau = parseInt(bigNumber.getAttribute('data-bags-per')) || 260;
       var qty = parseInt(input.value) || 0;
       bigNumber.textContent = formatNumber(qty * bagsPerNaunau);
+    }
+
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.naunau-plastic-counter .calc-button');
+      if (!btn) return;
+      doCalculate(btn.closest('.naunau-plastic-counter'));
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && e.target.matches('.naunau-plastic-counter .calc-input')) {
+        e.preventDefault();
+        doCalculate(e.target.closest('.naunau-plastic-counter'));
+      }
     });
   })();
 </script>
@@ -157,6 +191,18 @@
   "settings": [
     {
       "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "NauNau Plastic Counter"
+    },
+    {
+      "type": "text",
+      "id": "info_text",
+      "label": "Info Text",
+      "default": "Each NauNau replaces roughly 260 single-use bags over its lifetime"
+    },
+    {
+      "type": "text",
       "id": "counter_label",
       "label": "Counter Label",
       "default": "plastic bags replaced so far 🌍"
@@ -164,8 +210,8 @@
     {
       "type": "text",
       "id": "subheading",
-      "label": "Subheading",
-      "default": "Each NauNau replaces roughly 260 single-use bags over its lifetime"
+      "label": "Subheading (above input)",
+      "default": "See how much plastic you're replacing — enter your bag count"
     },
     {
       "type": "text",
