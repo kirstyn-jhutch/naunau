@@ -174,7 +174,7 @@
               "name": "t:names.button",
               "settings": {
                 "label": "Make the Switch",
-                "link": "/#shopify-section-product_list_family",
+                "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
