@@ -73,6 +73,7 @@
               {% endif %}
               <label
                 class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}"
+                data-option-value="{{ product_option_value.name | downcase | strip }}"
               >
                 <input
                   type="radio"
@@ -113,7 +114,8 @@
                   {% render 'swatch',
                     swatch: product_option_value.swatch,
                     variant_image: featured_media,
-                    mode: 'unscaled'
+                    mode: 'unscaled',
+                    value_name: product_option_value.name
                   %}
                 {% else %}
                   {% if product_option_value.available == true %}

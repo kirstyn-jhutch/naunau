@@ -1,34 +1,81 @@
-<section class="nn-faq">
+{%- style -%}
+  {{ section.settings.eyebrow_font | font_face: font_display: 'swap' }}
+  {{ section.settings.line1_font | font_face: font_display: 'swap' }}
+  {{ section.settings.line2_font | font_face: font_display: 'swap' }}
+  {{ section.settings.subline_font | font_face: font_display: 'swap' }}
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {{ section.settings.body_font | font_face: font_display: 'swap' }}
+{%- endstyle -%}
+
+<section id="faq" class="nn-faq" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
   <div class="nn-faq__container">
     <div class="nn-faq__left">
-      <span class="nn-faq__eyebrow">{{ section.settings.eyebrow }}</span>
-      <h2 class="nn-faq__heading">{{ section.settings.heading }}<br><em>{{ section.settings.heading_italic }}</em></h2>
-      <p class="nn-faq__subline">{{ section.settings.subline }}</p>
+      <span class="nn-faq__eyebrow" style="color: {{ section.settings.eyebrow_color }};font-size: {{ section.settings.eyebrow_size }}px;font-family: {{ section.settings.eyebrow_font.family }}, {{ section.settings.eyebrow_font.fallback_families }};">{{ section.settings.eyebrow }}</span>
+      <h2 class="nn-faq__heading">
+        <span class="nn-faq__line1" style="color: {{ section.settings.line1_color }};font-size: {{ section.settings.line1_size }}px;font-family: {{ section.settings.line1_font.family }}, {{ section.settings.line1_font.fallback_families }};">{{ section.settings.heading_line1 }}</span><br>
+        <em class="nn-faq__line2" style="color: {{ section.settings.line2_color }};font-size: {{ section.settings.line2_size }}px;font-family: {{ section.settings.line2_font.family }}, {{ section.settings.line2_font.fallback_families }};">{{ section.settings.heading_line2 }}</em>
+      </h2>
+      <p class="nn-faq__subline" style="color: {{ section.settings.subline_color }};font-size: {{ section.settings.subline_size }}px;font-family: {{ section.settings.subline_font.family }}, {{ section.settings.subline_font.fallback_families }};">{{ section.settings.subline }}</p>
       <a href="mailto:{{ section.settings.email }}" class="nn-faq__email">{{ section.settings.email }}</a>
     </div>
     <div class="nn-faq__right">
       {%- for block in section.blocks -%}
-        <div class="nn-faq__item" data-faq-item {{ block.shopify_attributes }}>
-          <button class="nn-faq__question" data-faq-toggle>
-            <span>{{ block.settings.question }}</span>
-            <span class="nn-faq__icon">+</span>
-          </button>
-          <div class="nn-faq__answer" data-faq-answer>
-            <div class="nn-faq__answer-inner">
-              <p>{{ block.settings.answer }}</p>
+        {%- if block.type == 'faq' -%}
+          <div class="nn-faq__item" data-faq-item {{ block.shopify_attributes }}>
+            <button class="nn-faq__question" data-faq-toggle style="color: {{ block.settings.block_question_color | default: section.settings.heading_color }};font-size: {{ block.settings.block_question_size }}px;">
+              <span>{{ block.settings.question }}</span>
+              <span class="nn-faq__icon">+</span>
+            </button>
+            <div class="nn-faq__answer" data-faq-answer>
+              <div class="nn-faq__answer-inner">
+                <p style="color: {{ block.settings.block_answer_color | default: section.settings.text_color }};font-size: {{ block.settings.block_answer_size }}px;">{{ block.settings.answer }}</p>
+                {%- if block.settings.link_text != blank -%}
+                  <a href="{{ block.settings.link_url }}" class="nn-faq__ideas-link">{{ block.settings.link_text }}</a>
+                {%- endif -%}
+              </div>
             </div>
           </div>
-        </div>
+        {%- endif -%}
       {%- endfor -%}
     </div>
+  </div>
+  <div class="nn-faq__extra">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <{{ block.settings.tag }} class="nn-extra-heading" style="font-size: {{ block.settings.size }}px;color: {{ block.settings.color }};">{{ block.settings.text }}</{{ block.settings.tag }}>
+          </div>
+        {%- when 'text' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <div class="nn-extra-text" style="font-size: {{ block.settings.size }}px;color: {{ block.settings.color }};">{{ block.settings.content }}</div>
+          </div>
+        {%- when 'button' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link }}" class="nn-extra-btn" style="background: {{ block.settings.bg_color }};color: {{ block.settings.text_color }};border-radius: {{ block.settings.radius }}px;font-size: {{ block.settings.size }}px;">{{ block.settings.text }}</a>
+          </div>
+        {%- when 'image' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <div style="display: inline-block;border-radius: {{ block.settings.radius }}px;overflow: hidden;max-width: {{ block.settings.max_width }}px;width: 100%;">
+                {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'nn-extra-img' }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- when 'link' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.url }}" class="nn-extra-link" style="font-size: {{ block.settings.size }}px;color: {{ block.settings.color }};">{{ block.settings.text }}</a>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
   </div>
 </section>
 
 <style>
   .nn-faq {
-    background: #FAF7F2;
-    padding: 5rem 2rem;
-    font-family: 'DM Sans', sans-serif;
+    background: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding_top }}px 2rem {{ section.settings.padding_bottom }}px;
+    font-family: {{ section.settings.body_font.family | default: 'DM Sans' }}, {{ section.settings.body_font.fallback_families | default: 'sans-serif' }};
   }
   .nn-faq__container {
     max-width: 1200px;
@@ -43,51 +90,46 @@
     top: 6rem;
   }
   .nn-faq__eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
+    font-size: {{ section.settings.eyebrow_size }}px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: #9A8F7E;
+    color: {{ section.settings.eyebrow_color }};
     margin-bottom: 0.75rem;
     display: block;
   }
   .nn-faq__heading {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.75rem;
+    font-family: {{ section.settings.heading_font.family | default: 'DM Serif Display' }}, {{ section.settings.heading_font.fallback_families | default: 'serif' }};
+    font-size: {{ section.settings.heading_size }}px;
     font-weight: 400;
-    color: #30493B;
+    color: {{ section.settings.heading_color }};
     line-height: 1.15;
     margin: 0 0 1rem 0;
   }
   .nn-faq__heading em {
-    color: #731A47;
+    color: {{ section.settings.accent_color }};
     font-style: italic;
   }
   .nn-faq__subline {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.05rem;
-    color: #3D3D3D;
+    font-size: {{ section.settings.body_size }}px;
+    color: {{ section.settings.text_color }};
     margin-bottom: 1rem;
   }
   .nn-faq__email {
-    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     font-weight: 500;
-    color: #731A47;
+    color: {{ section.settings.accent_color }};
     text-decoration: underline;
     text-underline-offset: 3px;
   }
   .nn-faq__email:hover {
-    color: #30493B;
+    color: {{ section.settings.heading_color }};
   }
-
-  /* Accordion */
   .nn-faq__item {
-    border-bottom: 1px solid #E0DCD5;
+    border-bottom: 1px solid {{ section.settings.divider_color }};
   }
   .nn-faq__item:first-child {
-    border-top: 1px solid #E0DCD5;
+    border-top: 1px solid {{ section.settings.divider_color }};
   }
   .nn-faq__question {
     width: 100%;
@@ -98,27 +140,27 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.05rem;
+    font-family: {{ section.settings.body_font.family | default: 'DM Sans' }}, {{ section.settings.body_font.fallback_families | default: 'sans-serif' }};
+    font-size: {{ section.settings.question_size }}px;
     font-weight: 500;
-    color: #30493B;
+    color: {{ section.settings.heading_color }};
     text-align: left;
     gap: 1rem;
   }
   .nn-faq__question:hover {
-    color: #731A47;
+    color: {{ section.settings.accent_color }};
   }
   .nn-faq__icon {
     font-size: 1.5rem;
     font-weight: 300;
-    color: #9A8F7E;
+    color: {{ section.settings.eyebrow_color }};
     transition: transform 0.3s ease, color 0.3s ease;
     flex-shrink: 0;
     line-height: 1;
   }
   .nn-faq__item.is-open .nn-faq__icon {
     transform: rotate(45deg);
-    color: #731A47;
+    color: {{ section.settings.accent_color }};
   }
   .nn-faq__answer {
     max-height: 0;
@@ -132,12 +174,49 @@
     padding: 0 0 1.25rem 0;
   }
   .nn-faq__answer-inner p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
+    font-size: {{ section.settings.body_size }}px;
     line-height: 1.7;
-    color: #3D3D3D;
+    color: {{ section.settings.text_color }};
     margin: 0;
   }
+  .nn-faq__ideas-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: {{ section.settings.accent_color }};
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .nn-faq__ideas-link:hover {
+    color: {{ section.settings.heading_color }};
+  }
+  .nn-faq__extra {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .nn-extra-block { margin: 1.5rem 0; }
+  .nn-extra-heading {
+    font-family: {{ section.settings.heading_font.family | default: 'DM Serif Display' }}, {{ section.settings.heading_font.fallback_families | default: 'serif' }};
+    font-weight: 400;
+    margin: 0;
+  }
+  .nn-extra-text { line-height: 1.7; }
+  .nn-extra-btn {
+    display: inline-block;
+    font-weight: 600;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  .nn-extra-btn:hover { opacity: 0.85; }
+  .nn-extra-img { width: 100%; display: block; }
+  .nn-extra-link {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .nn-extra-link:hover { opacity: 0.7; }
 
   @media (max-width: 768px) {
     .nn-faq { padding: 3rem 1.25rem; }
@@ -148,7 +227,7 @@
     .nn-faq__left {
       position: static;
     }
-    .nn-faq__heading { font-size: 2.25rem; }
+    .nn-faq__heading { font-size: calc({{ section.settings.heading_size }}px * 0.8); }
   }
 </style>
 
@@ -159,11 +238,9 @@
       const toggle = item.querySelector('[data-faq-toggle]');
       toggle.addEventListener('click', function () {
         const isOpen = item.classList.contains('is-open');
-        // Close all
         items.forEach(function (i) {
           i.classList.remove('is-open');
         });
-        // Open clicked if it was closed
         if (!isOpen) {
           item.classList.add('is-open');
         }
@@ -178,6 +255,10 @@
   "tag": "section",
   "settings": [
     {
+      "type": "header",
+      "content": "Left column"
+    },
+    {
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow text",
@@ -185,14 +266,14 @@
     },
     {
       "type": "text",
-      "id": "heading",
-      "label": "Heading",
+      "id": "heading_line1",
+      "label": "Heading line 1",
       "default": "Got"
     },
     {
       "type": "text",
-      "id": "heading_italic",
-      "label": "Heading (italic part)",
+      "id": "heading_line2",
+      "label": "Heading line 2 (italic)",
       "default": "questions?"
     },
     {
@@ -204,26 +285,521 @@
     {
       "type": "text",
       "id": "email",
-      "label": "Email address",
+      "label": "Contact email",
       "default": "kirstyn@naunau.co.za"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF7F2"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Optional — overrides background color"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow — Support"
+    },
+    {
+      "type": "font_picker",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "default": "dm_sans_n6"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow color",
+      "default": "#9A8F7E"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Heading Line 1 — Got"
+    },
+    {
+      "type": "font_picker",
+      "id": "line1_font",
+      "label": "Line 1 font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "line1_color",
+      "label": "Line 1 color",
+      "default": "#30493B"
+    },
+    {
+      "type": "range",
+      "id": "line1_size",
+      "label": "Line 1 font size",
+      "min": 20,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Heading Line 2 — questions?"
+    },
+    {
+      "type": "font_picker",
+      "id": "line2_font",
+      "label": "Line 2 font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "line2_color",
+      "label": "Line 2 color",
+      "default": "#731A47"
+    },
+    {
+      "type": "range",
+      "id": "line2_size",
+      "label": "Line 2 font size",
+      "min": 20,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Subline — We're always happy to help"
+    },
+    {
+      "type": "font_picker",
+      "id": "subline_font",
+      "label": "Subline font",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "color",
+      "id": "subline_color",
+      "label": "Subline color",
+      "default": "#3D3D3D"
+    },
+    {
+      "type": "range",
+      "id": "subline_size",
+      "label": "Subline font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Fonts (fallback)"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font (general)",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font (general)",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "header",
+      "content": "Colors (fallback)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color (default)",
+      "default": "#30493B"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (links)",
+      "default": "#731A47"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#3D3D3D"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider line color",
+      "default": "#E0DCD5"
+    },
+    {
+      "type": "header",
+      "content": "FAQ typography"
+    },
+    {
+      "type": "range",
+      "id": "question_size",
+      "label": "Question font size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Answer font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
     }
   ],
   "blocks": [
     {
       "type": "faq",
-      "name": "FAQ Item",
+      "name": "FAQ item",
       "settings": [
         {
           "type": "text",
           "id": "question",
           "label": "Question",
-          "default": "Your question here"
+          "default": "Your question here?"
         },
         {
           "type": "textarea",
           "id": "answer",
           "label": "Answer",
-          "default": "Your answer here"
+          "default": "Your answer here."
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Optional link text",
+          "info": "Leave blank for no link"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Optional link URL"
+        },
+        {
+          "type": "header",
+          "content": "Block styling"
+        },
+        {
+          "type": "color",
+          "id": "block_question_color",
+          "label": "Question color",
+          "default": "#30493B"
+        },
+        {
+          "type": "color",
+          "id": "block_answer_color",
+          "label": "Answer color",
+          "default": "#3D3D3D"
+        },
+        {
+          "type": "range",
+          "id": "block_question_size",
+          "label": "Question font size",
+          "min": 14,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 17
+        },
+        {
+          "type": "range",
+          "id": "block_answer_size",
+          "label": "Answer font size",
+          "min": 12,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 15
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Heading text",
+          "default": "Your heading"
+        },
+        {
+          "type": "select",
+          "id": "tag",
+          "label": "Heading level",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 14,
+          "max": 72,
+          "step": 2,
+          "unit": "px",
+          "default": 36
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color",
+          "default": "#30493B"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Text content",
+          "default": "<p>Your text here</p>"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color",
+          "default": "#3D3D3D"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Button text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background",
+          "default": "#731A47"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "default": 50
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Max width",
+          "min": 100,
+          "max": 1200,
+          "step": 50,
+          "unit": "px",
+          "default": 600
+        },
+        {
+          "type": "range",
+          "id": "radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link text",
+          "default": "Learn more →"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color",
+          "default": "#731A47"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
         }
       ]
     }
@@ -232,48 +808,12 @@
     {
       "name": "NauNau FAQ",
       "blocks": [
-        {
-          "type": "faq",
-          "settings": {
-            "question": "Are the bags really oven-safe?",
-            "answer": "Yes, safe for oven, dishwasher, fridge, freezer, microwave, and air fryer. Handles −40°C to 220°C. Do not let the bag touch a direct heating element or open flame."
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "question": "How do I clean them?",
-            "answer": "Hot soapy water, leave open to air dry. Dishwasher safe (top rack). For oily residue, warm soapy water works well."
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "question": "What is your return policy?",
-            "answer": "30-day return policy. Unused, original condition. Contact us to arrange."
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "question": "How much does shipping cost?",
-            "answer": "R75 flat rate, free over R500. Ships via The Courier Guy, 3–5 business days."
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "question": "Are they safe for kids and babies?",
-            "answer": "100% BPA-free and PVC-free. Food-grade silicone. Safe for lunchboxes, baby food, and sterilising baby products."
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "question": "What can I use the bags for?",
-            "answer": "Meal prep, marinating, freezing, snacks, school lunches, sous vide, travel toiletries, and more."
-          }
-        }
+        { "type": "faq", "settings": { "question": "Are the bags really oven-safe?", "answer": "Yes, safe for oven, dishwasher, fridge, freezer, microwave, and air fryer. Handles −40°C to 220°C. Do not let the bag touch a direct heating element or open flame." } },
+        { "type": "faq", "settings": { "question": "How do I clean them?", "answer": "Hot soapy water, leave open to air dry. Dishwasher safe (top rack). For oily residue, warm soapy water works well." } },
+        { "type": "faq", "settings": { "question": "What is your return policy?", "answer": "30-day return policy. Unused, original condition. Contact us to arrange." } },
+        { "type": "faq", "settings": { "question": "How much does shipping cost?", "answer": "R75 flat rate, free over R500. Ships via The Courier Guy, 3–5 business days." } },
+        { "type": "faq", "settings": { "question": "Are they safe for kids and babies?", "answer": "100% BPA-free and PVC-free. Food-grade silicone. Safe for lunchboxes, baby food, and sterilising baby products." } },
+        { "type": "faq", "settings": { "question": "What can I use the bags for?", "answer": "Meal prep, marinating, freezing, snacks, school lunches, sous vide, travel toiletries, and more.", "link_text": "See more ideas for your bags →", "link_url": "#ideas" } }
       ]
     }
   ]

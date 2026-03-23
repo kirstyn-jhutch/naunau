@@ -86,6 +86,72 @@
   }
 {% endstylesheet %}
 
+{%- comment -%} NauNau footer customisations {%- endcomment -%}
+<style>
+  /* Footer background: dark green */
+  #shopify-section-footer_socials,
+  #shopify-section-footer_main {
+    background-color: #30493B !important;
+  }
+  #shopify-section-footer_socials .section-background,
+  #shopify-section-footer_main .section-background {
+    background-color: #30493B !important;
+  }
+
+  /* All text white */
+  #shopify-section-footer_socials,
+  #shopify-section-footer_socials *,
+  #shopify-section-footer_main,
+  #shopify-section-footer_main * {
+    color: #ffffff !important;
+  }
+
+  /* Social icons: same row as logo, centered in remaining space */
+  footer .social-icons__wrapper {
+    --icon-size-lg: 40px !important;
+    justify-content: center !important;
+    gap: 48px !important;
+    width: 100% !important;
+    padding: 30px 0 !important;
+    flex: 1;
+  }
+  footer .social-icons__icon-wrapper,
+  footer .social-icons__icon-wrapper:has(.social-icons__icon path) {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  footer .social-icons__icon {
+    width: 40px !important;
+    height: 40px !important;
+    display: block !important;
+  }
+  footer .social-icons__icon svg {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  /* Social icon colour: white */
+  footer .social-icons__icon path,
+  footer .social-icons__icon rect,
+  footer .social-icons__icon line,
+  footer .social-icons__icon circle {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+  }
+
+  /* Logo: white */
+  #shopify-section-footer_main .logo-block__image {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Links white + hover */
+  #shopify-section-footer_main a {
+    color: #ffffff !important;
+  }
+  #shopify-section-footer_main a:hover {
+    opacity: 0.7;
+  }
+</style>
+
 {% schema %}
 {
   "name": "t:names.footer",

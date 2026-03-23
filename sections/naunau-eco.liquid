@@ -1,27 +1,73 @@
-<section class="nn-eco">
+{%- style -%}
+  {{ section.settings.eyebrow_font | font_face: font_display: 'swap' }}
+  {{ section.settings.line1_font | font_face: font_display: 'swap' }}
+  {{ section.settings.line2_font | font_face: font_display: 'swap' }}
+  {{ section.settings.desc_font | font_face: font_display: 'swap' }}
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {{ section.settings.body_font | font_face: font_display: 'swap' }}
+{%- endstyle -%}
+
+<section id="eco" class="nn-eco" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
   <div class="nn-eco__container">
     <div class="nn-eco__left">
-      <span class="nn-eco__eyebrow">{{ section.settings.eyebrow }}</span>
-      <h2 class="nn-eco__heading">{{ section.settings.heading }}<br><em>{{ section.settings.heading_italic }}</em></h2>
-      <p class="nn-eco__desc">{{ section.settings.description }}</p>
-      <a href="{{ section.settings.cta_link }}" class="nn-eco__cta">{{ section.settings.cta_text }}</a>
+      <span class="nn-eco__eyebrow" style="color: {{ section.settings.eyebrow_color }};font-size: {{ section.settings.eyebrow_size }}px;font-family: {{ section.settings.eyebrow_font.family }}, {{ section.settings.eyebrow_font.fallback_families }};">{{ section.settings.eyebrow }}</span>
+      <h2 class="nn-eco__heading">
+        <span class="nn-eco__line1" style="color: {{ section.settings.line1_color }};font-size: {{ section.settings.line1_size }}px;font-family: {{ section.settings.line1_font.family }}, {{ section.settings.line1_font.fallback_families }};">{{ section.settings.heading_line1 }}</span><br>
+        <em class="nn-eco__line2" style="color: {{ section.settings.line2_color }};font-size: {{ section.settings.line2_size }}px;font-family: {{ section.settings.line2_font.family }}, {{ section.settings.line2_font.fallback_families }};">{{ section.settings.heading_line2 }}</em>
+      </h2>
+      <p class="nn-eco__desc" style="color: {{ section.settings.desc_color }};font-size: {{ section.settings.desc_size }}px;font-family: {{ section.settings.desc_font.family }}, {{ section.settings.desc_font.fallback_families }};">{{ section.settings.description }}</p>
+      {%- if section.settings.cta_text != blank -%}
+        <a href="{{ section.settings.cta_link }}" class="nn-eco__cta">{{ section.settings.cta_text }}</a>
+      {%- endif -%}
     </div>
     <div class="nn-eco__right">
       {%- for block in section.blocks -%}
-        <div class="nn-eco__stat-box" {{ block.shopify_attributes }}>
-          <span class="nn-eco__stat-number">{{ block.settings.stat_number }}</span>
-          <span class="nn-eco__stat-label">{{ block.settings.stat_label }}</span>
-        </div>
+        {%- if block.type == 'stat' -%}
+          <div class="nn-eco__stat-box" style="background: {{ block.settings.block_bg_color | default: section.settings.card_bg_color }};border-radius: {{ block.settings.block_radius }}px;" {{ block.shopify_attributes }}>
+            <span class="nn-eco__stat-number" style="color: {{ block.settings.block_number_color | default: section.settings.heading_color }};font-size: {{ block.settings.block_number_size }}px;">{{ block.settings.stat_number }}</span>
+            <span class="nn-eco__stat-label" style="color: {{ block.settings.block_label_color | default: section.settings.text_color }};font-size: {{ block.settings.block_label_size }}px;">{{ block.settings.stat_label }}</span>
+          </div>
+        {%- endif -%}
       {%- endfor -%}
     </div>
+  </div>
+  <div class="nn-eco__extra">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <{{ block.settings.tag }} class="nn-extra-heading" style="font-size: {{ block.settings.size }}px;color: {{ block.settings.color }};">{{ block.settings.text }}</{{ block.settings.tag }}>
+          </div>
+        {%- when 'text' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <div class="nn-extra-text" style="font-size: {{ block.settings.size }}px;color: {{ block.settings.color }};">{{ block.settings.content }}</div>
+          </div>
+        {%- when 'button' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link }}" class="nn-extra-btn" style="background: {{ block.settings.bg_color }};color: {{ block.settings.text_color }};border-radius: {{ block.settings.radius }}px;font-size: {{ block.settings.size }}px;">{{ block.settings.text }}</a>
+          </div>
+        {%- when 'image' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <div style="display: inline-block;border-radius: {{ block.settings.radius }}px;overflow: hidden;max-width: {{ block.settings.max_width }}px;width: 100%;">
+                {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'nn-extra-img' }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- when 'link' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.url }}" class="nn-extra-link" style="font-size: {{ block.settings.size }}px;color: {{ block.settings.color }};">{{ block.settings.text }}</a>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
   </div>
 </section>
 
 <style>
   .nn-eco {
-    background-color: #B5CEB7;
-    padding: 5rem 2rem;
-    font-family: 'DM Sans', sans-serif;
+    background-color: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding_top }}px 2rem {{ section.settings.padding_bottom }}px;
+    font-family: {{ section.settings.body_font.family | default: 'DM Sans' }}, {{ section.settings.body_font.fallback_families | default: 'sans-serif' }};
   }
   .nn-eco__container {
     max-width: 1200px;
@@ -32,86 +78,110 @@
     align-items: center;
   }
   .nn-eco__eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
+    font-size: {{ section.settings.eyebrow_size }}px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: #30493B;
+    color: {{ section.settings.text_color }};
     margin-bottom: 0.75rem;
     display: block;
   }
   .nn-eco__heading {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.75rem;
+    font-family: {{ section.settings.heading_font.family | default: 'DM Serif Display' }}, {{ section.settings.heading_font.fallback_families | default: 'serif' }};
+    font-size: {{ section.settings.heading_size }}px;
     font-weight: 400;
-    color: #30493B;
+    color: {{ section.settings.heading_color }};
     line-height: 1.15;
     margin: 0 0 1.25rem 0;
   }
   .nn-eco__heading em {
-    color: #731A47;
+    color: {{ section.settings.accent_color }};
     font-style: italic;
   }
   .nn-eco__desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.05rem;
+    font-size: {{ section.settings.body_size }}px;
     line-height: 1.7;
-    color: #30493B;
+    color: {{ section.settings.text_color }};
     margin-bottom: 2rem;
     max-width: 440px;
   }
   .nn-eco__cta {
     display: inline-block;
-    font-family: 'DM Sans', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #30493B;
-    background: #fff;
+    color: {{ section.settings.btn_text_color }};
+    background: {{ section.settings.btn_bg_color }};
     border: none;
     padding: 0.85rem 2rem;
-    border-radius: 50px;
+    border-radius: {{ section.settings.btn_radius }}px;
     text-decoration: none;
     transition: all 0.3s ease;
     cursor: pointer;
   }
   .nn-eco__cta:hover {
-    background: #30493B;
-    color: #fff;
+    background: {{ section.settings.heading_color }};
+    color: {{ section.settings.btn_bg_color }};
   }
   .nn-eco__right {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: {{ section.settings.card_gap }}px;
   }
   .nn-eco__stat-box {
-    background: rgba(255,255,255,0.45);
+    background: {{ section.settings.card_bg_color }};
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid #fff;
-    border-radius: 16px;
+    border: 1px solid {{ section.settings.card_border_color }};
+    border-radius: {{ section.settings.card_radius }}px;
     padding: 1.75rem 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .nn-eco__stat-box:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(48,73,59,0.12);
+  .nn-eco__stat-box:hover,
+  .nn-eco__stat-box:active {
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(48,73,59,0.15);
+    z-index: 1;
   }
   .nn-eco__stat-number {
     display: block;
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.25rem;
+    font-family: {{ section.settings.heading_font.family | default: 'DM Serif Display' }}, {{ section.settings.heading_font.fallback_families | default: 'serif' }};
+    font-size: {{ section.settings.stat_number_size }}px;
     font-weight: 400;
-    color: #30493B;
+    color: {{ section.settings.heading_color }};
     margin-bottom: 0.4rem;
     line-height: 1;
   }
   .nn-eco__stat-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    color: #30493B;
+    font-size: {{ section.settings.stat_label_size }}px;
+    color: {{ section.settings.text_color }};
     line-height: 1.5;
   }
+  .nn-eco__extra {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .nn-extra-block { margin: 1.5rem 0; }
+  .nn-extra-heading {
+    font-family: {{ section.settings.heading_font.family | default: 'DM Serif Display' }}, {{ section.settings.heading_font.fallback_families | default: 'serif' }};
+    font-weight: 400;
+    margin: 0;
+  }
+  .nn-extra-text { line-height: 1.7; }
+  .nn-extra-btn {
+    display: inline-block;
+    font-weight: 600;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  .nn-extra-btn:hover { opacity: 0.85; }
+  .nn-extra-img { width: 100%; display: block; }
+  .nn-extra-link {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .nn-extra-link:hover { opacity: 0.7; }
 
   @media (max-width: 768px) {
     .nn-eco { padding: 3rem 1.25rem; }
@@ -119,7 +189,7 @@
       grid-template-columns: 1fr;
       gap: 2.5rem;
     }
-    .nn-eco__heading { font-size: 2.25rem; }
+    .nn-eco__heading { font-size: calc({{ section.settings.heading_size }}px * 0.8); }
     .nn-eco__right {
       grid-template-columns: 1fr 1fr;
       gap: 0.75rem;
@@ -137,6 +207,10 @@
   "tag": "section",
   "settings": [
     {
+      "type": "header",
+      "content": "Content"
+    },
+    {
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow text",
@@ -144,14 +218,14 @@
     },
     {
       "type": "text",
-      "id": "heading",
-      "label": "Heading",
+      "id": "heading_line1",
+      "label": "Heading line 1",
       "default": "Small swap."
     },
     {
       "type": "text",
-      "id": "heading_italic",
-      "label": "Heading (italic part)",
+      "id": "heading_line2",
+      "label": "Heading line 2 (italic)",
       "default": "Massive impact."
     },
     {
@@ -169,26 +243,581 @@
     {
       "type": "url",
       "id": "cta_link",
-      "label": "Button link",
-      "default": "/#shopify-section-product_list_family"
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#B5CEB7"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Optional — overrides background color"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow — Why It Matters"
+    },
+    {
+      "type": "font_picker",
+      "id": "eyebrow_font",
+      "label": "Eyebrow font",
+      "default": "dm_sans_n6"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow color",
+      "default": "#30493B"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Eyebrow font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Heading Line 1"
+    },
+    {
+      "type": "font_picker",
+      "id": "line1_font",
+      "label": "Line 1 font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "line1_color",
+      "label": "Line 1 color",
+      "default": "#30493B"
+    },
+    {
+      "type": "range",
+      "id": "line1_size",
+      "label": "Line 1 font size",
+      "min": 20,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Heading Line 2 (italic)"
+    },
+    {
+      "type": "font_picker",
+      "id": "line2_font",
+      "label": "Line 2 font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "line2_color",
+      "label": "Line 2 color",
+      "default": "#731A47"
+    },
+    {
+      "type": "range",
+      "id": "line2_size",
+      "label": "Line 2 font size",
+      "min": 20,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Description text"
+    },
+    {
+      "type": "font_picker",
+      "id": "desc_font",
+      "label": "Description font",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Description color",
+      "default": "#30493B"
+    },
+    {
+      "type": "range",
+      "id": "desc_size",
+      "label": "Description font size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "header",
+      "content": "Fonts (fallback)"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font (for stat cards)",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font (general)",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "header",
+      "content": "Colors (fallback)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color (stat cards)",
+      "default": "#30493B"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#731A47"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#30493B"
+    },
+    {
+      "type": "header",
+      "content": "Stat card typography"
+    },
+    {
+      "type": "range",
+      "id": "stat_number_size",
+      "label": "Stat number font size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "stat_label_size",
+      "label": "Stat label font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button text color",
+      "default": "#30493B"
+    },
+    {
+      "type": "range",
+      "id": "btn_radius",
+      "label": "Button corner radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Stat cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#ffffff73"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card corner radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap between cards",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
     }
   ],
   "blocks": [
     {
       "type": "stat",
-      "name": "Stat",
+      "name": "Stat box",
       "settings": [
         {
           "type": "text",
           "id": "stat_number",
-          "label": "Number",
+          "label": "Stat number",
           "default": "5,000×"
         },
         {
           "type": "text",
           "id": "stat_label",
-          "label": "Label",
+          "label": "Stat description",
           "default": "More uses than a single-use plastic bag"
+        },
+        {
+          "type": "header",
+          "content": "Block styling"
+        },
+        {
+          "type": "color",
+          "id": "block_bg_color",
+          "label": "Background color",
+          "default": "#ffffff73"
+        },
+        {
+          "type": "color",
+          "id": "block_number_color",
+          "label": "Number color",
+          "default": "#30493B"
+        },
+        {
+          "type": "color",
+          "id": "block_label_color",
+          "label": "Label color",
+          "default": "#30493B"
+        },
+        {
+          "type": "range",
+          "id": "block_number_size",
+          "label": "Number font size",
+          "min": 20,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 36
+        },
+        {
+          "type": "range",
+          "id": "block_label_size",
+          "label": "Label font size",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "block_radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Heading text",
+          "default": "Your heading"
+        },
+        {
+          "type": "select",
+          "id": "tag",
+          "label": "Heading level",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 14,
+          "max": 72,
+          "step": 2,
+          "unit": "px",
+          "default": 36
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color",
+          "default": "#30493B"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Text content",
+          "default": "<p>Your text here</p>"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color",
+          "default": "#3D3D3D"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Button text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background",
+          "default": "#731A47"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "default": 50
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Max width",
+          "min": 100,
+          "max": 1200,
+          "step": 50,
+          "unit": "px",
+          "default": 600
+        },
+        {
+          "type": "range",
+          "id": "radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link text",
+          "default": "Learn more →"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color",
+          "default": "#731A47"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
         }
       ]
     }
@@ -197,34 +826,10 @@
     {
       "name": "NauNau Eco",
       "blocks": [
-        {
-          "type": "stat",
-          "settings": {
-            "stat_number": "5,000×",
-            "stat_label": "More uses than a single-use plastic bag"
-          }
-        },
-        {
-          "type": "stat",
-          "settings": {
-            "stat_number": "450+",
-            "stat_label": "Years for a plastic bag to decompose"
-          }
-        },
-        {
-          "type": "stat",
-          "settings": {
-            "stat_number": "0%",
-            "stat_label": "BPA, PVC, or harmful chemicals"
-          }
-        },
-        {
-          "type": "stat",
-          "settings": {
-            "stat_number": "100%",
-            "stat_label": "Platinum food-grade silicone"
-          }
-        }
+        { "type": "stat", "settings": { "stat_number": "5,000×", "stat_label": "More uses than a single-use plastic bag" } },
+        { "type": "stat", "settings": { "stat_number": "450+", "stat_label": "Years for a plastic bag to decompose" } },
+        { "type": "stat", "settings": { "stat_number": "0%", "stat_label": "BPA, PVC, or harmful chemicals" } },
+        { "type": "stat", "settings": { "stat_number": "100%", "stat_label": "Platinum food-grade silicone" } }
       ]
     }
   ]

@@ -1,0 +1,514 @@
+<div class="nn-sg-section" style="padding: {{ section.settings.padding_y }}px {{ section.settings.padding_x }}px;max-width: {{ section.settings.max_width }}px;margin: 0 auto;">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="nn-sg__heading" style="
+      font-family: 'Chewy', cursive;
+      font-size: {{ section.settings.heading_size }}px;
+      color: {{ section.settings.heading_color }};
+      text-align: {{ section.settings.heading_align }};
+      margin-bottom: 24px;
+    ">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  <div class="nn-sg__tabs">
+    <button class="nn-sg__tab nn-sg__tab--active" data-nn-tab="tab1">{{ section.settings.tab1_name }}</button>
+    <button class="nn-sg__tab" data-nn-tab="tab2">{{ section.settings.tab2_name }}</button>
+    <button class="nn-sg__tab" data-nn-tab="tab3">{{ section.settings.tab3_name }}</button>
+    <button class="nn-sg__tab" data-nn-tab="tab4">{{ section.settings.tab4_name }}</button>
+  </div>
+
+  {%- comment -%} Tab 1 {%- endcomment -%}
+  <div class="nn-sg__panel nn-sg__panel--active" data-nn-panel="tab1">
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t1_emoji1 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t1_desc1 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t1_emoji2 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t1_desc2 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t1_emoji3 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t1_desc3 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t1_emoji4 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t1_desc4 }}</p>
+    </div>
+  </div>
+
+  {%- comment -%} Tab 2 {%- endcomment -%}
+  <div class="nn-sg__panel" data-nn-panel="tab2">
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t2_emoji1 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t2_desc1 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t2_emoji2 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t2_desc2 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t2_emoji3 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t2_desc3 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t2_emoji4 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t2_desc4 }}</p>
+    </div>
+  </div>
+
+  {%- comment -%} Tab 3 {%- endcomment -%}
+  <div class="nn-sg__panel" data-nn-panel="tab3">
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t3_emoji1 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t3_desc1 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t3_emoji2 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t3_desc2 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t3_emoji3 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t3_desc3 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t3_emoji4 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t3_desc4 }}</p>
+    </div>
+  </div>
+
+  {%- comment -%} Tab 4 {%- endcomment -%}
+  <div class="nn-sg__panel" data-nn-panel="tab4">
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t4_emoji1 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t4_desc1 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t4_emoji2 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t4_desc2 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t4_emoji3 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t4_desc3 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ section.settings.t4_emoji4 }}</span>
+      <p class="nn-sg__desc">{{ section.settings.t4_desc4 }}</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    document.addEventListener('click', function(e) {
+      var tab = e.target.closest('.nn-sg__tab');
+      if (!tab) return;
+      var parent = tab.closest('.nn-sg-section');
+      if (!parent) return;
+      var tabs = parent.querySelectorAll('.nn-sg__tab');
+      var panels = parent.querySelectorAll('.nn-sg__panel');
+      for (var i = 0; i < tabs.length; i++) { tabs[i].classList.remove('nn-sg__tab--active'); }
+      for (var j = 0; j < panels.length; j++) { panels[j].classList.remove('nn-sg__panel--active'); }
+      tab.classList.add('nn-sg__tab--active');
+      var target = parent.querySelector('[data-nn-panel="' + tab.getAttribute('data-nn-tab') + '"]');
+      if (target) target.classList.add('nn-sg__panel--active');
+    });
+  })();
+</script>
+
+<style>
+  .nn-sg-section {
+    width: 100%;
+  }
+  .nn-sg__heading {
+    font-weight: 400;
+  }
+  .nn-sg__tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .nn-sg__tab {
+    padding: 10px 20px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 30px;
+    background: transparent;
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+  .nn-sg__tab:hover {
+    border-color: #30493b;
+    color: #30493b;
+  }
+  .nn-sg__tab--active {
+    background: #30493b !important;
+    color: #fff !important;
+    border-color: #30493b !important;
+  }
+  .nn-sg__panel {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .nn-sg__panel--active {
+    display: grid;
+  }
+  .nn-sg__card {
+    background: #f5f5f0;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .nn-sg__emoji {
+    font-size: 32px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .nn-sg__desc {
+    font-size: 15px;
+    color: #333;
+    margin: 0;
+    line-height: 1.5;
+    padding-top: 4px;
+  }
+  .nn-sg__desc strong {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  @media (max-width: 480px) {
+    .nn-sg__tabs {
+      gap: 6px;
+    }
+    .nn-sg__tab {
+      padding: 8px 14px;
+      font-size: 12px;
+    }
+    .nn-sg__card {
+      padding: 14px;
+    }
+    .nn-sg__emoji {
+      font-size: 26px;
+    }
+    .nn-sg__desc {
+      font-size: 13px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "NauNau Size Guide",
+  "tag": "section",
+  "class": "nn-size-guide-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What fits inside?"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 18,
+      "max": 40,
+      "step": 1,
+      "default": 26,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading colour",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Heading alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Centre" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "default": 800,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Horizontal padding",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "──── The Snack · 400ml ────"
+    },
+    {
+      "type": "text",
+      "id": "tab1_name",
+      "label": "Tab name",
+      "default": "The Snack · 400ml"
+    },
+    {
+      "type": "text",
+      "id": "t1_emoji1",
+      "label": "Item 1 emoji",
+      "default": "🍎"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t1_desc1",
+      "label": "Item 1 description",
+      "default": "<strong>1 cut-up apple</strong> or a handful of grapes"
+    },
+    {
+      "type": "text",
+      "id": "t1_emoji2",
+      "label": "Item 2 emoji",
+      "default": "🥜"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t1_desc2",
+      "label": "Item 2 description",
+      "default": "<strong>Nuts and biltong</strong> for snacking"
+    },
+    {
+      "type": "text",
+      "id": "t1_emoji3",
+      "label": "Item 3 emoji",
+      "default": "🥕"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t1_desc3",
+      "label": "Item 3 description",
+      "default": "<strong>Veggie sticks</strong> and a dip"
+    },
+    {
+      "type": "text",
+      "id": "t1_emoji4",
+      "label": "Item 4 emoji",
+      "default": "🧀"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t1_desc4",
+      "label": "Item 4 description",
+      "default": "<strong>A block of cheese</strong> or cold cuts"
+    },
+    {
+      "type": "header",
+      "content": "──── The Sandwich · 800ml ────"
+    },
+    {
+      "type": "text",
+      "id": "tab2_name",
+      "label": "Tab name",
+      "default": "The Sandwich · 800ml"
+    },
+    {
+      "type": "text",
+      "id": "t2_emoji1",
+      "label": "Item 1 emoji",
+      "default": "🥪"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t2_desc1",
+      "label": "Item 1 description",
+      "default": "<strong>A sandwich</strong> cut in half"
+    },
+    {
+      "type": "text",
+      "id": "t2_emoji2",
+      "label": "Item 2 emoji",
+      "default": "🫘"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t2_desc2",
+      "label": "Item 2 description",
+      "default": "<strong>A bunch of green beans</strong>"
+    },
+    {
+      "type": "text",
+      "id": "t2_emoji3",
+      "label": "Item 3 emoji",
+      "default": "🫐"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t2_desc3",
+      "label": "Item 3 description",
+      "default": "<strong>A punnet of berries</strong>"
+    },
+    {
+      "type": "text",
+      "id": "t2_emoji4",
+      "label": "Item 4 emoji",
+      "default": "🍗"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t2_desc4",
+      "label": "Item 4 description",
+      "default": "<strong>2 chicken breasts</strong>"
+    },
+    {
+      "type": "header",
+      "content": "──── The Crescent · 1000ml ────"
+    },
+    {
+      "type": "text",
+      "id": "tab3_name",
+      "label": "Tab name",
+      "default": "The Crescent · 1000ml"
+    },
+    {
+      "type": "text",
+      "id": "t3_emoji1",
+      "label": "Item 1 emoji",
+      "default": "🍇"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t3_desc1",
+      "label": "Item 1 description",
+      "default": "<strong>A whole bunch of grapes</strong>"
+    },
+    {
+      "type": "text",
+      "id": "t3_emoji2",
+      "label": "Item 2 emoji",
+      "default": "🥦"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t3_desc2",
+      "label": "Item 2 description",
+      "default": "<strong>A head of broccoli</strong>"
+    },
+    {
+      "type": "text",
+      "id": "t3_emoji3",
+      "label": "Item 3 emoji",
+      "default": "🥗"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t3_desc3",
+      "label": "Item 3 description",
+      "default": "<strong>Salad</strong> for the whole family"
+    },
+    {
+      "type": "text",
+      "id": "t3_emoji4",
+      "label": "Item 4 emoji",
+      "default": "🍝"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t3_desc4",
+      "label": "Item 4 description",
+      "default": "<strong>Leftover pasta</strong>"
+    },
+    {
+      "type": "header",
+      "content": "──── The Keeper · 2000ml ────"
+    },
+    {
+      "type": "text",
+      "id": "tab4_name",
+      "label": "Tab name",
+      "default": "The Keeper · 2000ml"
+    },
+    {
+      "type": "text",
+      "id": "t4_emoji1",
+      "label": "Item 1 emoji",
+      "default": "🥩"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t4_desc1",
+      "label": "Item 1 description",
+      "default": "<strong>Braai meat marinade</strong>"
+    },
+    {
+      "type": "text",
+      "id": "t4_emoji2",
+      "label": "Item 2 emoji",
+      "default": "🐟"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t4_desc2",
+      "label": "Item 2 description",
+      "default": "<strong>2 pieces of salmon</strong>"
+    },
+    {
+      "type": "text",
+      "id": "t4_emoji3",
+      "label": "Item 3 emoji",
+      "default": "🍲"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t4_desc3",
+      "label": "Item 3 description",
+      "default": "<strong>Big batch of soup</strong>"
+    },
+    {
+      "type": "text",
+      "id": "t4_emoji4",
+      "label": "Item 4 emoji",
+      "default": "🥬"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "t4_desc4",
+      "label": "Item 4 description",
+      "default": "<strong>1kg of vegetables</strong>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NauNau Size Guide"
+    }
+  ]
+}
+{% endschema %}

@@ -1,47 +1,87 @@
-<section class="nn-ideas" id="ideas">
+{%- style -%}
+  {{ section.settings.heading_font_picker | font_face: font_display: 'swap' }}
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {{ section.settings.body_font | font_face: font_display: 'swap' }}
+{%- endstyle -%}
+
+<section class="nn-ideas" id="ideas" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');background-size: cover;background-position: center;"{% endif %}>
   <div class="nn-ideas__container">
-    <h2 class="nn-ideas__heading">{{ section.settings.heading }}</h2>
+    <h2 class="nn-ideas__heading" style="color: {{ section.settings.heading_color_picker }};font-size: {{ section.settings.heading_size }}px;font-family: {{ section.settings.heading_font_picker.family }}, {{ section.settings.heading_font_picker.fallback_families }};">{{ section.settings.heading }}</h2>
     <div class="nn-ideas__grid">
       {%- for block in section.blocks -%}
-        <div class="nn-ideas__card" {{ block.shopify_attributes }}>
-          <span class="nn-ideas__tag {% if block.settings.tag_color == 'berry' %}nn-ideas__tag--berry{% else %}nn-ideas__tag--green{% endif %}">{{ block.settings.tag }}</span>
-          <h3 class="nn-ideas__card-title">{{ block.settings.title }}</h3>
-          <p class="nn-ideas__card-desc">{{ block.settings.description }}</p>
-          {%- if block.settings.link_text != blank -%}
-            <a href="{{ block.settings.link_url }}" class="nn-ideas__card-link">{{ block.settings.link_text }}</a>
-          {%- endif -%}
-        </div>
+        {%- if block.type == 'idea' -%}
+          <div class="nn-ideas__card" style="background: {{ block.settings.block_bg_color | default: section.settings.card_bg_color }};border-radius: {{ block.settings.block_radius }}px;" {{ block.shopify_attributes }}>
+            <span class="nn-ideas__tag {% if block.settings.tag_color == 'berry' %}nn-ideas__tag--berry{% else %}nn-ideas__tag--green{% endif %}">{{ block.settings.category }}</span>
+            <h3 class="nn-ideas__card-title" style="color: {{ block.settings.block_title_color | default: section.settings.heading_color }};font-size: {{ block.settings.block_title_size }}px;">{{ block.settings.title }}</h3>
+            <p class="nn-ideas__card-desc" style="color: {{ block.settings.block_text_color | default: section.settings.text_color }};font-size: {{ block.settings.block_body_size }}px;">{{ block.settings.description }}</p>
+            {%- if block.settings.link_url != blank -%}
+              <a href="{{ block.settings.link_url }}" class="nn-ideas__card-link" style="color: {{ block.settings.block_link_color | default: section.settings.link_color }};">{{ block.settings.link_text | default: "Read More →" }}</a>
+            {%- else -%}
+              <span class="nn-ideas__card-link" style="color: {{ block.settings.block_link_color | default: section.settings.link_color }};">{{ block.settings.link_text | default: "Read More →" }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
       {%- endfor -%}
     </div>
+  </div>
+  <div class="nn-ideas__extra">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <{{ block.settings.tag }} class="nn-extra-heading" style="font-size: {{ block.settings.size }}px;color: {{ block.settings.color }};">{{ block.settings.text }}</{{ block.settings.tag }}>
+          </div>
+        {%- when 'text' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <div class="nn-extra-text" style="font-size: {{ block.settings.size }}px;color: {{ block.settings.color }};">{{ block.settings.content }}</div>
+          </div>
+        {%- when 'button' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link }}" class="nn-extra-btn" style="background: {{ block.settings.bg_color }};color: {{ block.settings.text_color }};border-radius: {{ block.settings.radius }}px;font-size: {{ block.settings.size }}px;">{{ block.settings.text }}</a>
+          </div>
+        {%- when 'image' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <div style="display: inline-block;border-radius: {{ block.settings.radius }}px;overflow: hidden;max-width: {{ block.settings.max_width }}px;width: 100%;">
+                {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'nn-extra-img' }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- when 'link' -%}
+          <div class="nn-extra-block" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.url }}" class="nn-extra-link" style="font-size: {{ block.settings.size }}px;color: {{ block.settings.color }};">{{ block.settings.text }}</a>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
   </div>
 </section>
 
 <style>
   .nn-ideas {
-    background: #fff;
-    padding: 5rem 2rem;
-    font-family: 'DM Sans', sans-serif;
+    background: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding_top }}px 2rem {{ section.settings.padding_bottom }}px;
+    font-family: {{ section.settings.body_font.family | default: 'DM Sans' }}, {{ section.settings.body_font.fallback_families | default: 'sans-serif' }};
   }
   .nn-ideas__container {
     max-width: 1200px;
     margin: 0 auto;
   }
   .nn-ideas__heading {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.5rem;
+    font-family: {{ section.settings.heading_font.family | default: 'DM Serif Display' }}, {{ section.settings.heading_font.fallback_families | default: 'serif' }};
+    font-size: {{ section.settings.heading_size }}px;
     font-weight: 400;
-    color: #30493B;
+    color: {{ section.settings.heading_color }};
     text-align: center;
     margin: 0 0 3rem 0;
   }
   .nn-ideas__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: {{ section.settings.card_gap }}px;
   }
   .nn-ideas__card {
-    background: #FAF7F2;
-    border-radius: 16px;
+    background: {{ section.settings.card_bg_color }};
+    border-radius: {{ section.settings.card_radius }}px;
     padding: 2rem 1.75rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -54,7 +94,6 @@
   }
   .nn-ideas__tag {
     display: inline-block;
-    font-family: 'DM Sans', sans-serif;
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -66,37 +105,61 @@
     width: fit-content;
   }
   .nn-ideas__tag--berry {
-    background: #731A47;
+    background: {{ section.settings.tag_berry_color }};
   }
   .nn-ideas__tag--green {
-    background: #30493B;
+    background: {{ section.settings.tag_green_color }};
   }
   .nn-ideas__card-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.2rem;
+    font-family: {{ section.settings.heading_font.family | default: 'DM Serif Display' }}, {{ section.settings.heading_font.fallback_families | default: 'serif' }};
+    font-size: {{ section.settings.card_title_size }}px;
     font-weight: 400;
-    color: #30493B;
+    color: {{ section.settings.heading_color }};
     margin: 0 0 0.6rem 0;
   }
   .nn-ideas__card-desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: {{ section.settings.body_size }}px;
     line-height: 1.65;
-    color: #3D3D3D;
+    color: {{ section.settings.text_color }};
     margin: 0 0 1.25rem 0;
     flex-grow: 1;
   }
   .nn-ideas__card-link {
-    font-family: 'DM Sans', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #731A47;
+    color: {{ section.settings.link_color }};
     text-decoration: none;
   }
-  .nn-ideas__card-link:hover {
+  a.nn-ideas__card-link:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+  .nn-ideas__extra {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .nn-extra-block { margin: 1.5rem 0; }
+  .nn-extra-heading {
+    font-family: {{ section.settings.heading_font.family | default: 'DM Serif Display' }}, {{ section.settings.heading_font.fallback_families | default: 'serif' }};
+    font-weight: 400;
+    margin: 0;
+  }
+  .nn-extra-text { line-height: 1.7; }
+  .nn-extra-btn {
+    display: inline-block;
+    font-weight: 600;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  .nn-extra-btn:hover { opacity: 0.85; }
+  .nn-extra-img { width: 100%; display: block; }
+  .nn-extra-link {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .nn-extra-link:hover { opacity: 0.7; }
 
   @media (max-width: 900px) {
     .nn-ideas__grid {
@@ -108,7 +171,7 @@
     .nn-ideas__grid {
       grid-template-columns: 1fr;
     }
-    .nn-ideas__heading { font-size: 2rem; }
+    .nn-ideas__heading { font-size: calc({{ section.settings.heading_size }}px * 0.8); }
   }
 </style>
 
@@ -118,21 +181,208 @@
   "tag": "section",
   "settings": [
     {
+      "type": "header",
+      "content": "Content"
+    },
+    {
       "type": "text",
       "id": "heading",
       "label": "Heading",
       "default": "More than just a bag."
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Optional — overrides background color"
+    },
+    {
+      "type": "header",
+      "content": "Heading — More than just a bag"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Heading font",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_picker",
+      "label": "Heading color",
+      "default": "#30493B"
+    },
+    {
+      "type": "header",
+      "content": "Fonts (fallback)"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font (cards)",
+      "default": "dm_serif_display_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font (general)",
+      "default": "dm_sans_n4"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Card title color (default)",
+      "default": "#30493B"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#3D3D3D"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#731A47"
+    },
+    {
+      "type": "color",
+      "id": "tag_berry_color",
+      "label": "Berry tag color",
+      "default": "#731A47"
+    },
+    {
+      "type": "color",
+      "id": "tag_green_color",
+      "label": "Green tag color",
+      "default": "#30493B"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading font size",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "label": "Card title font size",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Card body font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#FAF7F2"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card corner radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap between cards",
+      "min": 8,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
     }
   ],
   "blocks": [
     {
       "type": "idea",
-      "name": "Idea Card",
+      "name": "Idea card",
       "settings": [
         {
           "type": "text",
-          "id": "tag",
-          "label": "Tag label",
+          "id": "category",
+          "label": "Category tag",
           "default": "Meal Prep"
         },
         {
@@ -141,21 +391,21 @@
           "label": "Tag color",
           "options": [
             { "value": "berry", "label": "Berry" },
-            { "value": "green", "label": "Green" }
+            { "value": "green", "label": "Forest Green" }
           ],
           "default": "berry"
         },
         {
           "type": "text",
           "id": "title",
-          "label": "Title",
-          "default": "Card title"
+          "label": "Card title",
+          "default": "Prep once, eat all week"
         },
         {
           "type": "textarea",
           "id": "description",
-          "label": "Description",
-          "default": "Card description"
+          "label": "Card description",
+          "default": "Batch-cook your favourites and store them in NauNau bags. Grab, heat, done — weeknight dinners sorted."
         },
         {
           "type": "text",
@@ -167,6 +417,300 @@
           "type": "url",
           "id": "link_url",
           "label": "Link URL"
+        },
+        {
+          "type": "header",
+          "content": "Block styling"
+        },
+        {
+          "type": "color",
+          "id": "block_bg_color",
+          "label": "Card background",
+          "default": "#FAF7F2"
+        },
+        {
+          "type": "color",
+          "id": "block_title_color",
+          "label": "Title color",
+          "default": "#30493B"
+        },
+        {
+          "type": "color",
+          "id": "block_text_color",
+          "label": "Description color",
+          "default": "#3D3D3D"
+        },
+        {
+          "type": "color",
+          "id": "block_link_color",
+          "label": "Link color",
+          "default": "#731A47"
+        },
+        {
+          "type": "range",
+          "id": "block_title_size",
+          "label": "Title font size",
+          "min": 14,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 19
+        },
+        {
+          "type": "range",
+          "id": "block_body_size",
+          "label": "Description font size",
+          "min": 12,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "block_radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Heading text",
+          "default": "Your heading"
+        },
+        {
+          "type": "select",
+          "id": "tag",
+          "label": "Heading level",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 14,
+          "max": 72,
+          "step": 2,
+          "unit": "px",
+          "default": 36
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color",
+          "default": "#30493B"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Text content",
+          "default": "<p>Your text here</p>"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color",
+          "default": "#3D3D3D"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Button text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background",
+          "default": "#731A47"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "default": 50
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Max width",
+          "min": 100,
+          "max": 1200,
+          "step": 50,
+          "unit": "px",
+          "default": 600
+        },
+        {
+          "type": "range",
+          "id": "radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link text",
+          "default": "Learn more →"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Font size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color",
+          "default": "#731A47"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
         }
       ]
     }
@@ -175,66 +719,12 @@
     {
       "name": "NauNau Ideas",
       "blocks": [
-        {
-          "type": "idea",
-          "settings": {
-            "tag": "Meal Prep",
-            "tag_color": "berry",
-            "title": "Prep once, eat all week",
-            "description": "Batch-cook your favourites and store them in NauNau bags. Grab, heat, done — weeknight dinners sorted.",
-            "link_text": "Read More →"
-          }
-        },
-        {
-          "type": "idea",
-          "settings": {
-            "tag": "Lunchbox",
-            "tag_color": "green",
-            "title": "Lunchbox wins for picky eaters",
-            "description": "Pack sandwiches, fruit, and snacks without the cling wrap chaos. Easy to clean, easy to repack.",
-            "link_text": "Read More →"
-          }
-        },
-        {
-          "type": "idea",
-          "settings": {
-            "tag": "Freezer Tips",
-            "tag_color": "berry",
-            "title": "Freeze smarter, waste less",
-            "description": "Flat-freeze soups, sauces, and smoothie packs. Stack them neatly and save space in your freezer.",
-            "link_text": "Read More →"
-          }
-        },
-        {
-          "type": "idea",
-          "settings": {
-            "tag": "Baby & Kids",
-            "tag_color": "green",
-            "title": "Safe storage for little ones",
-            "description": "Store purees, snacks, and teething rusks in BPA-free silicone. Sterilise with boiling water — no stress.",
-            "link_text": "Read More →"
-          }
-        },
-        {
-          "type": "idea",
-          "settings": {
-            "tag": "Travel",
-            "tag_color": "berry",
-            "title": "Your travel toiletry bag, sorted",
-            "description": "Shampoo, sunscreen, snacks on the go. Leakproof seal means no surprises in your bag.",
-            "link_text": "Read More →"
-          }
-        },
-        {
-          "type": "idea",
-          "settings": {
-            "tag": "Recipes",
-            "tag_color": "green",
-            "title": "Marinate like a pro",
-            "description": "Toss your chicken, steak, or veggies into a NauNau bag with marinade. Seal, massage, fridge — done.",
-            "link_text": "Read More →"
-          }
-        }
+        { "type": "idea", "settings": { "category": "Meal Prep", "tag_color": "berry", "title": "Prep once, eat all week", "description": "Batch-cook your favourites and store them in NauNau bags. Grab, heat, done — weeknight dinners sorted." } },
+        { "type": "idea", "settings": { "category": "Lunchbox", "tag_color": "green", "title": "Lunchbox wins for picky eaters", "description": "Pack sandwiches, fruit, and snacks without the cling wrap chaos. Easy to clean, easy to repack." } },
+        { "type": "idea", "settings": { "category": "Freezer Tips", "tag_color": "berry", "title": "Freeze smarter, waste less", "description": "Flat-freeze soups, sauces, and smoothie packs. Stack them neatly and save space in your freezer." } },
+        { "type": "idea", "settings": { "category": "Baby & Kids", "tag_color": "green", "title": "Safe storage for little ones", "description": "Store purees, snacks, and teething rusks in BPA-free silicone. Sterilise with boiling water — no stress." } },
+        { "type": "idea", "settings": { "category": "Travel", "tag_color": "berry", "title": "Your travel toiletry bag, sorted", "description": "Shampoo, sunscreen, snacks on the go. Leakproof seal means no surprises in your bag." } },
+        { "type": "idea", "settings": { "category": "Recipes", "tag_color": "green", "title": "Marinate like a pro", "description": "Toss your chicken, steak, or veggies into a NauNau bag with marinade. Seal, massage, fridge — done." } }
       ]
     }
   ]

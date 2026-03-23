@@ -49,7 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px 20px;
+    padding: 60px 20px;
   }
   .naunau-quiz .quiz-container {
     max-width: 800px;
@@ -58,7 +58,7 @@
   }
   .naunau-quiz .quiz-header {
     text-align: center;
-    margin-bottom: 4px;
+    margin-bottom: 20px;
   }
   .naunau-quiz .quiz-heading {
     font-family: 'Chewy', cursive;
@@ -75,18 +75,9 @@
     display: block;
     margin: 0 auto;
   }
-  .naunau-quiz .quiz-heading-mobile {
-    display: none;
-    font-family: 'Chewy', cursive;
-    font-size: 44px;
-    color: {{ btn_color }};
-    text-align: center;
-    margin-bottom: 12px;
-    line-height: 1.1;
-  }
   .naunau-quiz .quiz-heading-svg text {
     font-family: 'Chewy', cursive;
-    font-size: 46px;
+    font-size: 62px;
     fill: url(#quiz-heading-gradient);
   }
   .naunau-quiz .quiz-subtitle {
@@ -243,12 +234,6 @@
       padding: 40px 16px;
       min-height: auto;
     }
-    .naunau-quiz .quiz-heading-svg {
-      display: none;
-    }
-    .naunau-quiz .quiz-heading-mobile {
-      display: block !important;
-    }
     .naunau-quiz .quiz-heading {
       font-size: 44px;
       white-space: normal;
@@ -265,10 +250,9 @@
 <div class="naunau-quiz">
   <div class="quiz-container">
     <div class="quiz-header">
-      <h1 class="quiz-heading-mobile">{{ heading }}</h1>
-      <svg class="quiz-heading-svg" viewBox="0 0 800 58" xmlns="http://www.w3.org/2000/svg">
+      <svg class="quiz-heading-svg" viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <path id="quiz-curve" d="M 30,52 Q 400,2 770,52" fill="none" />
+          <path id="quiz-curve" d="M 50,140 Q 400,20 750,140" fill="none" />
           <linearGradient id="quiz-heading-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="{{ btn_color }}" />
             <stop offset="50%" stop-color="#6b8f71" />

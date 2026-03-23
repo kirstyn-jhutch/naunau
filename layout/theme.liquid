@@ -114,10 +114,57 @@
         font-weight: normal !important;
       }
 
+      /* Product media - rounded corners */
+      .product-media-container,
+      .product-media-container img,
+      .product-media-container model-viewer,
+      .product-media-container video,
+      .product-media-container iframe,
+      media-gallery .product-media {
+        border-radius: 10px !important;
+        overflow: hidden;
+      }
+
+      /* Product page title - Chewy font, bigger */
+      .product-information h1,
+      [class*="text_rmfzht"] h1 {
+        font-family: 'Chewy', cursive !important;
+        font-weight: normal !important;
+        font-size: 2.2rem !important;
+        line-height: 1.2 !important;
+      }
+
       /* Hide account icon in header */
       .account-popover,
       .account-drawer-trigger {
         display: none !important;
+      }
+
+      /* Shrink header on scroll */
+      .header[data-sticky-state='active'] {
+        --header-height: 45px !important;
+        padding-block: 4px !important;
+        transition: all 0.3s ease !important;
+      }
+
+      .header[data-sticky-state='active'] .header__logo img,
+      .header[data-sticky-state='active'] .header__logo svg {
+        max-height: 35px !important;
+        transition: max-height 0.3s ease !important;
+      }
+
+      .header[data-sticky-state='active'] .header__row {
+        padding-block: 2px !important;
+      }
+
+      /* Smooth transition back when scrolling to top */
+      .header {
+        transition: all 0.3s ease !important;
+      }
+
+      .header .header__logo img,
+      .header .header__logo svg {
+        transition: max-height 0.3s ease !important;
       }
     </style>
   </head>

@@ -1,0 +1,550 @@
+{% liquid
+  assign product_resource = closest.product
+  if request.visual_preview_mode and product_resource == blank
+    assign product_resource = collections.all.products.first
+  endif
+
+  comment
+    Read product metafields — fall back to block settings if blank
+    Metafield namespace: custom
+    Fields: spec_width, spec_height, spec_depth, spec_weight, spec_capacity
+    Each stores just the number value (e.g. "20")
+  endcomment
+
+  assign meta_width = product_resource.metafields.custom.spec_width.value
+  assign meta_height = product_resource.metafields.custom.spec_height.value
+  assign meta_depth = product_resource.metafields.custom.spec_depth.value
+  assign meta_weight = product_resource.metafields.custom.spec_weight.value
+  assign meta_capacity = product_resource.metafields.custom.spec_capacity.value
+
+  assign val1 = meta_width | default: block.settings.stat1_value
+  assign val2 = meta_height | default: block.settings.stat2_value
+  assign val3 = meta_weight | default: block.settings.stat3_value
+  assign val4 = meta_depth | default: block.settings.stat4_value
+  assign val5 = meta_capacity | default: block.settings.stat5_value
+%}
+
+<div class="nn-specs spacing-style" style="{% render 'spacing-style', settings: block.settings %}" {{ block.shopify_attributes }}>
+  {%- if block.settings.heading != blank -%}
+    <h3 class="nn-specs__heading" style="
+      font-family: 'Chewy', cursive;
+      font-weight: normal;
+      font-size: {{ block.settings.heading_size }}px;
+      color: {{ block.settings.heading_color }};
+      margin-bottom: 16px;
+    ">{{ block.settings.heading }}</h3>
+  {%- endif -%}
+
+  <div class="nn-specs__grid" style="
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: {{ block.settings.gap }}px;
+    max-width: 440px;
+  ">
+    {%- if block.settings.stat1_label != blank and val1 != blank -%}
+      <div class="nn-specs__cell" style="
+        background: {{ block.settings.cell_bg }};
+        border: 1px solid {{ block.settings.cell_border }};
+        border-radius: {{ block.settings.cell_radius }}px;
+        padding: 8px {{ block.settings.cell_padding }}px 5px;
+      ">
+        <span class="nn-specs__label" style="
+          font-size: {{ block.settings.label_size }}px;
+          color: {{ block.settings.label_color }};
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          font-weight: 500;
+          display: block;
+          margin-bottom: 5px;
+          line-height: 1.2;
+          white-space: nowrap;
+        ">{{ block.settings.stat1_label }}</span>
+        <span class="nn-specs__value" style="
+          font-size: {{ block.settings.value_size }}px;
+          color: {{ block.settings.value_color }};
+          font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
+        ">{{ val1 }}</span>
+        <span class="nn-specs__unit" style="
+          font-size: {{ block.settings.unit_size }}px;
+          color: {{ block.settings.label_color }};
+          font-weight: 400;
+          white-space: nowrap;
+        "> {{ block.settings.stat1_unit }}</span>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.stat2_label != blank and val2 != blank -%}
+      <div class="nn-specs__cell" style="
+        background: {{ block.settings.cell_bg }};
+        border: 1px solid {{ block.settings.cell_border }};
+        border-radius: {{ block.settings.cell_radius }}px;
+        padding: 8px {{ block.settings.cell_padding }}px 5px;
+      ">
+        <span class="nn-specs__label" style="
+          font-size: {{ block.settings.label_size }}px;
+          color: {{ block.settings.label_color }};
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          font-weight: 500;
+          display: block;
+          margin-bottom: 5px;
+          line-height: 1.2;
+          white-space: nowrap;
+        ">{{ block.settings.stat2_label }}</span>
+        <span class="nn-specs__value" style="
+          font-size: {{ block.settings.value_size }}px;
+          color: {{ block.settings.value_color }};
+          font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
+        ">{{ val2 }}</span>
+        <span class="nn-specs__unit" style="
+          font-size: {{ block.settings.unit_size }}px;
+          color: {{ block.settings.label_color }};
+          font-weight: 400;
+          white-space: nowrap;
+        "> {{ block.settings.stat2_unit }}</span>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.stat3_label != blank and val3 != blank -%}
+      <div class="nn-specs__cell" style="
+        background: {{ block.settings.cell_bg }};
+        border: 1px solid {{ block.settings.cell_border }};
+        border-radius: {{ block.settings.cell_radius }}px;
+        padding: 8px {{ block.settings.cell_padding }}px 5px;
+      ">
+        <span class="nn-specs__label" style="
+          font-size: {{ block.settings.label_size }}px;
+          color: {{ block.settings.label_color }};
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          font-weight: 500;
+          display: block;
+          margin-bottom: 5px;
+          line-height: 1.2;
+          white-space: nowrap;
+        ">{{ block.settings.stat3_label }}</span>
+        <span class="nn-specs__value" style="
+          font-size: {{ block.settings.value_size }}px;
+          color: {{ block.settings.value_color }};
+          font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
+        ">{{ val3 }}</span>
+        <span class="nn-specs__unit" style="
+          font-size: {{ block.settings.unit_size }}px;
+          color: {{ block.settings.label_color }};
+          font-weight: 400;
+          white-space: nowrap;
+        "> {{ block.settings.stat3_unit }}</span>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.stat4_label != blank and val4 != blank -%}
+      <div class="nn-specs__cell" style="
+        background: {{ block.settings.cell_bg }};
+        border: 1px solid {{ block.settings.cell_border }};
+        border-radius: {{ block.settings.cell_radius }}px;
+        padding: 8px {{ block.settings.cell_padding }}px 5px;
+      ">
+        <span class="nn-specs__label" style="
+          font-size: {{ block.settings.label_size }}px;
+          color: {{ block.settings.label_color }};
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          font-weight: 500;
+          display: block;
+          margin-bottom: 5px;
+          line-height: 1.2;
+          white-space: nowrap;
+        ">{{ block.settings.stat4_label }}</span>
+        <span class="nn-specs__value" style="
+          font-size: {{ block.settings.value_size }}px;
+          color: {{ block.settings.value_color }};
+          font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
+        ">{{ val4 }}</span>
+        <span class="nn-specs__unit" style="
+          font-size: {{ block.settings.unit_size }}px;
+          color: {{ block.settings.label_color }};
+          font-weight: 400;
+          white-space: nowrap;
+        "> {{ block.settings.stat4_unit }}</span>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.stat5_label != blank and val5 != blank -%}
+      <div class="nn-specs__cell" style="
+        background: {{ block.settings.cell_bg }};
+        border: 1px solid {{ block.settings.cell_border }};
+        border-radius: {{ block.settings.cell_radius }}px;
+        padding: 8px {{ block.settings.cell_padding }}px 5px;
+      ">
+        <span class="nn-specs__label" style="
+          font-size: {{ block.settings.label_size }}px;
+          color: {{ block.settings.label_color }};
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          font-weight: 500;
+          display: block;
+          margin-bottom: 5px;
+          line-height: 1.2;
+          white-space: nowrap;
+        ">{{ block.settings.stat5_label }}</span>
+        <span class="nn-specs__value" style="
+          font-size: {{ block.settings.value_size }}px;
+          color: {{ block.settings.value_color }};
+          font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
+        ">{{ val5 }}</span>
+        <span class="nn-specs__unit" style="
+          font-size: {{ block.settings.unit_size }}px;
+          color: {{ block.settings.label_color }};
+          font-weight: 400;
+          white-space: nowrap;
+        "> {{ block.settings.stat5_unit }}</span>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.stat6_label != blank and block.settings.stat6_value != blank -%}
+      <div class="nn-specs__cell" style="
+        background: {{ block.settings.cell_bg }};
+        border: 1px solid {{ block.settings.cell_border }};
+        border-radius: {{ block.settings.cell_radius }}px;
+        padding: 8px {{ block.settings.cell_padding }}px 5px;
+      ">
+        <span class="nn-specs__label" style="
+          font-size: {{ block.settings.label_size }}px;
+          color: {{ block.settings.label_color }};
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          font-weight: 500;
+          display: block;
+          margin-bottom: 5px;
+          line-height: 1.2;
+          white-space: nowrap;
+        ">{{ block.settings.stat6_label }}</span>
+        <span class="nn-specs__value" style="
+          font-size: {{ block.settings.value_size }}px;
+          color: {{ block.settings.value_color }};
+          font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
+        ">{{ block.settings.stat6_value }}</span>
+        <span class="nn-specs__unit" style="
+          font-size: {{ block.settings.unit_size }}px;
+          color: {{ block.settings.label_color }};
+          font-weight: 400;
+          white-space: nowrap;
+        "> {{ block.settings.stat6_unit }}</span>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "NauNau Specs Grid",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Want to find out more..."
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading colour",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "header",
+      "content": "──── Stat 1 — Width ────"
+    },
+    {
+      "type": "text",
+      "id": "stat1_label",
+      "label": "Label",
+      "default": "WIDTH"
+    },
+    {
+      "type": "text",
+      "id": "stat1_value",
+      "label": "Fallback value (overridden by metafield custom.spec_width)",
+      "default": "20"
+    },
+    {
+      "type": "text",
+      "id": "stat1_unit",
+      "label": "Unit",
+      "default": "cm"
+    },
+    {
+      "type": "header",
+      "content": "──── Stat 2 — Height ────"
+    },
+    {
+      "type": "text",
+      "id": "stat2_label",
+      "label": "Label",
+      "default": "HEIGHT"
+    },
+    {
+      "type": "text",
+      "id": "stat2_value",
+      "label": "Fallback value (overridden by metafield custom.spec_height)",
+      "default": "13"
+    },
+    {
+      "type": "text",
+      "id": "stat2_unit",
+      "label": "Unit",
+      "default": "cm"
+    },
+    {
+      "type": "header",
+      "content": "──── Stat 3 — Weight ────"
+    },
+    {
+      "type": "text",
+      "id": "stat3_label",
+      "label": "Label",
+      "default": "WEIGHT"
+    },
+    {
+      "type": "text",
+      "id": "stat3_value",
+      "label": "Fallback value (overridden by metafield custom.spec_weight)",
+      "default": "105"
+    },
+    {
+      "type": "text",
+      "id": "stat3_unit",
+      "label": "Unit",
+      "default": "g"
+    },
+    {
+      "type": "header",
+      "content": "──── Stat 4 — Depth ────"
+    },
+    {
+      "type": "text",
+      "id": "stat4_label",
+      "label": "Label",
+      "default": "DEPTH"
+    },
+    {
+      "type": "text",
+      "id": "stat4_value",
+      "label": "Fallback value (overridden by metafield custom.spec_depth)",
+      "default": "0.5"
+    },
+    {
+      "type": "text",
+      "id": "stat4_unit",
+      "label": "Unit",
+      "default": "cm"
+    },
+    {
+      "type": "header",
+      "content": "──── Stat 5 — Capacity ────"
+    },
+    {
+      "type": "text",
+      "id": "stat5_label",
+      "label": "Label",
+      "default": "CAPACITY"
+    },
+    {
+      "type": "text",
+      "id": "stat5_value",
+      "label": "Fallback value (overridden by metafield custom.spec_capacity)",
+      "default": "400"
+    },
+    {
+      "type": "text",
+      "id": "stat5_unit",
+      "label": "Unit",
+      "default": "ml"
+    },
+    {
+      "type": "header",
+      "content": "──── Stat 6 — Extra ────"
+    },
+    {
+      "type": "text",
+      "id": "stat6_label",
+      "label": "Label"
+    },
+    {
+      "type": "text",
+      "id": "stat6_value",
+      "label": "Value"
+    },
+    {
+      "type": "text",
+      "id": "stat6_unit",
+      "label": "Unit"
+    },
+    {
+      "type": "header",
+      "content": "──── Cell styling ────"
+    },
+    {
+      "type": "color",
+      "id": "cell_bg",
+      "label": "Cell background",
+      "default": "#f5f5f0"
+    },
+    {
+      "type": "color",
+      "id": "cell_border",
+      "label": "Cell border",
+      "default": "#e0e0d8"
+    },
+    {
+      "type": "range",
+      "id": "cell_radius",
+      "label": "Cell corner radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "default": 6,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "cell_padding",
+      "label": "Cell padding",
+      "min": 2,
+      "max": 32,
+      "step": 2,
+      "default": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Grid gap",
+      "min": 2,
+      "max": 24,
+      "step": 2,
+      "default": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "──── Typography ────"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label colour",
+      "default": "#888888"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "label": "Label size",
+      "min": 5,
+      "max": 16,
+      "step": 1,
+      "default": 6,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "value_color",
+      "label": "Value colour",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "range",
+      "id": "value_size",
+      "label": "Value size",
+      "min": 10,
+      "max": 48,
+      "step": 1,
+      "default": 11,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "unit_size",
+      "label": "Unit size",
+      "min": 6,
+      "max": 24,
+      "step": 1,
+      "default": 7,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "──── Padding ────"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "Left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "Right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "NauNau Specs Grid",
+      "category": "t:categories.product"
+    }
+  ]
+}
+{% endschema %}

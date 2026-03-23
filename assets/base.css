@@ -2523,6 +2523,57 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   color: rgb(var(--color-variant-text-rgb) / var(--opacity-60));
 }
 
+/* ─── NauNau colour variant button overrides ─── */
+
+/* Clear button: white fill, thin black border, black text */
+.variant-option__button-label[data-option-value="clear"] {
+  background-color: #FFFFFF !important;
+  border: 1px solid #c0c0c0 !important;
+  color: #1A1A1A !important;
+}
+
+/* Berry button: berry fill, white text */
+.variant-option__button-label[data-option-value="berry"] {
+  background-color: #731a47 !important;
+  border: 1px solid #731a47 !important;
+  color: #FFFFFF !important;
+}
+
+/* Sage button: sage fill, white text */
+.variant-option__button-label[data-option-value="sage"] {
+  background-color: #30493b !important;
+  border: 1px solid #30493b !important;
+  color: #FFFFFF !important;
+}
+
+/* NauNau button text colour override */
+.variant-option__button-label[data-option-value="berry"] .variant-option__button-label__text,
+.variant-option__button-label[data-option-value="sage"] .variant-option__button-label__text {
+  color: #FFFFFF !important;
+}
+.variant-option__button-label[data-option-value="clear"] .variant-option__button-label__text {
+  color: #1A1A1A !important;
+}
+
+/* NauNau selected state: bigger + thick black border */
+.variant-option__button-label[data-option-value="clear"]:has(:checked),
+.variant-option__button-label[data-option-value="berry"]:has(:checked),
+.variant-option__button-label[data-option-value="sage"]:has(:checked) {
+  transform: scale(1.12);
+  border: 1.5px solid #1A1A1A !important;
+  outline: none !important;
+  z-index: 2;
+  position: relative;
+}
+
+/* Hide the pill background for NauNau colour buttons */
+.variant-option__button-label[data-option-value="clear"] .variant-option__button-label__pill,
+.variant-option__button-label[data-option-value="berry"] .variant-option__button-label__pill,
+.variant-option__button-label[data-option-value="sage"] .variant-option__button-label__pill {
+  display: none !important;
+}
+/* ─── End NauNau colour variant button overrides ─── */
+
 .variant-option__button-label input {
   /* remove the checkbox from the page flow */
   position: absolute;
@@ -4943,4 +4994,24 @@ product-recommendations:has([data-has-recommendations='false']) {
     opacity: var(--atc-opacity, 1);
     translate: 0px var(--atc-destination, 0px);
   }
+}
+
+/* ── NauNau sticky add-to-cart overrides ── */
+.sticky-add-to-cart__button,
+.sticky-add-to-cart__button.button {
+  background-color: #30493b !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-family: 'Chewy', cursive !important;
+  font-size: 16px !important;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s ease;
+}
+.sticky-add-to-cart__button:hover,
+.sticky-add-to-cart__button.button:hover {
+  background-color: #3d5c4a !important;
+}
+.sticky-add-to-cart__title {
+  font-family: 'Chewy', cursive !important;
 }
