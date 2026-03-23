@@ -1003,6 +1003,55 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "naunau_size_guide_dEtUHG": {
+      "type": "naunau-size-guide",
+      "name": "NauNau Size Guide",
+      "settings": {
+        "heading": "What fits inside?",
+        "heading_size": 30,
+        "heading_color": "#1a1a1a",
+        "heading_align": "center",
+        "max_width": 800,
+        "padding_y": 30,
+        "padding_x": 20,
+        "tab1_name": "The Snack · 400ml",
+        "t1_emoji1": "🍎",
+        "t1_desc1": "<strong>1 cut-up apple</strong> or a handful of grapes",
+        "t1_emoji2": "🥜",
+        "t1_desc2": "<strong>Nuts and biltong</strong> for snacking",
+        "t1_emoji3": "🥕",
+        "t1_desc3": "<strong>Veggie sticks</strong> and a dip",
+        "t1_emoji4": "🧀",
+        "t1_desc4": "<strong>A block of cheese</strong> or cold cuts",
+        "tab2_name": "The Sandwich · 800ml",
+        "t2_emoji1": "🥪",
+        "t2_desc1": "<strong>A sandwich</strong>",
+        "t2_emoji2": "🫘",
+        "t2_desc2": "<strong>A bunch of green beans</strong>",
+        "t2_emoji3": "🫐",
+        "t2_desc3": "<strong>A punnet of berries</strong>",
+        "t2_emoji4": "🍗",
+        "t2_desc4": "<strong>2 chicken breasts</strong>",
+        "tab3_name": "The Crescent · 1000ml",
+        "t3_emoji1": "🍇",
+        "t3_desc1": "<strong>A whole bunch of grapes</strong>",
+        "t3_emoji2": "🥦",
+        "t3_desc2": "<strong>A head of broccoli</strong>",
+        "t3_emoji3": "🥗",
+        "t3_desc3": "<strong>Salad</strong> for the whole family",
+        "t3_emoji4": "🍝",
+        "t3_desc4": "<strong>Leftover pasta</strong>",
+        "tab4_name": "The Keeper · 2000ml",
+        "t4_emoji1": "🥩",
+        "t4_desc1": "<strong>Braai meat marinade</strong>",
+        "t4_emoji2": "🐟",
+        "t4_desc2": "<strong>2 pieces of salmon</strong>",
+        "t4_emoji3": "🍲",
+        "t4_desc3": "<strong>Big batch of soup</strong>",
+        "t4_emoji4": "🥬",
+        "t4_desc4": "<strong>1kg of vegetables</strong>"
+      }
     }
   },
   "order": [
@@ -1011,6 +1060,7 @@
     "section_qpEyLH",
     "marquee_r8WyKj",
     "section_UhNgJN",
-    "product_recommendations_3m7T4n"
+    "product_recommendations_3m7T4n",
+    "naunau_size_guide_dEtUHG"
   ]
 }
