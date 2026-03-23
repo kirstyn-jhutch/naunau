@@ -1,0 +1,259 @@
+<div class="nn-rev" style="padding:{{ block.settings.padding_y }}px 0;">
+  {%- if block.settings.heading != blank -%}
+    <h2 style="font-family:'Chewy',cursive;font-size:{{ block.settings.heading_size }}px;color:{{ block.settings.heading_color }};text-align:center;margin:0 0 24px;">{{ block.settings.heading }}</h2>
+  {%- endif -%}
+
+  <div class="nn-rev__grid" style="display:grid;grid-template-columns:repeat({{ block.settings.columns }},1fr);gap:{{ block.settings.card_gap }}px;">
+
+    {%- if block.settings.name_1 != blank -%}
+      <div style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_1 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
+        {%- if block.settings.title_1 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_1 }}</h3>{%- endif -%}
+        <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_1 }}</p>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
+          <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_1 | slice: 0 | upcase }}</div>
+          <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_1 }}</span>{%- if block.settings.verified_1 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.name_2 != blank -%}
+      <div style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_2 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
+        {%- if block.settings.title_2 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_2 }}</h3>{%- endif -%}
+        <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_2 }}</p>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
+          <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_2 | slice: 0 | upcase }}</div>
+          <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_2 }}</span>{%- if block.settings.verified_2 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.name_3 != blank -%}
+      <div style="background:{{ block.settings.card_bg }};border-radius:{{ block.settings.card_radius }}px;border:1px solid {{ block.settings.card_border }};padding:20px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:2px;">{%- for i in (1..5) -%}{%- if i <= block.settings.stars_3 -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- else -%}<svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>{%- endif -%}{%- endfor -%}</div>
+        {%- if block.settings.title_3 != blank -%}<h3 style="margin:0;font-weight:600;font-size:15px;color:{{ block.settings.heading_color }};">{{ block.settings.title_3 }}</h3>{%- endif -%}
+        <p style="margin:0;line-height:1.6;font-size:13px;color:{{ block.settings.text_color }};">{{ block.settings.text_3 }}</p>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);">
+          <div style="width:32px;height:32px;border-radius:50%;background:{{ block.settings.star_color }};display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:13px;">{{ block.settings.name_3 | slice: 0 | upcase }}</div>
+          <div><span style="font-weight:600;font-size:13px;color:{{ block.settings.heading_color }};">{{ block.settings.name_3 }}</span>{%- if block.settings.verified_3 -%}<br><span style="font-size:10px;color:{{ block.settings.star_color }};">&#10003; Verified</span>{%- endif -%}</div>
+        </div>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<style>
+  @media (max-width: 989px) { .nn-rev__grid { grid-template-columns: repeat(2, 1fr) !important; } }
+  @media (max-width: 749px) { .nn-rev__grid { grid-template-columns: 1fr !important; } }
+</style>
+
+{% schema %}
+{
+  "name": "Reviews grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What our customers say"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 18,
+      "max": 40,
+      "step": 1,
+      "default": 26,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading colour",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card border",
+      "default": "#e8e8e8"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star colour",
+      "default": "#F5A623"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text colour",
+      "default": "#555555"
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "── Review 1 ──"
+    },
+    {
+      "type": "text",
+      "id": "name_1",
+      "label": "Name",
+      "default": "Sarah M."
+    },
+    {
+      "type": "range",
+      "id": "stars_1",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title",
+      "default": "Game changer for meal prep!"
+    },
+    {
+      "type": "textarea",
+      "id": "text_1",
+      "label": "Review text",
+      "default": "I use these for everything. The seal is incredible and they clean up beautifully."
+    },
+    {
+      "type": "checkbox",
+      "id": "verified_1",
+      "label": "Verified buyer",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "── Review 2 ──"
+    },
+    {
+      "type": "text",
+      "id": "name_2",
+      "label": "Name",
+      "default": "James K."
+    },
+    {
+      "type": "range",
+      "id": "stars_2",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title",
+      "default": "Finally ditched plastic bags"
+    },
+    {
+      "type": "textarea",
+      "id": "text_2",
+      "label": "Review text",
+      "default": "So much sturdier than expected. The silicone is thick and the seal is tight."
+    },
+    {
+      "type": "checkbox",
+      "id": "verified_2",
+      "label": "Verified buyer",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "── Review 3 ──"
+    },
+    {
+      "type": "text",
+      "id": "name_3",
+      "label": "Name",
+      "default": "Priya D."
+    },
+    {
+      "type": "range",
+      "id": "stars_3",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title",
+      "default": "Great quality, great cause"
+    },
+    {
+      "type": "textarea",
+      "id": "text_3",
+      "label": "Review text",
+      "default": "Love knowing I'm reducing waste. The sage colour is beautiful."
+    },
+    {
+      "type": "checkbox",
+      "id": "verified_3",
+      "label": "Verified buyer",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews grid"
+    }
+  ]
+}
+{% endschema %}
