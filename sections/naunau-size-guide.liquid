@@ -98,17 +98,21 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.nn-sg__tab').forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        var parent = this.closest('.nn-sg-section');
-        parent.querySelectorAll('.nn-sg__tab').forEach(function(t) { t.classList.remove('nn-sg__tab--active'); });
-        parent.querySelectorAll('.nn-sg__panel').forEach(function(p) { p.classList.remove('nn-sg__panel--active'); });
-        this.classList.add('nn-sg__tab--active');
-        parent.querySelector('[data-nn-panel="' + this.getAttribute('data-nn-tab') + '"]').classList.add('nn-sg__panel--active');
-      });
+  (function() {
+    document.addEventListener('click', function(e) {
+      var tab = e.target.closest('.nn-sg__tab');
+      if (!tab) return;
+      var parent = tab.closest('.nn-sg-section');
+      if (!parent) return;
+      var tabs = parent.querySelectorAll('.nn-sg__tab');
+      var panels = parent.querySelectorAll('.nn-sg__panel');
+      for (var i = 0; i < tabs.length; i++) { tabs[i].classList.remove('nn-sg__tab--active'); }
+      for (var j = 0; j < panels.length; j++) { panels[j].classList.remove('nn-sg__panel--active'); }
+      tab.classList.add('nn-sg__tab--active');
+      var target = parent.querySelector('[data-nn-panel="' + tab.getAttribute('data-nn-tab') + '"]');
+      if (target) target.classList.add('nn-sg__panel--active');
     });
-  });
+  })();
 </script>
 
 <style>
@@ -123,6 +127,7 @@
     gap: 8px;
     margin-bottom: 20px;
     flex-wrap: wrap;
+    justify-content: center;
   }
   .nn-sg__tab {
     padding: 10px 20px;
@@ -230,7 +235,7 @@
       "type": "select",
       "id": "heading_align",
       "label": "Heading alignment",
-      "default": "left",
+      "default": "center",
       "options": [
         { "value": "left", "label": "Left" },
         { "value": "center", "label": "Centre" },
