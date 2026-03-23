@@ -1160,6 +1160,43 @@
         "padding-block-end": 48
       }
     },
+    "quiz_zYWtc4": {
+      "type": "quiz",
+      "name": "NauNau Size Quiz",
+      "settings": {
+        "heading": "Find Your Perfect NauNau",
+        "subtitle": "Answer 3 quick questions and we'll match you with the right size",
+        "bg_color": "#fafafa",
+        "button_color": "#8f2159",
+        "button_text_color": "#ffffff",
+        "q1_title": "What will you use it for?",
+        "q1_a": "Snacks",
+        "q1_b": "Meal prep",
+        "q1_c": "Big batches",
+        "q2_title": "How many people are you feeding?",
+        "q2_a": "Just me",
+        "q2_b": "Two of us",
+        "q2_c": "The whole family",
+        "q3_title": "Where will it live?",
+        "q3_a": "Fridge",
+        "q3_b": "On the go",
+        "q3_c": "Freezer",
+        "r1_name": "The Snack · 400ml",
+        "r1_desc": "Perfect for small snacks, dips, and single portions. Compact enough to toss in any bag.",
+        "r1_url": "",
+        "r2_name": "The Sandwich · 800ml",
+        "r2_desc": "Ideal for sandwiches, wraps, and lunch portions for one or two. Your everyday go-to.",
+        "r2_url": "",
+        "r3_name": "The Crescent · 1000ml",
+        "r3_desc": "Great for meal prep, salads, and feeding a couple. Fits nicely in the fridge or freezer.",
+        "r3_url": "",
+        "r4_name": "The Keeper · 2000ml",
+        "r4_desc": "Built for big batches, family meals, and bulk storage. The one that does it all.",
+        "r4_url": "",
+        "shop_btn_label": "Shop Now",
+        "retake_label": "Retake Quiz"
+      }
+    },
     "naunau_eco": {
       "type": "naunau-eco",
       "blocks": {
@@ -1573,6 +1610,7 @@
     "divider_yw9Mtn",
     "section_whyLoveIt",
     "product_list_family",
+    "quiz_zYWtc4",
     "naunau_eco",
     "naunau_community",
     "naunau_faq",
