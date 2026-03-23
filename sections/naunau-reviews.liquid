@@ -6,23 +6,30 @@
   assign s3 = 0
   assign s2 = 0
   assign s1 = 0
-  for block in section.blocks
-    assign total = total | plus: 1
-    assign stars = block.settings.stars | times: 1
-    assign star_sum = star_sum | plus: stars
-    case stars
-      when 5
-        assign s5 = s5 | plus: 1
-      when 4
-        assign s4 = s4 | plus: 1
-      when 3
-        assign s3 = s3 | plus: 1
-      when 2
-        assign s2 = s2 | plus: 1
-      when 1
-        assign s1 = s1 | plus: 1
-    endcase
+
+  for i in (1..6)
+    assign name_key = 'r' | append: i | append: '_name'
+    assign name_val = section.settings[name_key]
+    if name_val != blank
+      assign total = total | plus: 1
+      assign stars_key = 'r' | append: i | append: '_stars'
+      assign stars_val = section.settings[stars_key] | times: 1
+      assign star_sum = star_sum | plus: stars_val
+      case stars_val
+        when 5
+          assign s5 = s5 | plus: 1
+        when 4
+          assign s4 = s4 | plus: 1
+        when 3
+          assign s3 = s3 | plus: 1
+        when 2
+          assign s2 = s2 | plus: 1
+        when 1
+          assign s1 = s1 | plus: 1
+      endcase
+    endif
   endfor
+
   if total > 0
     assign avg_x10 = star_sum | times: 10 | divided_by: total
     assign avg_whole = avg_x10 | divided_by: 10
@@ -57,7 +64,6 @@
     <p class="nn-reviews__sub" style="color: #666;font-size: 15px;margin-bottom: 28px;">{{ section.settings.subheading }}</p>
   {%- endif -%}
 
-  {%- comment -%} ─── Summary card ─── {%- endcomment -%}
   {%- if total > 0 -%}
     <div class="nn-reviews__summary">
       <div class="nn-reviews__score-side">
@@ -65,11 +71,11 @@
         <div class="nn-reviews__avg-stars">
           {%- for i in (1..5) -%}
             {%- if i <= avg_whole -%}
-              <span class="nn-reviews__star nn-reviews__star--full">★</span>
+              <span class="nn-rev-star nn-rev-star--full">★</span>
             {%- elsif i == avg_whole | plus: 1 and avg_decimal >= 5 -%}
-              <span class="nn-reviews__star nn-reviews__star--full">★</span>
+              <span class="nn-rev-star nn-rev-star--full">★</span>
             {%- else -%}
-              <span class="nn-reviews__star nn-reviews__star--empty">★</span>
+              <span class="nn-rev-star nn-rev-star--empty">★</span>
             {%- endif -%}
           {%- endfor -%}
         </div>
@@ -83,176 +89,77 @@
         <div class="nn-reviews__bar-row"><span class="nn-reviews__bar-label">1 ★</span><div class="nn-reviews__bar-track"><div class="nn-reviews__bar-fill" style="width: {{ p1 }}%;"></div></div></div>
       </div>
     </div>
-  {%- endif -%}
 
-  {%- comment -%} ─── Individual review cards ─── {%- endcomment -%}
-  <div class="nn-reviews__list">
-    {%- for block in section.blocks -%}
-      <div class="nn-reviews__card" {{ block.shopify_attributes }}>
-        <div class="nn-reviews__card-header">
-          <div class="nn-reviews__reviewer">
-            <span class="nn-reviews__name">{{ block.settings.name }}</span>
-            {%- if block.settings.verified -%}
-              <span class="nn-reviews__verified">✓ Verified</span>
+    {%- for i in (1..6) -%}
+      {%- assign name_key = 'r' | append: i | append: '_name' -%}
+      {%- assign date_key = 'r' | append: i | append: '_date' -%}
+      {%- assign stars_key = 'r' | append: i | append: '_stars' -%}
+      {%- assign text_key = 'r' | append: i | append: '_text' -%}
+      {%- assign verified_key = 'r' | append: i | append: '_verified' -%}
+      {%- assign name_val = section.settings[name_key] -%}
+      {%- if name_val != blank -%}
+        <div class="nn-reviews__card">
+          <div class="nn-reviews__card-header">
+            <div class="nn-reviews__reviewer">
+              <span class="nn-reviews__name">{{ name_val }}</span>
+              {%- if section.settings[verified_key] -%}
+                <span class="nn-reviews__verified">✓ Verified</span>
+              {%- endif -%}
+            </div>
+            {%- if section.settings[date_key] != blank -%}
+              <span class="nn-reviews__date">{{ section.settings[date_key] }}</span>
             {%- endif -%}
           </div>
-          {%- if block.settings.date != blank -%}
-            <span class="nn-reviews__date">{{ block.settings.date }}</span>
-          {%- endif -%}
+          <div class="nn-reviews__card-stars">
+            {%- assign s = section.settings[stars_key] | times: 1 -%}
+            {%- for j in (1..5) -%}
+              {%- if j <= s -%}
+                <span class="nn-rev-star nn-rev-star--full">★</span>
+              {%- else -%}
+                <span class="nn-rev-star nn-rev-star--empty">★</span>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <p class="nn-reviews__card-text">{{ section.settings[text_key] }}</p>
         </div>
-        <div class="nn-reviews__card-stars">
-          {%- for i in (1..5) -%}
-            {%- if i <= block.settings.stars -%}
-              <span class="nn-reviews__star nn-reviews__star--full">★</span>
-            {%- else -%}
-              <span class="nn-reviews__star nn-reviews__star--empty">★</span>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-        {%- if block.settings.title != blank -%}
-          <h4 class="nn-reviews__card-title">{{ block.settings.title }}</h4>
-        {%- endif -%}
-        <p class="nn-reviews__card-text">{{ block.settings.text }}</p>
-      </div>
+      {%- endif -%}
     {%- endfor -%}
-  </div>
+  {%- endif -%}
 </div>
 
 <style>
-  .nn-reviews__heading {
-    font-weight: 400;
-  }
+  .nn-reviews__heading { font-weight: 400; }
   .nn-reviews__summary {
-    display: flex;
-    gap: 32px;
-    align-items: center;
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 28px 32px;
-    margin-bottom: 24px;
+    display: flex; gap: 32px; align-items: center;
+    background: #fff; border: 1px solid #e0e0e0; border-radius: 12px;
+    padding: 28px 32px; margin-bottom: 16px;
   }
-  .nn-reviews__score-side {
-    text-align: center;
-    flex-shrink: 0;
-    min-width: 110px;
-  }
-  .nn-reviews__avg {
-    font-size: 48px;
-    font-weight: 700;
-    color: #1a1a1a;
-    line-height: 1;
-    display: block;
-  }
-  .nn-reviews__avg-stars {
-    margin: 6px 0 4px;
-  }
-  .nn-reviews__star--full {
-    color: #f0a500;
-    font-size: 18px;
-  }
-  .nn-reviews__star--empty {
-    color: #d4d4d4;
-    font-size: 18px;
-  }
-  .nn-reviews__count {
-    font-size: 14px;
-    color: #888;
-  }
-  .nn-reviews__bars-side {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .nn-reviews__bar-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .nn-reviews__bar-label {
-    font-size: 13px;
-    color: #555;
-    min-width: 32px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-  .nn-reviews__bar-track {
-    flex: 1;
-    height: 10px;
-    background: #e8e8e8;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  .nn-reviews__bar-fill {
-    height: 100%;
-    background: #f0a500;
-    border-radius: 5px;
-    transition: width 0.3s ease;
-  }
-  .nn-reviews__list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+  .nn-reviews__score-side { text-align: center; flex-shrink: 0; min-width: 110px; }
+  .nn-reviews__avg { font-size: 48px; font-weight: 700; color: #1a1a1a; line-height: 1; display: block; }
+  .nn-reviews__avg-stars { margin: 6px 0 4px; }
+  .nn-rev-star--full { color: #f0a500; font-size: 18px; }
+  .nn-rev-star--empty { color: #d4d4d4; font-size: 18px; }
+  .nn-reviews__count { font-size: 14px; color: #888; }
+  .nn-reviews__bars-side { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .nn-reviews__bar-row { display: flex; align-items: center; gap: 10px; }
+  .nn-reviews__bar-label { font-size: 13px; color: #555; min-width: 32px; text-align: right; flex-shrink: 0; }
+  .nn-reviews__bar-track { flex: 1; height: 10px; background: #e8e8e8; border-radius: 5px; overflow: hidden; }
+  .nn-reviews__bar-fill { height: 100%; background: #f0a500; border-radius: 5px; }
   .nn-reviews__card {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 24px 28px;
+    background: #fff; border: 1px solid #e0e0e0; border-radius: 12px;
+    padding: 24px 28px; margin-top: 16px;
   }
-  .nn-reviews__card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 6px;
-  }
-  .nn-reviews__name {
-    font-weight: 700;
-    font-size: 16px;
-    color: #1a1a1a;
-  }
-  .nn-reviews__verified {
-    font-size: 12px;
-    color: #30493b;
-    font-weight: 500;
-    margin-left: 8px;
-  }
-  .nn-reviews__date {
-    font-size: 13px;
-    color: #999;
-    flex-shrink: 0;
-  }
-  .nn-reviews__card-stars {
-    margin-bottom: 10px;
-  }
-  .nn-reviews__card-stars .nn-reviews__star--full {
-    font-size: 16px;
-  }
-  .nn-reviews__card-stars .nn-reviews__star--empty {
-    font-size: 16px;
-  }
-  .nn-reviews__card-title {
-    font-weight: 600;
-    font-size: 15px;
-    color: #1a1a1a;
-    margin: 0 0 8px;
-  }
-  .nn-reviews__card-text {
-    font-size: 15px;
-    color: #444;
-    line-height: 1.65;
-    margin: 0;
-  }
+  .nn-reviews__card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+  .nn-reviews__name { font-weight: 700; font-size: 16px; color: #1a1a1a; }
+  .nn-reviews__verified { font-size: 12px; color: #30493b; font-weight: 500; margin-left: 8px; }
+  .nn-reviews__date { font-size: 13px; color: #999; flex-shrink: 0; }
+  .nn-reviews__card-stars { margin-bottom: 10px; }
+  .nn-reviews__card-stars .nn-rev-star--full { font-size: 16px; }
+  .nn-reviews__card-stars .nn-rev-star--empty { font-size: 16px; }
+  .nn-reviews__card-text { font-size: 15px; color: #444; line-height: 1.65; margin: 0; }
   @media (max-width: 600px) {
-    .nn-reviews__summary {
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
-    }
-    .nn-reviews__card {
-      padding: 18px 20px;
-    }
+    .nn-reviews__summary { flex-direction: column; text-align: center; padding: 20px; }
+    .nn-reviews__card { padding: 18px 20px; }
   }
 </style>
 
@@ -288,7 +195,7 @@
       "type": "text",
       "id": "subheading",
       "label": "Subheading",
-      "default": "Star summary at the top, individual reviews below. Nothing sells better than other customers."
+      "default": "Nothing sells better than other customers."
     },
     {
       "type": "range",
@@ -319,125 +226,233 @@
       "step": 5,
       "default": 20,
       "unit": "px"
-    }
-  ],
-  "blocks": [
+    },
     {
-      "type": "review",
-      "name": "Review",
-      "settings": [
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Reviewer name",
-          "default": "Sarah M."
-        },
-        {
-          "type": "text",
-          "id": "date",
-          "label": "Date",
-          "default": "March 2025"
-        },
-        {
-          "type": "range",
-          "id": "stars",
-          "label": "Star rating",
-          "min": 1,
-          "max": 5,
-          "step": 1,
-          "default": 5
-        },
-        {
-          "type": "checkbox",
-          "id": "verified",
-          "label": "Verified buyer",
-          "default": true
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Review title"
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Review text",
-          "default": "I bought the medium and large and genuinely haven't used a plastic bag since. The seal is incredible — not one leak. Worth every cent."
-        }
-      ]
+      "type": "header",
+      "content": "──── Review 1 ────"
+    },
+    {
+      "type": "text",
+      "id": "r1_name",
+      "label": "Name",
+      "default": "Lerato M."
+    },
+    {
+      "type": "text",
+      "id": "r1_date",
+      "label": "Date",
+      "default": "March 2025"
+    },
+    {
+      "type": "range",
+      "id": "r1_stars",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "r1_verified",
+      "label": "Verified",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "r1_text",
+      "label": "Review text",
+      "default": "I bought the medium and large and genuinely haven't used a plastic bag since. The seal is incredible — not one leak. Worth every cent."
+    },
+    {
+      "type": "header",
+      "content": "──── Review 2 ────"
+    },
+    {
+      "type": "text",
+      "id": "r2_name",
+      "label": "Name",
+      "default": "Mia van der Berg"
+    },
+    {
+      "type": "text",
+      "id": "r2_date",
+      "label": "Date",
+      "default": "Feb 2025"
+    },
+    {
+      "type": "range",
+      "id": "r2_stars",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "r2_verified",
+      "label": "Verified",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "r2_text",
+      "label": "Review text",
+      "default": "The berry colour is absolutely stunning. My whole family loves them — we use them for school lunches, leftovers, and even freezing soup."
+    },
+    {
+      "type": "header",
+      "content": "──── Review 3 ────"
+    },
+    {
+      "type": "text",
+      "id": "r3_name",
+      "label": "Name",
+      "default": "James K."
+    },
+    {
+      "type": "text",
+      "id": "r3_date",
+      "label": "Date",
+      "default": "Feb 2025"
+    },
+    {
+      "type": "range",
+      "id": "r3_stars",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "r3_verified",
+      "label": "Verified",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "r3_text",
+      "label": "Review text",
+      "default": "Finally ditched plastic bags. So much sturdier than expected. The silicone is thick and the seal is tight."
+    },
+    {
+      "type": "header",
+      "content": "──── Review 4 ────"
+    },
+    {
+      "type": "text",
+      "id": "r4_name",
+      "label": "Name",
+      "default": "Zanele N."
+    },
+    {
+      "type": "text",
+      "id": "r4_date",
+      "label": "Date",
+      "default": "Jan 2025"
+    },
+    {
+      "type": "range",
+      "id": "r4_stars",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "r4_verified",
+      "label": "Verified",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "r4_text",
+      "label": "Review text",
+      "default": "Obsessed with the sage colour. They look stunning in my kitchen. So happy to support a South African brand doing things properly."
+    },
+    {
+      "type": "header",
+      "content": "──── Review 5 ────"
+    },
+    {
+      "type": "text",
+      "id": "r5_name",
+      "label": "Name",
+      "default": "Priya D."
+    },
+    {
+      "type": "text",
+      "id": "r5_date",
+      "label": "Date",
+      "default": "Jan 2025"
+    },
+    {
+      "type": "range",
+      "id": "r5_stars",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "r5_verified",
+      "label": "Verified",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "r5_text",
+      "label": "Review text",
+      "default": "Great quality, great cause. Love knowing I'm reducing waste. The sage colour is beautiful."
+    },
+    {
+      "type": "header",
+      "content": "──── Review 6 ────"
+    },
+    {
+      "type": "text",
+      "id": "r6_name",
+      "label": "Name",
+      "default": "Tom R."
+    },
+    {
+      "type": "text",
+      "id": "r6_date",
+      "label": "Date",
+      "default": "Dec 2024"
+    },
+    {
+      "type": "range",
+      "id": "r6_stars",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "r6_verified",
+      "label": "Verified",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "r6_text",
+      "label": "Review text",
+      "default": "Game changer for meal prep! I use these for everything. The seal is incredible and they clean up beautifully."
     }
   ],
   "presets": [
     {
-      "name": "NauNau Reviews",
-      "blocks": [
-        {
-          "type": "review",
-          "settings": {
-            "name": "Lerato M.",
-            "date": "March 2025",
-            "stars": 5,
-            "verified": true,
-            "title": "",
-            "text": "I bought the medium and large and genuinely haven't used a plastic bag since. The seal is incredible — not one leak. Worth every cent."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "name": "Mia van der Berg",
-            "date": "Feb 2025",
-            "stars": 5,
-            "verified": true,
-            "title": "",
-            "text": "The berry colour is absolutely stunning. My whole family loves them — we use them for school lunches, leftovers, and even freezing soup. So much better than cling wrap."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "name": "James K.",
-            "date": "Feb 2025",
-            "stars": 5,
-            "verified": true,
-            "title": "",
-            "text": "Finally ditched plastic bags. So much sturdier than expected. The silicone is thick and the seal is tight."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "name": "Zanele N.",
-            "date": "Jan 2025",
-            "stars": 5,
-            "verified": true,
-            "title": "",
-            "text": "Obsessed with the sage colour. They look stunning in my kitchen. So happy to support a South African brand doing things properly."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "name": "Priya D.",
-            "date": "Jan 2025",
-            "stars": 4,
-            "verified": true,
-            "title": "",
-            "text": "Great quality, great cause. Love knowing I'm reducing waste. The sage colour is beautiful."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "name": "Tom R.",
-            "date": "Dec 2024",
-            "stars": 5,
-            "verified": true,
-            "title": "",
-            "text": "Game changer for meal prep! I use these for everything. The seal is incredible and they clean up beautifully."
-          }
-        }
-      ]
+      "name": "NauNau Reviews"
     }
   ]
 }
