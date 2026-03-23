@@ -5,6 +5,7 @@
   assign r3_stars = block.settings.r3_stars | default: 4
   assign r4_stars = block.settings.r4_stars | default: 5
   assign r5_stars = block.settings.r5_stars | default: 4
+  assign r6_stars = block.settings.r6_stars | default: 5
 
   assign total = 0
   assign sum = 0
@@ -94,6 +95,22 @@
     endif
   endif
 
+  if block.settings.r6_name != blank
+    assign total = total | plus: 1
+    assign sum = sum | plus: r6_stars
+    if r6_stars == 5
+      assign star5 = star5 | plus: 1
+    elsif r6_stars == 4
+      assign star4 = star4 | plus: 1
+    elsif r6_stars == 3
+      assign star3 = star3 | plus: 1
+    elsif r6_stars == 2
+      assign star2 = star2 | plus: 1
+    elsif r6_stars == 1
+      assign star1 = star1 | plus: 1
+    endif
+  endif
+
   if total > 0
     assign avg_x10 = sum | times: 10 | divided_by: total
     assign avg_whole = avg_x10 | divided_by: 10
@@ -121,7 +138,9 @@
   <style>
     .naunau-reviews-block {
       width: 100%;
-      padding: 40px 0;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
     .naunau-reviews-block .reviews-heading {
       font-family: 'Chewy', cursive;
@@ -133,12 +152,14 @@
     .naunau-reviews-block .reviews-summary {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 40px;
       background: #fff;
       border: 1px solid #e0e0e0;
       border-radius: 12px;
       padding: 30px;
-      margin-bottom: 30px;
+      margin: 0 auto 30px;
+      max-width: 700px;
     }
     .naunau-reviews-block .summary-score {
       text-align: center;
@@ -161,6 +182,7 @@
     }
     .naunau-reviews-block .summary-bars {
       flex: 1;
+      max-width: 400px;
     }
     .naunau-reviews-block .bar-row {
       display: flex;
@@ -196,6 +218,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
     }
     .naunau-reviews-block .review-card {
       background: #fff;
@@ -269,7 +293,7 @@
           {%- endfor -%}
         </div>
         <div class="score-count">
-          Based on {%- if total == 1 -%} {{ total }} review{%- else -%} {{ total }} reviews{%- endif -%}
+          Based on {% if total == 1 %}{{ total }} review{% else %}{{ total }} reviews{% endif %}
         </div>
       </div>
       <div class="summary-bars">
@@ -384,6 +408,23 @@
             </div>
           {%- endif -%}
           <div class="review-text">{{ block.settings.r5_text }}</div>
+        </div>
+      {%- endif -%}
+
+      {%- if block.settings.r6_name != blank -%}
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">{{ block.settings.r6_name }}</span>
+            <span class="review-date">{{ block.settings.r6_date }}</span>
+          </div>
+          <div class="review-stars">{%- for i in (1..5) -%}{%- if i <= r6_stars -%}&#9733;{%- else -%}&#9734;{%- endif -%}{%- endfor -%}</div>
+          {%- if block.settings.r6_verified -%}
+            <div class="verified-badge">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+              Verified Purchase
+            </div>
+          {%- endif -%}
+          <div class="review-text">{{ block.settings.r6_text }}</div>
         </div>
       {%- endif -%}
     </div>
@@ -519,12 +560,14 @@
     {
       "type": "text",
       "id": "r4_name",
-      "label": "Name"
+      "label": "Name",
+      "default": "Tom L."
     },
     {
       "type": "text",
       "id": "r4_date",
-      "label": "Date"
+      "label": "Date",
+      "default": "December 2023"
     },
     {
       "type": "range",
@@ -539,12 +582,13 @@
       "type": "checkbox",
       "id": "r4_verified",
       "label": "Verified Purchase",
-      "default": false
+      "default": true
     },
     {
       "type": "textarea",
       "id": "r4_text",
-      "label": "Review Text"
+      "label": "Review Text",
+      "default": "Exactly what I was looking for. Great for school lunches."
     },
     {
       "type": "header",
@@ -553,12 +597,14 @@
     {
       "type": "text",
       "id": "r5_name",
-      "label": "Name"
+      "label": "Name",
+      "default": "Lisa W."
     },
     {
       "type": "text",
       "id": "r5_date",
-      "label": "Date"
+      "label": "Date",
+      "default": "November 2023"
     },
     {
       "type": "range",
@@ -573,12 +619,50 @@
       "type": "checkbox",
       "id": "r5_verified",
       "label": "Verified Purchase",
-      "default": false
+      "default": true
     },
     {
       "type": "textarea",
       "id": "r5_text",
-      "label": "Review Text"
+      "label": "Review Text",
+      "default": "Love the colours and how easy it is to clean. Would buy again!"
+    },
+    {
+      "type": "header",
+      "content": "Review 6"
+    },
+    {
+      "type": "text",
+      "id": "r6_name",
+      "label": "Name",
+      "default": "Rachel D."
+    },
+    {
+      "type": "text",
+      "id": "r6_date",
+      "label": "Date",
+      "default": "October 2023"
+    },
+    {
+      "type": "range",
+      "id": "r6_stars",
+      "label": "Stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "r6_verified",
+      "label": "Verified Purchase",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "r6_text",
+      "label": "Review Text",
+      "default": "Beautiful product, so well designed. My daughter loves hers!"
     }
   ],
   "presets": [
