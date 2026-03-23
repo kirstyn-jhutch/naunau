@@ -1550,7 +1550,21 @@
         "counter_label": "plastic bags replaced so far 🌍",
         "subheading": "See how much plastic you're replacing — enter your bag count",
         "bags_per_naunau": "260",
-        "button_label": "Calculate"
+        "button_label": "Calculate",
+        "heading_color": "#30493b",
+        "heading_size": "42px",
+        "info_color": "#666666",
+        "info_size": "13px",
+        "number_color": "#b8ceba",
+        "number_size": "80px",
+        "label_color": "#b8ceba",
+        "label_size": "18px",
+        "subheading_color": "#444444",
+        "subheading_size": "14px",
+        "section_bg": "#b5d2bf",
+        "block_bg": "#1a1a1a",
+        "button_bg": "#30493b",
+        "button_text_color": "#ffffff"
       }
     }
   },
