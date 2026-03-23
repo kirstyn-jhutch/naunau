@@ -5,6 +5,21 @@
   assign counter_label = section.settings.counter_label | default: "plastic bags replaced so far 🌍"
   assign subheading = section.settings.subheading | default: "See how much plastic you're replacing — enter your bag count"
   assign button_label = section.settings.button_label | default: "Calculate"
+
+  assign heading_color = section.settings.heading_color | default: "#30493b"
+  assign heading_size = section.settings.heading_size | default: "42px"
+  assign info_color = section.settings.info_color | default: "#666666"
+  assign info_size = section.settings.info_size | default: "13px"
+  assign number_color = section.settings.number_color | default: "#b8ceba"
+  assign number_size = section.settings.number_size | default: "80px"
+  assign label_color = section.settings.label_color | default: "#b8ceba"
+  assign label_size = section.settings.label_size | default: "18px"
+  assign subheading_color = section.settings.subheading_color | default: "#444444"
+  assign subheading_size = section.settings.subheading_size | default: "14px"
+  assign block_bg = section.settings.block_bg | default: "#1A1A1A"
+  assign section_bg = section.settings.section_bg | default: "#ffffff"
+  assign button_bg = section.settings.button_bg | default: "#30493b"
+  assign button_text_color = section.settings.button_text_color | default: "#ffffff"
 %}
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chewy&family=Playfair+Display:ital@1&family=DM+Sans:wght@400;500;700&display=swap">
@@ -14,6 +29,7 @@
     padding: 60px 20px;
     text-align: center;
     width: 100%;
+    background: {{ section_bg }};
   }
   .naunau-plastic-counter .counter-inner {
     max-width: 40%;
@@ -21,20 +37,20 @@
   }
   .naunau-plastic-counter .section-heading {
     font-family: 'Chewy', cursive;
-    font-size: 42px;
-    color: #30493b;
+    font-size: {{ heading_size }};
+    color: {{ heading_color }};
     margin-bottom: 8px;
   }
   .naunau-plastic-counter .info-text {
     font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    color: #666;
+    font-size: {{ info_size }};
+    color: {{ info_color }};
     margin-bottom: 28px;
     line-height: 1.5;
     white-space: nowrap;
   }
   .naunau-plastic-counter .counter-display {
-    background: #1A1A1A;
+    background: {{ block_bg }};
     border-radius: 20px;
     padding: 30px 30px;
     margin-bottom: 24px;
@@ -42,8 +58,8 @@
   .naunau-plastic-counter .big-number {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 80px;
-    color: #b8ceba;
+    font-size: {{ number_size }};
+    color: {{ number_color }};
     line-height: 1;
     margin-bottom: 8px;
     letter-spacing: -2px;
@@ -52,15 +68,15 @@
   }
   .naunau-plastic-counter .counter-label {
     font-family: 'DM Sans', sans-serif;
-    font-size: 18px;
-    color: #b8ceba;
+    font-size: {{ label_size }};
+    color: {{ label_color }};
     opacity: 0.8;
     text-align: center;
   }
   .naunau-plastic-counter .subheading {
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: #444;
+    font-size: {{ subheading_size }};
+    color: {{ subheading_color }};
     margin-bottom: 20px;
     line-height: 1.5;
   }
@@ -90,11 +106,11 @@
     color: #bbb;
   }
   .naunau-plastic-counter .calc-input:focus {
-    border-color: #30493b;
+    border-color: {{ button_bg }};
   }
   .naunau-plastic-counter .calc-button {
-    background: #30493b;
-    color: #fff;
+    background: {{ button_bg }};
+    color: {{ button_text_color }};
     border: none;
     border-radius: 10px;
     padding: 14px 28px;
@@ -193,6 +209,10 @@
   "tag": "section",
   "settings": [
     {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
       "type": "text",
       "id": "heading",
       "label": "Heading",
@@ -228,6 +248,145 @@
       "id": "button_label",
       "label": "Button Label",
       "default": "Calculate"
+    },
+    {
+      "type": "header",
+      "content": "Heading Style"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Colour",
+      "default": "#30493b"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "28px", "label": "Small" },
+        { "value": "36px", "label": "Medium" },
+        { "value": "42px", "label": "Large" },
+        { "value": "52px", "label": "Extra Large" }
+      ],
+      "default": "42px"
+    },
+    {
+      "type": "header",
+      "content": "Info Text Style"
+    },
+    {
+      "type": "color",
+      "id": "info_color",
+      "label": "Info Text Colour",
+      "default": "#666666"
+    },
+    {
+      "type": "select",
+      "id": "info_size",
+      "label": "Info Text Size",
+      "options": [
+        { "value": "11px", "label": "Small" },
+        { "value": "13px", "label": "Medium" },
+        { "value": "15px", "label": "Large" },
+        { "value": "18px", "label": "Extra Large" }
+      ],
+      "default": "13px"
+    },
+    {
+      "type": "header",
+      "content": "Number Style"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number Colour",
+      "default": "#b8ceba"
+    },
+    {
+      "type": "select",
+      "id": "number_size",
+      "label": "Number Size",
+      "options": [
+        { "value": "56px", "label": "Small" },
+        { "value": "72px", "label": "Medium" },
+        { "value": "80px", "label": "Large" },
+        { "value": "96px", "label": "Extra Large" },
+        { "value": "120px", "label": "Huge" }
+      ],
+      "default": "80px"
+    },
+    {
+      "type": "header",
+      "content": "Counter Label Style"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label Colour",
+      "default": "#b8ceba"
+    },
+    {
+      "type": "select",
+      "id": "label_size",
+      "label": "Label Size",
+      "options": [
+        { "value": "13px", "label": "Small" },
+        { "value": "16px", "label": "Medium" },
+        { "value": "18px", "label": "Large" },
+        { "value": "22px", "label": "Extra Large" }
+      ],
+      "default": "18px"
+    },
+    {
+      "type": "header",
+      "content": "Subheading Style"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Colour",
+      "default": "#444444"
+    },
+    {
+      "type": "select",
+      "id": "subheading_size",
+      "label": "Subheading Size",
+      "options": [
+        { "value": "12px", "label": "Small" },
+        { "value": "14px", "label": "Medium" },
+        { "value": "16px", "label": "Large" },
+        { "value": "18px", "label": "Extra Large" }
+      ],
+      "default": "14px"
+    },
+    {
+      "type": "header",
+      "content": "Backgrounds & Button"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "block_bg",
+      "label": "Dark Block Background",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button Colour",
+      "default": "#30493b"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Colour",
+      "default": "#ffffff"
     }
   ],
   "presets": [
