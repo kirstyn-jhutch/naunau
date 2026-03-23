@@ -1141,7 +1141,7 @@
       },
       "name": "Meet the Family",
       "settings": {
-        "collection": "",
+        "collection": "naunau-bags",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 4,
@@ -1155,7 +1155,7 @@
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 28,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
