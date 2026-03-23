@@ -72,11 +72,18 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     white-space: nowrap;
+    transform: rotate(-2deg);
+    display: inline-block;
   }
   .naunau-quiz .quiz-subtitle {
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
     color: #666;
+  }
+
+  .naunau-quiz .quiz-body {
+    max-width: 420px;
+    margin: 0 auto;
   }
 
   /* progress bar */
@@ -242,6 +249,7 @@
       <p class="quiz-subtitle">{{ subtitle }}</p>
     </div>
 
+    <div class="quiz-body">
     <div class="progress-bar">
       <div class="progress-fill"></div>
     </div>
@@ -319,6 +327,7 @@
       <p class="result-desc">{{ r4_desc }}</p>
       <a href="{% if r4_product != blank %}{{ r4_product.url }}{% else %}#{% endif %}" class="result-shop-btn">{{ shop_btn_label }}</a>
       <button type="button" class="retake-btn">{{ retake_label }}</button>
+    </div>
     </div>
   </div>
 </div>
