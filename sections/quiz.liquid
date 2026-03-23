@@ -79,14 +79,17 @@
     display: none;
     font-family: 'Chewy', cursive;
     font-size: 44px;
-    color: {{ btn_color }};
     text-align: center;
     margin-bottom: 12px;
     line-height: 1.1;
+    background: linear-gradient(90deg, {{ btn_color }} 0%, #6b8f71 50%, #b8ceba 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .naunau-quiz .quiz-heading-svg text {
     font-family: 'Chewy', cursive;
-    font-size: 46px;
+    font-size: 85px;
     fill: url(#quiz-heading-gradient);
   }
   .naunau-quiz .quiz-subtitle {
@@ -266,9 +269,9 @@
   <div class="quiz-container">
     <div class="quiz-header">
       <h1 class="quiz-heading-mobile">{{ heading }}</h1>
-      <svg class="quiz-heading-svg" viewBox="0 0 800 58" xmlns="http://www.w3.org/2000/svg">
+      <svg class="quiz-heading-svg" viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <path id="quiz-curve" d="M 30,52 Q 400,2 770,52" fill="none" />
+          <path id="quiz-curve" d="M 10,110 Q 400,-10 790,110" fill="none" />
           <linearGradient id="quiz-heading-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="{{ btn_color }}" />
             <stop offset="50%" stop-color="#6b8f71" />
