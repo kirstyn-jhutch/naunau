@@ -147,6 +147,13 @@
   .naunau-quiz .quiz-result.active {
     display: block;
   }
+  .naunau-quiz .result-image {
+    max-width: 280px;
+    height: auto;
+    border-radius: 16px;
+    margin: 20px auto 24px;
+    display: block;
+  }
   .naunau-quiz .result-label {
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
@@ -267,6 +274,9 @@
     <!-- Results -->
     <div class="quiz-result" data-result="1">
       <div class="result-label">We recommend</div>
+      {%- if r1_product.featured_image != blank -%}
+        <img class="result-image" src="{{ r1_product.featured_image | image_url: width: 400 }}" alt="{{ r1_product.title }}" width="400">
+      {%- endif -%}
       <h2 class="result-name">{{ r1_name }}</h2>
       <p class="result-desc">{{ r1_desc }}</p>
       <a href="{% if r1_product != blank %}{{ r1_product.url }}{% else %}#{% endif %}" class="result-shop-btn">{{ shop_btn_label }}</a>
@@ -274,6 +284,9 @@
     </div>
     <div class="quiz-result" data-result="2">
       <div class="result-label">We recommend</div>
+      {%- if r2_product.featured_image != blank -%}
+        <img class="result-image" src="{{ r2_product.featured_image | image_url: width: 400 }}" alt="{{ r2_product.title }}" width="400">
+      {%- endif -%}
       <h2 class="result-name">{{ r2_name }}</h2>
       <p class="result-desc">{{ r2_desc }}</p>
       <a href="{% if r2_product != blank %}{{ r2_product.url }}{% else %}#{% endif %}" class="result-shop-btn">{{ shop_btn_label }}</a>
@@ -281,6 +294,9 @@
     </div>
     <div class="quiz-result" data-result="3">
       <div class="result-label">We recommend</div>
+      {%- if r3_product.featured_image != blank -%}
+        <img class="result-image" src="{{ r3_product.featured_image | image_url: width: 400 }}" alt="{{ r3_product.title }}" width="400">
+      {%- endif -%}
       <h2 class="result-name">{{ r3_name }}</h2>
       <p class="result-desc">{{ r3_desc }}</p>
       <a href="{% if r3_product != blank %}{{ r3_product.url }}{% else %}#{% endif %}" class="result-shop-btn">{{ shop_btn_label }}</a>
@@ -288,6 +304,9 @@
     </div>
     <div class="quiz-result" data-result="4">
       <div class="result-label">We recommend</div>
+      {%- if r4_product.featured_image != blank -%}
+        <img class="result-image" src="{{ r4_product.featured_image | image_url: width: 400 }}" alt="{{ r4_product.title }}" width="400">
+      {%- endif -%}
       <h2 class="result-name">{{ r4_name }}</h2>
       <p class="result-desc">{{ r4_desc }}</p>
       <a href="{% if r4_product != blank %}{{ r4_product.url }}{% else %}#{% endif %}" class="result-shop-btn">{{ shop_btn_label }}</a>
