@@ -23,38 +23,18 @@
   assign r1_product = section.settings.r1_product
   assign r1_name = section.settings.r1_name | default: "The Snack · 400ml"
   assign r1_desc = section.settings.r1_desc | default: "Perfect for small snacks, dips, and single portions. Compact enough to toss in any bag."
-  if r1_product != blank
-    assign r1_url = r1_product.url
-  else
-    assign r1_url = "#"
-  endif
 
   assign r2_product = section.settings.r2_product
   assign r2_name = section.settings.r2_name | default: "The Sandwich · 800ml"
   assign r2_desc = section.settings.r2_desc | default: "Ideal for sandwiches, wraps, and lunch portions for one or two. Your everyday go-to."
-  if r2_product != blank
-    assign r2_url = r2_product.url
-  else
-    assign r2_url = "#"
-  endif
 
   assign r3_product = section.settings.r3_product
   assign r3_name = section.settings.r3_name | default: "The Crescent · 1000ml"
   assign r3_desc = section.settings.r3_desc | default: "Great for meal prep, salads, and feeding a couple. Fits nicely in the fridge or freezer."
-  if r3_product != blank
-    assign r3_url = r3_product.url
-  else
-    assign r3_url = "#"
-  endif
 
   assign r4_product = section.settings.r4_product
   assign r4_name = section.settings.r4_name | default: "The Keeper · 2000ml"
   assign r4_desc = section.settings.r4_desc | default: "Built for big batches, family meals, and bulk storage. The one that does it all."
-  if r4_product != blank
-    assign r4_url = r4_product.url
-  else
-    assign r4_url = "#"
-  endif
 
   assign shop_btn_label = section.settings.shop_btn_label | default: "Shop Now"
   assign retake_label = section.settings.retake_label | default: "Retake Quiz"
@@ -289,28 +269,28 @@
       <div class="result-label">We recommend</div>
       <h2 class="result-name">{{ r1_name }}</h2>
       <p class="result-desc">{{ r1_desc }}</p>
-      <a href="{{ r1_url }}" class="result-shop-btn">{{ shop_btn_label }}</a>
+      <a href="{% if r1_product != blank %}{{ r1_product.url }}{% else %}#{% endif %}" class="result-shop-btn">{{ shop_btn_label }}</a>
       <button type="button" class="retake-btn">{{ retake_label }}</button>
     </div>
     <div class="quiz-result" data-result="2">
       <div class="result-label">We recommend</div>
       <h2 class="result-name">{{ r2_name }}</h2>
       <p class="result-desc">{{ r2_desc }}</p>
-      <a href="{{ r2_url }}" class="result-shop-btn">{{ shop_btn_label }}</a>
+      <a href="{% if r2_product != blank %}{{ r2_product.url }}{% else %}#{% endif %}" class="result-shop-btn">{{ shop_btn_label }}</a>
       <button type="button" class="retake-btn">{{ retake_label }}</button>
     </div>
     <div class="quiz-result" data-result="3">
       <div class="result-label">We recommend</div>
       <h2 class="result-name">{{ r3_name }}</h2>
       <p class="result-desc">{{ r3_desc }}</p>
-      <a href="{{ r3_url }}" class="result-shop-btn">{{ shop_btn_label }}</a>
+      <a href="{% if r3_product != blank %}{{ r3_product.url }}{% else %}#{% endif %}" class="result-shop-btn">{{ shop_btn_label }}</a>
       <button type="button" class="retake-btn">{{ retake_label }}</button>
     </div>
     <div class="quiz-result" data-result="4">
       <div class="result-label">We recommend</div>
       <h2 class="result-name">{{ r4_name }}</h2>
       <p class="result-desc">{{ r4_desc }}</p>
-      <a href="{{ r4_url }}" class="result-shop-btn">{{ shop_btn_label }}</a>
+      <a href="{% if r4_product != blank %}{{ r4_product.url }}{% else %}#{% endif %}" class="result-shop-btn">{{ shop_btn_label }}</a>
       <button type="button" class="retake-btn">{{ retake_label }}</button>
     </div>
   </div>
