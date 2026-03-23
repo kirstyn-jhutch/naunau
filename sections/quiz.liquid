@@ -52,7 +52,7 @@
     padding: 60px 20px;
   }
   .naunau-quiz .quiz-container {
-    max-width: 560px;
+    max-width: 640px;
     width: 100%;
     margin: 0 auto;
   }
@@ -62,9 +62,15 @@
   }
   .naunau-quiz .quiz-heading {
     font-family: 'Chewy', cursive;
-    font-size: 36px;
+    font-size: 72px;
     color: {{ btn_color }};
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, {{ btn_color }}, #6b8f71, #b8ceba);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .naunau-quiz .quiz-subtitle {
     font-family: 'DM Sans', sans-serif;
@@ -216,7 +222,7 @@
       min-height: auto;
     }
     .naunau-quiz .quiz-heading {
-      font-size: 28px;
+      font-size: 44px;
     }
     .naunau-quiz .question-title {
       font-size: 22px;
