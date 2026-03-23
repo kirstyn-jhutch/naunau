@@ -519,6 +519,39 @@
     "section_dEGUdG": {
       "type": "section",
       "blocks": {
+        "naunau_customer_reviews_FMNgX8": {
+          "type": "naunau-customer-reviews",
+          "name": "NauNau Customer Reviews",
+          "settings": {
+            "heading": "Customer Reviews",
+            "r1_name": "Sarah M.",
+            "r1_date": "March 2024",
+            "r1_stars": 5,
+            "r1_verified": true,
+            "r1_text": "Absolutely love this! Perfect size and keeps everything fresh.",
+            "r2_name": "James K.",
+            "r2_date": "February 2024",
+            "r2_stars": 5,
+            "r2_verified": true,
+            "r2_text": "Great quality and the design is beautiful. My kids love it!",
+            "r3_name": "Emily R.",
+            "r3_date": "January 2024",
+            "r3_stars": 4,
+            "r3_verified": true,
+            "r3_text": "Really happy with this purchase. Sturdy and well-made.",
+            "r4_name": "",
+            "r4_date": "",
+            "r4_stars": 5,
+            "r4_verified": false,
+            "r4_text": "",
+            "r5_name": "",
+            "r5_date": "",
+            "r5_stars": 4,
+            "r5_verified": false,
+            "r5_text": ""
+          },
+          "blocks": {}
+        },
         "group_niwHBF": {
           "type": "group",
           "name": "Content",
@@ -592,6 +625,7 @@
         }
       },
       "block_order": [
+        "naunau_customer_reviews_FMNgX8",
         "group_niwHBF"
       ],
       "name": "Formula details",
