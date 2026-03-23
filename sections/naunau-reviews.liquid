@@ -73,7 +73,7 @@
             {%- endif -%}
           {%- endfor -%}
         </div>
-        <span class="nn-reviews__count">{{ total }} review{{ total | pluralize: '', 's' }}</span>
+        <span class="nn-reviews__count">{%- if total == 1 -%}{{ total }} review{%- else -%}{{ total }} reviews{%- endif -%}</span>
       </div>
       <div class="nn-reviews__bars-side">
         <div class="nn-reviews__bar-row"><span class="nn-reviews__bar-label">5 ★</span><div class="nn-reviews__bar-track"><div class="nn-reviews__bar-fill" style="width: {{ p5 }}%;"></div></div></div>
