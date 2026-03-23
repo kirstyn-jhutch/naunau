@@ -1,0 +1,415 @@
+
+<div class="nn-size-guide" {{ block.shopify_attributes }}>
+  <div class="nn-sg__tabs">
+    <button class="nn-sg__tab nn-sg__tab--active" data-tab="snack" onclick="document.querySelectorAll('.nn-sg__tab').forEach(t=>t.classList.remove('nn-sg__tab--active'));this.classList.add('nn-sg__tab--active');document.querySelectorAll('.nn-sg__panel').forEach(p=>p.style.display='none');document.getElementById('nn-sg-snack').style.display='grid';">
+      {{ block.settings.tab1_name }}
+    </button>
+    <button class="nn-sg__tab" data-tab="sandwich" onclick="document.querySelectorAll('.nn-sg__tab').forEach(t=>t.classList.remove('nn-sg__tab--active'));this.classList.add('nn-sg__tab--active');document.querySelectorAll('.nn-sg__panel').forEach(p=>p.style.display='none');document.getElementById('nn-sg-sandwich').style.display='grid';">
+      {{ block.settings.tab2_name }}
+    </button>
+    <button class="nn-sg__tab" data-tab="crescent" onclick="document.querySelectorAll('.nn-sg__tab').forEach(t=>t.classList.remove('nn-sg__tab--active'));this.classList.add('nn-sg__tab--active');document.querySelectorAll('.nn-sg__panel').forEach(p=>p.style.display='none');document.getElementById('nn-sg-crescent').style.display='grid';">
+      {{ block.settings.tab3_name }}
+    </button>
+    <button class="nn-sg__tab" data-tab="keeper" onclick="document.querySelectorAll('.nn-sg__tab').forEach(t=>t.classList.remove('nn-sg__tab--active'));this.classList.add('nn-sg__tab--active');document.querySelectorAll('.nn-sg__panel').forEach(p=>p.style.display='none');document.getElementById('nn-sg-keeper').style.display='grid';">
+      {{ block.settings.tab4_name }}
+    </button>
+  </div>
+
+  {%- comment -%} Tab 1 — The Snack 400ml {%- endcomment -%}
+  <div id="nn-sg-snack" class="nn-sg__panel" style="display: grid;">
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t1_emoji1 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t1_desc1 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t1_emoji2 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t1_desc2 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t1_emoji3 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t1_desc3 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t1_emoji4 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t1_desc4 }}</p>
+    </div>
+  </div>
+
+  {%- comment -%} Tab 2 — The Sandwich 800ml {%- endcomment -%}
+  <div id="nn-sg-sandwich" class="nn-sg__panel" style="display: none;">
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t2_emoji1 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t2_desc1 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t2_emoji2 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t2_desc2 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t2_emoji3 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t2_desc3 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t2_emoji4 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t2_desc4 }}</p>
+    </div>
+  </div>
+
+  {%- comment -%} Tab 3 — The Crescent 1000ml {%- endcomment -%}
+  <div id="nn-sg-crescent" class="nn-sg__panel" style="display: none;">
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t3_emoji1 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t3_desc1 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t3_emoji2 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t3_desc2 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t3_emoji3 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t3_desc3 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t3_emoji4 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t3_desc4 }}</p>
+    </div>
+  </div>
+
+  {%- comment -%} Tab 4 — The Keeper 2000ml {%- endcomment -%}
+  <div id="nn-sg-keeper" class="nn-sg__panel" style="display: none;">
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t4_emoji1 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t4_desc1 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t4_emoji2 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t4_desc2 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t4_emoji3 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t4_desc3 }}</p>
+    </div>
+    <div class="nn-sg__card">
+      <span class="nn-sg__emoji">{{ block.settings.t4_emoji4 }}</span>
+      <p class="nn-sg__desc">{{ block.settings.t4_desc4 }}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .nn-size-guide {
+    padding: 8px 0;
+  }
+  .nn-sg__tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .nn-sg__tab {
+    padding: 8px 14px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 24px;
+    background: transparent;
+    color: #555;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .nn-sg__tab:hover {
+    border-color: #30493b;
+    color: #30493b;
+  }
+  .nn-sg__tab--active {
+    background: #30493b !important;
+    color: #fff !important;
+    border-color: #30493b !important;
+  }
+  .nn-sg__panel {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .nn-sg__card {
+    background: #f5f5f0;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .nn-sg__emoji {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .nn-sg__desc {
+    font-size: 13px;
+    color: #444;
+    margin: 0;
+    line-height: 1.4;
+  }
+  @media (max-width: 480px) {
+    .nn-sg__tabs {
+      gap: 4px;
+    }
+    .nn-sg__tab {
+      padding: 6px 10px;
+      font-size: 11px;
+    }
+    .nn-sg__card {
+      padding: 12px;
+    }
+    .nn-sg__emoji {
+      font-size: 22px;
+    }
+    .nn-sg__desc {
+      font-size: 12px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Size Guide",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "──── Tab 1 — The Snack 400ml ────"
+    },
+    {
+      "type": "text",
+      "id": "tab1_name",
+      "label": "Tab name",
+      "default": "The Snack · 400ml"
+    },
+    {
+      "type": "text",
+      "id": "t1_emoji1",
+      "label": "Item 1 emoji",
+      "default": "🍎"
+    },
+    {
+      "type": "text",
+      "id": "t1_desc1",
+      "label": "Item 1 description",
+      "default": "1 cut-up apple"
+    },
+    {
+      "type": "text",
+      "id": "t1_emoji2",
+      "label": "Item 2 emoji",
+      "default": "🥜"
+    },
+    {
+      "type": "text",
+      "id": "t1_desc2",
+      "label": "Item 2 description",
+      "default": "Nuts and biltong"
+    },
+    {
+      "type": "text",
+      "id": "t1_emoji3",
+      "label": "Item 3 emoji",
+      "default": "🥕"
+    },
+    {
+      "type": "text",
+      "id": "t1_desc3",
+      "label": "Item 3 description",
+      "default": "Veggie sticks and dip"
+    },
+    {
+      "type": "text",
+      "id": "t1_emoji4",
+      "label": "Item 4 emoji",
+      "default": "🧀"
+    },
+    {
+      "type": "text",
+      "id": "t1_desc4",
+      "label": "Item 4 description",
+      "default": "A block of cheese"
+    },
+    {
+      "type": "header",
+      "content": "──── Tab 2 — The Sandwich 800ml ────"
+    },
+    {
+      "type": "text",
+      "id": "tab2_name",
+      "label": "Tab name",
+      "default": "The Sandwich · 800ml"
+    },
+    {
+      "type": "text",
+      "id": "t2_emoji1",
+      "label": "Item 1 emoji",
+      "default": "🥪"
+    },
+    {
+      "type": "text",
+      "id": "t2_desc1",
+      "label": "Item 1 description",
+      "default": "A sandwich"
+    },
+    {
+      "type": "text",
+      "id": "t2_emoji2",
+      "label": "Item 2 emoji",
+      "default": "🫘"
+    },
+    {
+      "type": "text",
+      "id": "t2_desc2",
+      "label": "Item 2 description",
+      "default": "A bunch of green beans"
+    },
+    {
+      "type": "text",
+      "id": "t2_emoji3",
+      "label": "Item 3 emoji",
+      "default": "🫐"
+    },
+    {
+      "type": "text",
+      "id": "t2_desc3",
+      "label": "Item 3 description",
+      "default": "A punnet of berries"
+    },
+    {
+      "type": "text",
+      "id": "t2_emoji4",
+      "label": "Item 4 emoji",
+      "default": "🍗"
+    },
+    {
+      "type": "text",
+      "id": "t2_desc4",
+      "label": "Item 4 description",
+      "default": "2 chicken breasts"
+    },
+    {
+      "type": "header",
+      "content": "──── Tab 3 — The Crescent 1000ml ────"
+    },
+    {
+      "type": "text",
+      "id": "tab3_name",
+      "label": "Tab name",
+      "default": "The Crescent · 1000ml"
+    },
+    {
+      "type": "text",
+      "id": "t3_emoji1",
+      "label": "Item 1 emoji",
+      "default": "🍇"
+    },
+    {
+      "type": "text",
+      "id": "t3_desc1",
+      "label": "Item 1 description",
+      "default": "A whole bunch of grapes"
+    },
+    {
+      "type": "text",
+      "id": "t3_emoji2",
+      "label": "Item 2 emoji",
+      "default": "🥦"
+    },
+    {
+      "type": "text",
+      "id": "t3_desc2",
+      "label": "Item 2 description",
+      "default": "A head of broccoli"
+    },
+    {
+      "type": "text",
+      "id": "t3_emoji3",
+      "label": "Item 3 emoji",
+      "default": "🥗"
+    },
+    {
+      "type": "text",
+      "id": "t3_desc3",
+      "label": "Item 3 description",
+      "default": "Salad"
+    },
+    {
+      "type": "text",
+      "id": "t3_emoji4",
+      "label": "Item 4 emoji",
+      "default": "🍝"
+    },
+    {
+      "type": "text",
+      "id": "t3_desc4",
+      "label": "Item 4 description",
+      "default": "Leftover pasta"
+    },
+    {
+      "type": "header",
+      "content": "──── Tab 4 — The Keeper 2000ml ────"
+    },
+    {
+      "type": "text",
+      "id": "tab4_name",
+      "label": "Tab name",
+      "default": "The Keeper · 2000ml"
+    },
+    {
+      "type": "text",
+      "id": "t4_emoji1",
+      "label": "Item 1 emoji",
+      "default": "🥩"
+    },
+    {
+      "type": "text",
+      "id": "t4_desc1",
+      "label": "Item 1 description",
+      "default": "Braai meat marinade"
+    },
+    {
+      "type": "text",
+      "id": "t4_emoji2",
+      "label": "Item 2 emoji",
+      "default": "🐟"
+    },
+    {
+      "type": "text",
+      "id": "t4_desc2",
+      "label": "Item 2 description",
+      "default": "2 pieces of salmon"
+    },
+    {
+      "type": "text",
+      "id": "t4_emoji3",
+      "label": "Item 3 emoji",
+      "default": "🍲"
+    },
+    {
+      "type": "text",
+      "id": "t4_desc3",
+      "label": "Item 3 description",
+      "default": "Big batch of soup"
+    },
+    {
+      "type": "text",
+      "id": "t4_emoji4",
+      "label": "Item 4 emoji",
+      "default": "🥬"
+    },
+    {
+      "type": "text",
+      "id": "t4_desc4",
+      "label": "Item 4 description",
+      "default": "1kg of vegetables"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Size Guide"
+    }
+  ]
+}
+{% endschema %}
