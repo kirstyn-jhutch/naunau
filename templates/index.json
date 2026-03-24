@@ -1003,7 +1003,7 @@
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "custom",
-                "font": "var(--font-heading--family)",
+                "font": "'Chewy', cursive",
                 "font_size": "2.5rem",
                 "line_height": "loose",
                 "letter_spacing": "loose",
