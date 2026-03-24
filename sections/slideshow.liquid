@@ -1,577 +1,161 @@
+ <style>
+  .slider-wrapper {
+    width: 80%;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+  }
+  .slider-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    user-select: none;
+  }
+  .slider-slide {
+    flex: 0 0 auto; /* Prevent flex items from shrinking */
+    overflow: hidden;
+    margin-right: 20px; /* Add margin between slides */
+    width: 202px;
+    height: 253px;
+  }
+  .slider-slide-img {
+    width: 202px;
+    height: 253px;
+    border-radius: 10px;
+  }
+  .slider-controls {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .slider-prev, .slider-next {
+    font-size: 20px;
+    cursor: pointer;
+    width: 10px;
+    color: #CDCDCD;
+    padding: 0 5px;
+  }
+  .slider-prev {
+    margin-right: 10px;
+  }
+  .slider-next {
+    margin-right: 5px;
+  }
+</style>
+
+<div class="slider-wrapper">
+  <div class="slider-carousel">
 
 
-{% if section.blocks.size > 1 %}
-  {% if section.settings.display_mode == 'full_frame' %}
-    {% assign autoplay = section.settings.autoplay %}
-  {% else %}
-    {% assign autoplay = false %}
-  {% endif %}
-  {% capture controls %}
-    {%- render 'slideshow-controls',
-      style: section.settings.slideshow_controls_style,
-      autoplay: autoplay,
-      item_count: section.blocks.size,
-      show_arrows: false,
-      arrows_on_media: true,
-      controls_on_media: true,
-      pagination_position: 'center',
-      icon_style: section.settings.icons_style
-    -%}
-  {% endcapture %}
-{% endif %}
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_virginia-fonseca.png?v=1751396482" alt="Gelo Health banheira de gelo crioterapia Virginia Fonseca">
+    </a>
 
-{% capture slides %}
-  {% content_for 'blocks' %}
-{% endcapture %}
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_nicholas-santos.png?v=1711600434" alt="Gelo Health banheira de gelo crioterapia Nicholas Santos">
+    </a>
 
-{% liquid
-  assign section_width_class = ''
-  if section.settings.display_mode == 'with_hints'
-    assign section_width_class = 'section--page-width'
-    if section.settings.full_frame_on_mobile
-      assign section_width_class = section_width_class | append: ' section--mobile-full-width'
-    endif
-  else
-    assign section_width_class = 'section--' | append: section.settings.section_width
-  endif
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_marina-pumar.jpg?v=1771106193" alt="Gelo Health banheira de gelo crioterapia Marina Pumar">
+    </a>
 
-  assign slideshow_class = 'slideshow--content-' | append: section.settings.content_position
-  if section.blocks.size == 1
-    assign slideshow_class = slideshow_class | append: ' slideshow--single-media'
-  endif
-  if section.settings.display_mode == 'with_hints'
-    assign slideshow_class = slideshow_class | append: ' slideshow--with-hints'
-    if section.settings.full_frame_on_mobile
-      assign slideshow_class = slideshow_class | append: ' slideshow--with-hints--mobile-full-frame'
-    else
-      assign slideshow_class = slideshow_class | append: ' slideshow--with-hints--mobile-with-hints'
-    endif
-  endif
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_jade-picon.png?v=1751396476" alt="Gelo Health banheira de gelo crioterapia Jade Picon">
+    </a>
+    
+    <!-- <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_caua-reymond.png?v=1711600877" alt="Gelo Health banheira de gelo crioterapia Cauã Reymond">
+    </a> -->
 
-  assign show_arrows = true
-  if section.settings.icons_style == 'none' or section.blocks.size <= 1
-    assign show_arrows = false
-  endif
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_andre-sanches.png?v=1711600874" alt="Gelo Health banheira de gelo crioterapia Andre Sanches">
+    </a>
+    
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_medico.png?v=1711600434" alt="Gelo Health banheira de gelo crioterapia Médico">
+    </a>
 
-  assign rounded_slide_corners = false
-  if section.settings.display_mode == 'full_frame' and section.settings.section_width == 'page-width'
-    assign rounded_slide_corners = true
-  elsif section.settings.display_mode == 'with_hints' and section.settings.full_frame_on_mobile == false
-    assign rounded_slide_corners = true
-  endif
-%}
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_cyber-inox.jpg?v=1771106193" alt="Gelo Health banheira de gelo crioterapia Kontrast Club">
+    </a>
 
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<div
-  class="slideshow-section spacing-style section {{ section_width_class }} color-{{ section.settings.color_scheme }} disable-section-top-offset"
-  style="{% render 'spacing-padding', settings: section.settings %}; --slideshow-gap: {{ section.settings.slideshow_gap }}px;{% if rounded_slide_corners %} --corner-radius: {{ section.settings.corner_radius }}px;{% endif %}"
->
-  {% render 'slideshow',
-    class: slideshow_class,
-    controls: controls,
-    show_arrows: show_arrows,
-    icon_style: section.settings.icons_style,
-    icon_shape: section.settings.icons_shape,
-    autoplay: autoplay,
-    autoplay_speed: section.settings.autoplay_speed,
-    slides: slides,
-    slide_count: section.blocks.size,
-    slide_size: section.settings.slide_height
-  %}
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_raissa-rossi.png?v=1711600434" alt="Gelo Health banheira de gelo crioterapia Raissa Rossi">
+    </a>
+    
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_andre-baran.png?v=1711600434" alt="Gelo Health banheira de gelo crioterapia André Baran">
+    </a>
+
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_recovery.png?v=1711600434" alt="Gelo Health banheira de gelo crioterapia Recovery">
+    </a>
+
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_marc.png?v=1711725086" alt="Gelo Health banheira de gelo crioterapia Marc">
+    </a>
+
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_maratonista.png?v=1711600434" alt="Gelo Health banheira de gelo crioterapia Maratonista">
+    </a>
+
+    <a class="slider-slide" href="https://instagram.com/gelohealth.com.br" target="_blank">
+      <img class="slider-slide-img" src="https://cdn.shopify.com/s/files/1/0715/1950/2645/files/banheira-de-gelo-crioterapia_ibirapuera.png?v=1711600434" alt="Gelo Health banheira de gelo crioterapia Ibirapuera">
+    </a>
+
+  </div>
+  <div class="slider-controls">
+    <div class="slider-prev" onclick="plusSlides(-1)">&#10094;</div>
+    <div class="slider-next" onclick="plusSlides(1)">&#10095;</div>
+  </div>
 </div>
 
-{% stylesheet %}
-  .slideshow-section {
-    slideshow-arrows .slideshow-control:first-of-type {
-      margin-inline-start: var(--padding-xs);
-    }
+<script>
+  const slider = document.querySelector('.slider-carousel');
+  const slides = document.querySelectorAll('.slider-slide');
+  const slideWidth = slides[0].offsetWidth + 20;
+  let currentIndex = 0;
 
-    slideshow-arrows .slideshow-control:last-of-type {
-      margin-inline-end: var(--padding-xs);
-    }
+  // Clone slides for seamless looping
+  slides.forEach(slide => {
+    const clone = slide.cloneNode(true);
+    clone.classList.add("clone");
+    slider.appendChild(clone);
+  });
 
-    .slideshow--with-hints--mobile-with-hints {
-      gap: var(--slideshow-gap, 0);
-      grid-column: 1 / -1;
-    }
+  let isTransitioning = false;
 
-    /* Hide navigation arrows at boundaries for with-hints mode */
-    .slideshow--with-hints--mobile-with-hints slideshow-arrows .slideshow-control {
-      transition: opacity 0.3s ease;
-    }
+  function moveSlides() {
+    if (isTransitioning) return;
+    isTransitioning = true;
 
-    /* Override animation for boundary arrows in with-hints mode on hover */
-    slideshow-component.slideshow--with-hints--mobile-with-hints:has(
-        slideshow-slide:first-child:not([aria-hidden='true'])
-      )
-      > slideshow-container
-      > slideshow-arrows
-      .slideshow-control--previous,
-    slideshow-component.slideshow--with-hints--mobile-with-hints:has(
-        slideshow-slide:last-child:not([aria-hidden='true'])
-      )
-      > slideshow-container
-      > slideshow-arrows
-      .slideshow-control--next {
-      animation: none;
-      opacity: 0;
-      pointer-events: none;
-    }
+    currentIndex++;
+    slider.style.transition = "transform 0.5s linear";
+    slider.style.transform = ⁠ translateX(${-currentIndex * slideWidth}px) ⁠;
 
-    @media screen and (max-width: 749px) {
-      .slideshow--with-hints--mobile-with-hints slideshow-slides {
-        padding-inline: var(--page-margin);
+    // When reaching clones
+    setTimeout(() => {
+      if (currentIndex >= slides.length) {
+        slider.style.transition = "none"; // no animation
+        currentIndex = 0;                 // reset instantly
+        slider.style.transform = ⁠ translateX(0px) ⁠;
       }
-
-      .slideshow--with-hints--mobile-with-hints slideshow-slide {
-        width: 96%;
-      }
-
-      .slideshow--with-hints--mobile-with-hints slideshow-slides {
-        gap: min(var(--slideshow-gap, 0), 10px);
-      }
-    }
-
-    @media screen and (min-width: 750px) {
-      .slideshow--with-hints {
-        gap: var(--slideshow-gap, 0);
-        grid-column: 1 / -1;
-      }
-
-      .slideshow--with-hints slideshow-slides {
-        padding-inline: var(--page-margin);
-        gap: var(--slideshow-gap, 0);
-      }
-
-      .slideshow--with-hints slideshow-slide {
-        width: calc((100vw - var(--page-margin) * 2));
-        overflow: hidden;
-      }
-
-      .slideshow--with-hints slideshow-arrows .slideshow-control {
-        transition: opacity 0.3s ease;
-      }
-
-      slideshow-component.slideshow--with-hints:has(slideshow-slide:first-child:not([aria-hidden='true']))
-        > slideshow-container
-        > slideshow-arrows
-        .slideshow-control--previous,
-      slideshow-component.slideshow--with-hints:has(slideshow-slide:last-child:not([aria-hidden='true']))
-        > slideshow-container
-        > slideshow-arrows
-        .slideshow-control--next {
-        animation: none;
-        opacity: 0;
-        pointer-events: none;
-      }
-    }
+      isTransitioning = false;
+    }, 500);
   }
-{% endstylesheet %}
 
-{% schema %}
-{
-  "name": "t:names.slideshow",
-  "class": "container-background-image",
-  "blocks": [
-    {
-      "type": "_slide"
-    }
-  ],
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
-  "settings": [
-    {
-      "type": "select",
-      "id": "display_mode",
-      "label": "t:settings.layout",
-      "options": [
-        {
-          "value": "full_frame",
-          "label": "t:options.full_frame"
-        },
-        {
-          "value": "with_hints",
-          "label": "t:options.with_hints"
-        }
-      ],
-      "default": "full_frame"
-    },
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "default": "full-width",
-      "visible_if": "{{ section.settings.display_mode == 'full_frame' }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "full_frame_on_mobile",
-      "label": "t:settings.full_frame_on_mobile",
-      "default": false,
-      "visible_if": "{{ section.settings.display_mode == 'with_hints' }}"
-    },
-    {
-      "type": "range",
-      "id": "slideshow_gap",
-      "label": "t:settings.gap",
-      "min": 0,
-      "max": 30,
-      "step": 1,
-      "unit": "px",
-      "default": 12,
-      "visible_if": "{{ section.settings.display_mode == 'with_hints' }}"
-    },
-    {
-      "type": "range",
-      "id": "corner_radius",
-      "label": "t:settings.corner_radius",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "default": 0,
-      "visible_if": "{{ section.settings.display_mode == 'with_hints' or section.settings.display_mode == 'full_frame' and section.settings.section_width == 'page-width' }}"
-    },
-    {
-      "type": "select",
-      "id": "slide_height",
-      "options": [
-        {
-          "value": "auto",
-          "label": "t:options.auto"
-        },
-        {
-          "value": "small",
-          "label": "t:options.small"
-        },
-        {
-          "value": "medium",
-          "label": "t:options.medium"
-        },
-        {
-          "value": "large",
-          "label": "t:options.large"
-        }
-      ],
-      "default": "medium",
-      "label": "t:settings.media_height"
-    },
-    {
-      "type": "select",
-      "id": "content_position",
-      "label": "t:settings.content_position",
-      "options": [
-        {
-          "value": "on-media",
-          "label": "t:options.on_media"
-        },
-        {
-          "value": "below-media",
-          "label": "t:options.below_media"
-        }
-      ],
-      "default": "on-media"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:settings.color_scheme",
-      "default": "primary"
-    },
-    {
-      "type": "header",
-      "content": "t:content.navigation"
-    },
-    {
-      "type": "select",
-      "id": "icons_style",
-      "label": "t:settings.icons",
-      "options": [
-        {
-          "value": "arrow",
-          "label": "t:options.arrows"
-        },
-        {
-          "value": "chevron",
-          "label": "t:options.chevrons"
-        },
-        {
-          "value": "arrows_large",
-          "label": "t:options.large_arrows"
-        },
-        {
-          "value": "chevron_large",
-          "label": "t:options.large_chevrons"
-        },
-        {
-          "value": "none",
-          "label": "t:options.none"
-        }
-      ],
-      "default": "arrows_large"
-    },
-    {
-      "type": "select",
-      "id": "icons_shape",
-      "label": "t:settings.icon_background",
-      "options": [
-        {
-          "value": "none",
-          "label": "t:options.none"
-        },
-        {
-          "value": "circle",
-          "label": "t:options.circle"
-        },
-        {
-          "value": "square",
-          "label": "t:options.square"
-        }
-      ],
-      "default": "none",
-      "visible_if": "{{ section.settings.icons_style != 'none' }}"
-    },
-    {
-      "type": "select",
-      "id": "slideshow_controls_style",
-      "label": "t:settings.pagination",
-      "options": [
-        {
-          "value": "none",
-          "label": "t:options.none"
-        },
-        {
-          "value": "dots",
-          "label": "t:options.dots"
-        },
-        {
-          "value": "counter",
-          "label": "t:options.counter"
-        }
-      ],
-      "default": "dots"
-    },
-    {
-      "type": "checkbox",
-      "id": "autoplay",
-      "label": "t:settings.auto_rotate_slides",
-      "default": false,
-      "visible_if": "{{ section.settings.display_mode == 'full_frame' }}"
-    },
-    {
-      "type": "range",
-      "id": "autoplay_speed",
-      "label": "t:settings.speed",
-      "min": 3,
-      "max": 7,
-      "step": 1,
-      "unit": "s",
-      "default": 4,
-      "visible_if": "{{ section.settings.display_mode == 'full_frame' and section.settings.autoplay }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.padding"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "t:settings.top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "t:settings.bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    }
-  ],
-  "presets": [
-    {
-      "name": "t:names.slideshow_full_frame",
-      "category": "t:categories.banners",
-      "blocks": {
-        "slide_1": {
-          "type": "_slide",
-          "settings": {
-            "horizontal_alignment_flex_direction_column": "center",
-            "inherit_color_scheme": false,
-            "color_scheme": "scheme-6",
-            "padding-inline-start": 48,
-            "padding-inline-end": 48,
-            "padding-block-start": 48,
-            "padding-block-end": 48
-          },
-          "blocks": {
-            "heading": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "t:html_defaults.new_arrivals_h2"
-              }
-            },
-            "text": {
-              "type": "text",
-              "settings": {
-                "text": "t:html_defaults.latest_products",
-                "padding-block-end": 20
-              }
-            },
-            "button": {
-              "type": "button",
-              "settings": {
-                "label": "t:text_defaults.shop_now_button_label",
-                "link": "shopify://collections/all"
-              }
-            }
-          },
-          "block_order": ["heading", "text", "button"]
-        },
-        "slide_2": {
-          "type": "_slide",
-          "settings": {
-            "horizontal_alignment_flex_direction_column": "center",
-            "inherit_color_scheme": false,
-            "color_scheme": "scheme-6",
-            "padding-inline-start": 48,
-            "padding-inline-end": 48,
-            "padding-block-start": 48,
-            "padding-block-end": 48
-          },
-          "blocks": {
-            "heading": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "t:html_defaults.bestseller_h2"
-              }
-            },
-            "text": {
-              "type": "text",
-              "settings": {
-                "text": "t:html_defaults.discover_bestsellers",
-                "padding-block-end": 20
-              }
-            },
-            "button": {
-              "type": "button",
-              "settings": {
-                "label": "t:text_defaults.shop_now_button_label",
-                "link": "shopify://collections/all"
-              }
-            }
-          },
-          "block_order": ["heading", "text", "button"]
-        }
-      },
-      "block_order": ["slide_1", "slide_2"]
-    },
-    {
-      "name": "t:names.slideshow_inset",
-      "category": "t:categories.banners",
-      "blocks": {
-        "slide_1": {
-          "type": "_slide",
-          "settings": {
-            "horizontal_alignment_flex_direction_column": "center",
-            "inherit_color_scheme": true,
-            "padding-inline-start": 48,
-            "padding-inline-end": 48,
-            "padding-block-start": 48,
-            "padding-block-end": 48
-          },
-          "blocks": {
-            "heading": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "t:html_defaults.new_arrivals_h2"
-              }
-            },
-            "text": {
-              "type": "text",
-              "settings": {
-                "text": "t:html_defaults.latest_products",
-                "padding-block-end": 20
-              }
-            },
-            "button": {
-              "type": "button",
-              "settings": {
-                "label": "t:text_defaults.shop_now_button_label",
-                "link": "shopify://collections/all"
-              }
-            }
-          },
-          "block_order": ["heading", "text", "button"]
-        },
-        "slide_2": {
-          "type": "_slide",
-          "settings": {
-            "horizontal_alignment_flex_direction_column": "center",
-            "inherit_color_scheme": true,
-            "padding-inline-start": 48,
-            "padding-inline-end": 48,
-            "padding-block-start": 48,
-            "padding-block-end": 48
-          },
-          "blocks": {
-            "heading": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "t:html_defaults.bestseller_h2"
-              }
-            },
-            "text": {
-              "type": "text",
-              "settings": {
-                "text": "t:html_defaults.discover_bestsellers",
-                "padding-block-end": 20
-              }
-            },
-            "button": {
-              "type": "button",
-              "settings": {
-                "label": "t:text_defaults.shop_now_button_label",
-                "link": "shopify://collections/all"
-              }
-            }
-          },
-          "block_order": ["heading", "text", "button"]
-        }
-      },
-      "block_order": ["slide_1", "slide_2"],
-      "settings": {
-        "display_mode": "with_hints",
-        "slideshow_gap": 18,
-        "corner_radius": 20,
-        "slide_height": "medium",
-        "content_position": "below-media",
-        "icons_style": "arrows_large",
-        "icons_shape": "none",
-        "slideshow_controls_style": "none"
-      }
-    }
-  ]
-}
-{% endschema %}
+  // Auto-scroll
+  let slideInterval = setInterval(moveSlides, 2000);
+
+  // Manual controls
+  function plusSlides(n) {
+    clearInterval(slideInterval);
+    currentIndex += n;
+
+    slider.style.transition = "transform 0.5s linear";
+    slider.style.transform = ⁠ translateX(${-currentIndex * slideWidth}px) ⁠;
+
+    slideInterval = setInterval(moveSlides, 2000);
+  }
+
+  document.querySelector('.slider-prev').onclick = () => plusSlides(-1);
+  document.querySelector('.slider-next').onclick = () => plusSlides(1);
+</script>
