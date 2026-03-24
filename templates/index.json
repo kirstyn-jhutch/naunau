@@ -254,6 +254,11 @@
         "padding-block-end": 16
       }
     },
+    "slideshow_cg9Qrm": {
+      "type": "slideshow",
+      "name": "Instagram slideshow",
+      "settings": {}
+    },
     "section_whyLoveIt": {
       "type": "section",
       "blocks": {
@@ -1608,6 +1613,7 @@
   "order": [
     "section_6PnLrM",
     "divider_yw9Mtn",
+    "slideshow_cg9Qrm",
     "section_whyLoveIt",
     "product_list_family",
     "quiz_zYWtc4",
