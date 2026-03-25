@@ -990,11 +990,6 @@
     }
   }
 
-  /* NauNau: Remove gap at top when sticky header is active */
-  .header-section:has(> #header-component[sticky='always']),
-  .header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
-    top: 0px !important;
-  }
 {% endstylesheet %}
 
 {% unless request.design_mode %}
