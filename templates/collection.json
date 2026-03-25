@@ -33,7 +33,7 @@
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "h3",
-                "font": "var(--font-primary--family)",
+                "font": "'Chewy', cursive",
                 "font_size": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
