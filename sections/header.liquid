@@ -496,7 +496,8 @@
   .header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
     position: sticky;
 
-    top: 0;
+    /* Use -1 instead of 0 so intersection observer can track sticky state */
+    top: -1px;
     z-index: var(--layer-sticky);
   }
 
@@ -987,6 +988,12 @@
       grid-area: left;
       justify-self: start;
     }
+  }
+
+  /* NauNau: Remove thin gap at top of sticky header */
+  .header-section:has(> #header-component[sticky]) {
+    margin-top: -1px;
+    padding-top: 1px;
   }
 
 {% endstylesheet %}
