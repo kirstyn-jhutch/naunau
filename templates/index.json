@@ -23,7 +23,7 @@
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "center",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 16,
+            "gap": 0,
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -238,6 +238,93 @@
         "gradient_direction": "to top",
         "padding-block-start": 12,
         "padding-block-end": 40
+      }
+    },
+    "naunau_instagram_slider_dYXgWE": {
+      "type": "naunau-instagram-slider",
+      "blocks": {
+        "slide_kGUWaG": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/fotos-still-produtos-15-9e3069880a9e65f3a017644526089817-1024-1024.webp",
+            "link": "",
+            "alt_text": "Instagram post"
+          }
+        },
+        "slide_zYmtmH": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-03-24_at_19.01.49.png",
+            "link": "",
+            "alt_text": "Instagram post"
+          }
+        },
+        "slide_Xr4xrA": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot2026-03-08at19.56.07.png",
+            "link": "",
+            "alt_text": "Instagram post"
+          }
+        },
+        "slide_cHqap3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/fe3d707edf21c61c937fd7abf366939c.jpg",
+            "link": "",
+            "alt_text": "Instagram post"
+          }
+        },
+        "slide_t3KChi": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/59126dfcd6afa7ee4a00942eeafca42b.jpg",
+            "link": "",
+            "alt_text": "Instagram post"
+          }
+        },
+        "slide_zji4bp": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/39c93dde08700bd11d8796a578e63443.jpg",
+            "link": "",
+            "alt_text": "Instagram post"
+          }
+        },
+        "slide_yUidjL": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/5e527dd0b6633d426653055efcf2ea36.jpg",
+            "link": "",
+            "alt_text": "Instagram post"
+          }
+        }
+      },
+      "block_order": [
+        "slide_kGUWaG",
+        "slide_zYmtmH",
+        "slide_Xr4xrA",
+        "slide_cHqap3",
+        "slide_t3KChi",
+        "slide_zji4bp",
+        "slide_yUidjL"
+      ],
+      "name": "Instagram Slider",
+      "settings": {
+        "heading": "",
+        "heading_font": "Chewy",
+        "heading_size": 16,
+        "heading_color": "#333333",
+        "heading_spacing": 20,
+        "bg_color": "#731a47",
+        "slider_width": 100,
+        "slide_width": 200,
+        "slide_height": 240,
+        "slide_gap": 20,
+        "slide_radius": 10,
+        "auto_scroll": true,
+        "auto_speed": 2000,
+        "padding_top": 25
       }
     },
     "section_whyLoveIt": {
@@ -1589,99 +1676,11 @@
         "button_bg": "#30493b",
         "button_text_color": "#ffffff"
       }
-    },
-    "naunau_instagram_slider_dYXgWE": {
-      "type": "naunau-instagram-slider",
-      "blocks": {
-        "slide_kGUWaG": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/fotos-still-produtos-15-9e3069880a9e65f3a017644526089817-1024-1024.webp",
-            "link": "",
-            "alt_text": "Instagram post"
-          }
-        },
-        "slide_zYmtmH": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-03-24_at_19.01.49.png",
-            "link": "",
-            "alt_text": "Instagram post"
-          }
-        },
-        "slide_Xr4xrA": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot2026-03-08at19.56.07.png",
-            "link": "",
-            "alt_text": "Instagram post"
-          }
-        },
-        "slide_cHqap3": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/fe3d707edf21c61c937fd7abf366939c.jpg",
-            "link": "",
-            "alt_text": "Instagram post"
-          }
-        },
-        "slide_t3KChi": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/59126dfcd6afa7ee4a00942eeafca42b.jpg",
-            "link": "",
-            "alt_text": "Instagram post"
-          }
-        },
-        "slide_zji4bp": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/39c93dde08700bd11d8796a578e63443.jpg",
-            "link": "",
-            "alt_text": "Instagram post"
-          }
-        },
-        "slide_yUidjL": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/5e527dd0b6633d426653055efcf2ea36.jpg",
-            "link": "",
-            "alt_text": "Instagram post"
-          }
-        }
-      },
-      "block_order": [
-        "slide_kGUWaG",
-        "slide_zYmtmH",
-        "slide_Xr4xrA",
-        "slide_cHqap3",
-        "slide_t3KChi",
-        "slide_zji4bp",
-        "slide_yUidjL"
-      ],
-      "name": "Instagram Slider",
-      "settings": {
-        "heading": "Follow Us on Instagram",
-        "heading_font": "Chewy",
-        "heading_size": 32,
-        "heading_color": "#333333",
-        "heading_spacing": 20,
-        "bg_color": "#ffffff",
-        "slider_width": 80,
-        "slide_width": 200,
-        "slide_height": 250,
-        "slide_gap": 20,
-        "slide_radius": 10,
-        "arrow_color": "#CDCDCD",
-        "auto_scroll": true,
-        "auto_speed": 2000,
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
     }
   },
   "order": [
     "section_6PnLrM",
+    "naunau_instagram_slider_dYXgWE",
     "section_whyLoveIt",
     "product_list_family",
     "quiz_zYWtc4",
@@ -1689,7 +1688,6 @@
     "naunau_community",
     "naunau_faq",
     "naunau_ideas",
-    "naunau_plastic_counter_xpcXpP",
-    "naunau_instagram_slider_dYXgWE"
+    "naunau_plastic_counter_xpcXpP"
   ]
 }
