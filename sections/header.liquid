@@ -981,6 +981,14 @@
   .header__column .localization-form__select {
     background-color: var(--header-bg-color);
   }
+
+  /* NauNau: Logo left when transparent/not scrolled, center when sticky */
+  @media screen and (min-width: 750px) {
+    .header[transparent]:not([data-sticky-state='active']) .header-logo {
+      grid-area: left;
+      justify-self: start;
+    }
+  }
 {% endstylesheet %}
 
 {% unless request.design_mode %}
