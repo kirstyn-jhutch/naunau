@@ -1649,42 +1649,6 @@
             "block_radius": 16
           }
         },
-        "idea_TCCEBC": {
-          "type": "idea",
-          "settings": {
-            "category": "Baby & Kids",
-            "tag_color": "green",
-            "title": "Safe storage for little ones",
-            "description": "Store purees, snacks, and teething rusks in BPA-free silicone. Sterilise with boiling water — no stress.",
-            "link_text": "Read More →",
-            "link_url": "",
-            "block_bg_color": "#faf7f2",
-            "block_title_color": "#30493b",
-            "block_text_color": "#3d3d3d",
-            "block_link_color": "#731a47",
-            "block_title_size": 19,
-            "block_body_size": 14,
-            "block_radius": 16
-          }
-        },
-        "idea_B6cKYn": {
-          "type": "idea",
-          "settings": {
-            "category": "Travel",
-            "tag_color": "berry",
-            "title": "Your travel toiletry bag, sorted",
-            "description": "Shampoo, sunscreen, snacks on the go. Leakproof seal means no surprises in your bag.",
-            "link_text": "Read More →",
-            "link_url": "",
-            "block_bg_color": "#faf7f2",
-            "block_title_color": "#30493b",
-            "block_text_color": "#3d3d3d",
-            "block_link_color": "#731a47",
-            "block_title_size": 19,
-            "block_body_size": 14,
-            "block_radius": 16
-          }
-        },
         "idea_iUybtn": {
           "type": "idea",
           "settings": {
@@ -1702,15 +1666,51 @@
             "block_body_size": 14,
             "block_radius": 16
           }
+        },
+        "idea_TCCEBC": {
+          "type": "idea",
+          "settings": {
+            "category": "Baby & Kids",
+            "tag_color": "berry",
+            "title": "Safe storage for little ones",
+            "description": "Store purees, snacks, and teething rusks in BPA-free silicone. Sterilise with boiling water — no stress.",
+            "link_text": "Read More →",
+            "link_url": "",
+            "block_bg_color": "#faf7f2",
+            "block_title_color": "#30493b",
+            "block_text_color": "#3d3d3d",
+            "block_link_color": "#731a47",
+            "block_title_size": 19,
+            "block_body_size": 14,
+            "block_radius": 16
+          }
+        },
+        "idea_B6cKYn": {
+          "type": "idea",
+          "settings": {
+            "category": "Travel",
+            "tag_color": "green",
+            "title": "Your travel toiletry bag, sorted",
+            "description": "Shampoo, sunscreen, snacks on the go. Leakproof seal means no surprises in your bag.",
+            "link_text": "Read More →",
+            "link_url": "",
+            "block_bg_color": "#faf7f2",
+            "block_title_color": "#30493b",
+            "block_text_color": "#3d3d3d",
+            "block_link_color": "#731a47",
+            "block_title_size": 19,
+            "block_body_size": 14,
+            "block_radius": 16
+          }
         }
       },
       "block_order": [
         "idea_ftcyyg",
         "idea_tNt6mg",
         "idea_yUybAQ",
+        "idea_iUybtn",
         "idea_TCCEBC",
-        "idea_B6cKYn",
-        "idea_iUybtn"
+        "idea_B6cKYn"
       ],
       "settings": {
         "heading": "More than just a bag.",
