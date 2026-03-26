@@ -498,8 +498,12 @@
 
     /* Use -1 instead of 0 so intersection observer can track sticky state */
     top: -1px;
-    padding-top: 1px;
     z-index: var(--layer-sticky);
+  }
+
+  /* Cover the 1px gap at top when sticky - extend header background upward */
+  .header-section:has(> #header-component[sticky]) .header[data-sticky-state='active'] .header__row {
+    box-shadow: 0 -2px 0 0 var(--color-background);
   }
 
   .header[data-sticky-state] {
