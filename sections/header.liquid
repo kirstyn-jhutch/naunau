@@ -501,11 +501,6 @@
     z-index: var(--layer-sticky);
   }
 
-  /* Cover the 1px gap at top when sticky - fill the header-section background */
-  .header-section:has(> #header-component[sticky='always']),
-  .header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
-    background-color: var(--color-background);
-  }
 
   .header[data-sticky-state] {
     transition: opacity var(--animation-speed) var(--animation-easing);
@@ -997,6 +992,14 @@
   }
 
 {% endstylesheet %}
+
+<style>
+  /* Cover the 1px gap at top of sticky header using actual header background color */
+  .header-section:has(> #header-component[sticky='always']),
+  .header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
+    background-color: rgb({{ section.settings.color_scheme_top.settings.background.rgb }});
+  }
+</style>
 
 {% unless request.design_mode %}
   <script type="module">
