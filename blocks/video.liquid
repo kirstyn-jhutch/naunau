@@ -17,7 +17,8 @@
     video_style: video_style,
     video_preview_image: block_settings.video.preview_image,
     additional_attributes: block.shopify_attributes,
-    section_id: section.id
+    section_id: section.id,
+    disable_controls: block_settings.video_autoplay
   %}
 {% else %}
   {% render 'video',

@@ -140,6 +140,14 @@
         display: none !important;
       }
 
+      /* Autoplay videos: hide controls & prevent black bar */
+      deferred-media[autoplay] video {
+        object-fit: cover;
+      }
+      deferred-media[autoplay] video::-webkit-media-controls {
+        display: none !important;
+      }
+
       /* Shrink header on scroll */
       .header[data-sticky-state='active'] {
         --header-height: 45px !important;
