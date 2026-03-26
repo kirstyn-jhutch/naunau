@@ -221,7 +221,7 @@
             "video_autoplay": true,
             "video_loop": true,
             "alt": "",
-            "custom_width": 100,
+            "custom_width": 70,
             "custom_width_mobile": 100,
             "aspect_ratio": "auto",
             "border": "none",
