@@ -55,7 +55,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h1>The last bag<br/>you'll <span style=\"text-decoration:underline\">ever buy.</span></h1><h2>We promise.</h2>",
+                "text": "<h2>The last bag<br/>you'll <span style=\"text-decoration:underline\">ever buy.</span></h2><h2>We promise.</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
