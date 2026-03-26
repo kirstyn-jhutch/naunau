@@ -227,7 +227,7 @@
         "background_media": "image",
         "video_position": "cover",
         "background_image": "shopify://shop_images/Screenshot_2026-03-25_at_23.30.34.png",
-        "background_image_position": "cover",
+        "background_image_position": "fit",
         "border": "none",
         "border_width": 1,
         "border_opacity": 100,
