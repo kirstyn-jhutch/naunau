@@ -24,8 +24,8 @@
             "vertical_alignment_flex_direction_column": "center",
             "gap": 12,
             "width": "custom",
-            "custom_width": 100,
-            "width_mobile": "fill",
+            "custom_width": 80,
+            "width_mobile": "custom",
             "custom_width_mobile": 100,
             "height": "fit",
             "custom_height": 100,
@@ -172,6 +172,7 @@
           "settings": {
             "source": "uploaded",
             "video": "shopify://files/videos/0326(3).mov",
+            "video_url": "",
             "video_autoplay": true,
             "video_loop": true,
             "alt": "",
