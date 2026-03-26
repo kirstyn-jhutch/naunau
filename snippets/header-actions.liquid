@@ -26,6 +26,7 @@
 <header-actions
   {{- block.shopify_attributes -}}
 >
+  <a href="/collections/all" class="naunau-buy-now-btn">Buy Now</a>
   {% if shop.customer_accounts_enabled %}
     <script
       src="{{ 'dialog.js' | asset_url }}"
@@ -680,5 +681,44 @@
       filter: blur(1px);
       opacity: 0;
     }
+  }
+
+  /* NauNau Buy Now button */
+  .naunau-buy-now-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-family: 'Chewy', cursive;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    margin-right: 8px;
+    /* Default: green bg, white text (for transparent/top header) */
+    background-color: #2F4F3A;
+    color: #ffffff;
+    border: 2px solid #2F4F3A;
+  }
+
+  .naunau-buy-now-btn:hover {
+    opacity: 0.85;
+  }
+
+  /* When header is sticky (scrolled): white bg, green text */
+  .header[data-sticky-state='active'] .naunau-buy-now-btn {
+    background-color: #ffffff;
+    color: #2F4F3A;
+    border: 2px solid #2F4F3A;
+  }
+
+  /* Also handle non-transparent headers (not on home page): white bg, green text */
+  .header:not([transparent]) .naunau-buy-now-btn {
+    background-color: #ffffff;
+    color: #2F4F3A;
+    border: 2px solid #2F4F3A;
   }
 {% endstylesheet %}
