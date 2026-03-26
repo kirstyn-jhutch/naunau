@@ -317,7 +317,7 @@
         "heading_color": "#333333",
         "heading_spacing": 20,
         "bg_color": "#faf7f2",
-        "slider_width": 100,
+        "slider_width": 85,
         "slide_width": 200,
         "slide_height": 240,
         "slide_gap": 20,
