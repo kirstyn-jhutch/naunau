@@ -501,9 +501,10 @@
     z-index: var(--layer-sticky);
   }
 
-  /* Cover the 1px gap at top when sticky - extend header background upward */
-  .header-section:has(> #header-component[sticky]) .header[data-sticky-state='active'] .header__row {
-    box-shadow: 0 -2px 0 0 var(--color-background);
+  /* Cover the 1px gap at top when sticky - fill the header-section background */
+  .header-section:has(> #header-component[sticky='always']),
+  .header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
+    background-color: var(--color-background);
   }
 
   .header[data-sticky-state] {
