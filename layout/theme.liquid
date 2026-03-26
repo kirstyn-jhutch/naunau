@@ -174,66 +174,58 @@
         transition: max-height 0.3s ease !important;
       }
       /* Hero heading styles */
-      #shopify-section-section_6PnLrM h1,
-      .text-block--text_bnhyzU h1 {
+      #shopify-section-section_E9C4Fd h1 {
         font-family: 'Lora', serif !important;
-        font-size: 3.5rem !important;
-        font-weight: 700 !important;
+        font-weight: 900 !important;
         line-height: 1.1 !important;
         margin: 0 !important;
         color: #000000 !important;
         text-transform: none !important;
-        letter-spacing: normal !important;
+        letter-spacing: -0.02em !important;
       }
 
-      #shopify-section-section_6PnLrM h1 u,
-      .text-block--text_bnhyzU h1 u {
+      /* Second h1 = "We promise." in maroon italic */
+      #shopify-section-section_E9C4Fd h1 + h1 {
+        color: #731a47 !important;
+        font-style: italic !important;
+      }
+
+      /* Underline on "ever buy" in maroon */
+      #shopify-section-section_E9C4Fd h1 span[style*="underline"],
+      #shopify-section-section_E9C4Fd h1 u {
         text-decoration: underline !important;
         text-decoration-color: #731a47 !important;
-        text-underline-offset: 6px !important;
+        text-underline-offset: 8px !important;
         text-decoration-thickness: 4px !important;
       }
 
-      #shopify-section-section_6PnLrM h2,
-      .text-block--text_bnhyzU h2 {
+      /* Subtitle text */
+      #shopify-section-section_E9C4Fd h4 {
         font-family: 'Lora', serif !important;
-        font-size: 3.5rem !important;
-        font-weight: 700 !important;
-        line-height: 1.1 !important;
-        margin: 0 !important;
-        color: #731a47 !important;
-        font-style: italic !important;
+        font-weight: 400 !important;
+        color: #555555 !important;
         text-transform: none !important;
         letter-spacing: normal !important;
       }
 
-      #shopify-section-section_6PnLrM .text-block p,
-      .text-block--text_bnhyzU p {
-        margin-top: 16px !important;
-        font-size: 1rem !important;
+      #shopify-section-section_E9C4Fd .text-block p {
         color: #666666 !important;
         text-transform: none !important;
         letter-spacing: normal !important;
       }
 
-      /* Left align the hero text */
-      .text-block--text_bnhyzU {
+      /* Left align the hero content */
+      #shopify-section-section_E9C4Fd .group--group_jBjWNz {
         text-align: left !important;
       }
 
       /* Hero buttons side by side */
-      #shopify-section-section_6PnLrM .group--group_jBjWNz {
+      #shopify-section-section_E9C4Fd .group--group_jBjWNz {
         flex-wrap: wrap !important;
-        flex-direction: row !important;
       }
-      #shopify-section-section_6PnLrM .group--group_jBjWNz > .button--button_7gRnPL,
-      #shopify-section-section_6PnLrM .group--group_jBjWNz > .button-secondary--button_z3PjW7 {
+      #shopify-section-section_E9C4Fd .group--group_jBjWNz > a[class*="button"] {
         flex: 0 0 auto !important;
-      }
-      #shopify-section-section_6PnLrM .group--group_jBjWNz > .text-block,
-      #shopify-section-section_6PnLrM .group--group_jBjWNz > [class*="text"] {
-        width: 100% !important;
-        flex-basis: 100% !important;
+        display: inline-flex !important;
       }
 
       @media screen and (max-width: 749px) {
