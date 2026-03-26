@@ -97,10 +97,10 @@
                   "type": "text",
                   "name": "Text",
                   "settings": {
-                    "text": "<h1>Seal in the fun,</h1><h2>enjoy it <strong>NauNau</strong></h2><p>Reusable Premium Silicone Storage Bags</p><p>Because saving the planet should look this good.</p>",
+                    "text": "<h1 style='font-size:3.5rem;font-weight:900;line-height:1.1;margin:0;'>The last bag<br>you'll <span style='text-decoration:underline;text-decoration-color:#C47A2A;text-underline-offset:6px;text-decoration-thickness:4px;'>ever</span> buy.</h1><h2 style='font-size:3.5rem;font-weight:900;line-height:1.1;margin:0;color:#2F4F3A;font-style:italic;'>We promise.</h2><p style='margin-top:16px;font-size:1rem;color:#555;'>NauNau bags are built to last for years — not landfills.</p>",
                     "width": "100%",
                     "max_width": "normal",
-                    "alignment": "center",
+                    "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-primary--family)",
                     "font_size": "1.125rem",
