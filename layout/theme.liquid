@@ -222,10 +222,18 @@
       }
 
       /* Hero buttons side by side */
-      #shopify-section-section_6PnLrM .button-block--button_7gRnPL,
-      #shopify-section-section_6PnLrM .button-block--button_z3PjW7 {
-        display: inline-block !important;
-        margin-right: 12px !important;
+      #shopify-section-section_6PnLrM .group--group_jBjWNz {
+        flex-wrap: wrap !important;
+        flex-direction: row !important;
+      }
+      #shopify-section-section_6PnLrM .group--group_jBjWNz > .button--button_7gRnPL,
+      #shopify-section-section_6PnLrM .group--group_jBjWNz > .button-secondary--button_z3PjW7 {
+        flex: 0 0 auto !important;
+      }
+      #shopify-section-section_6PnLrM .group--group_jBjWNz > .text-block,
+      #shopify-section-section_6PnLrM .group--group_jBjWNz > [class*="text"] {
+        width: 100% !important;
+        flex-basis: 100% !important;
       }
 
       @media screen and (max-width: 749px) {
