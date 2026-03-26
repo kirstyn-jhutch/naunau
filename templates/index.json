@@ -97,7 +97,7 @@
                   "type": "text",
                   "name": "Text",
                   "settings": {
-                    "text": "<h1>The last bag<br>you'll <u>ever</u> buy.</h1><h2>We promise.</h2><p>NauNau bags are built to last for years — not landfills.</p>",
+                    "text": "<h1>The last bag<br>you'll <u>ever buy.</u></h1><h2>We promise.</h2><p>NauNau bags are built to last for years — not landfills.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
