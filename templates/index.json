@@ -97,7 +97,7 @@
                   "type": "text",
                   "name": "Text",
                   "settings": {
-                    "text": "<h1>The last bag<br>you'll <u>ever buy.</u></h1><h2>We promise.</h2><p>NauNau bags are built to last for years — not landfills.</p>",
+                    "text": "<h1>The last bag<br/>you'll <span style=\"text-decoration:underline\">ever buy.</span></h1><h2>We promise.</h2><p>NauNau bags are built to last for years — not landfills.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1735,6 +1735,65 @@
         "padding_top": 80,
         "padding_bottom": 80
       }
+    },
+    "media_with_content_WgMwzm": {
+      "type": "media-with-content",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "video",
+            "link": "",
+            "video": "shopify://files/videos/Screen Recording 2026-03-26 at 02.20.41.mov",
+            "video_loop": true,
+            "video_autoplay": true,
+            "image_position": "cover",
+            "video_position": "contain"
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-end",
+            "gap": 24
+          },
+          "blocks": {
+            "jumbo_text_gBwiMK": {
+              "type": "jumbo-text",
+              "name": "t:names.jumbo_text",
+              "settings": {
+                "text": "Store better.\nWaste less.\nLive NauNau.",
+                "font": "accent",
+                "alignment": "left",
+                "line_height": "1",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_effect": "none",
+                "animation_repeat": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "jumbo_text_gBwiMK"
+          ]
+        }
+      },
+      "name": "t:names.editorial_jumbo_text",
+      "settings": {
+        "media_position": "right",
+        "media_width": "medium",
+        "media_height": "60svh",
+        "section_width": "full-width",
+        "extend_media": true,
+        "color_scheme": "scheme-3",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
@@ -1748,6 +1807,7 @@
     "naunau_community",
     "naunau_faq",
     "section_wbkpA3",
-    "naunau_ideas"
+    "naunau_ideas",
+    "media_with_content_WgMwzm"
   ]
 }
