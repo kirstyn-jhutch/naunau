@@ -55,7 +55,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h1>The last bag<br/>you'll <span style=\"text-decoration:underline\">ever buy,</span></h1><h1>We promise.</h1>",
+                "text": "<h1>Seal in the fun,</h1><h1>enjoy it NauNau</h1>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
