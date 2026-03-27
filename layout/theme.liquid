@@ -227,6 +227,16 @@
         }
       }
     </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var headings = document.querySelectorAll('[id*="section_E9C4Fd"] h1');
+        headings.forEach(function(h) {
+          if (h.textContent.includes('NauNau')) {
+            h.innerHTML = h.innerHTML.replace(/NauNau/g, '<span style="font-family:\'Chewy\',cursive;font-weight:normal;font-style:normal">NauNau</span>');
+          }
+        });
+      });
+    </script>
     {% render 'naunau-custom-css' %}
   </head>
 
