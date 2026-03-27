@@ -229,10 +229,18 @@
     </style>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // NauNau in Chewy font in hero heading
         var headings = document.querySelectorAll('[id*="section_E9C4Fd"] h1');
         headings.forEach(function(h) {
           if (h.textContent.includes('NauNau')) {
             h.innerHTML = h.innerHTML.replace(/NauNau/g, '<span style="font-family:\'Chewy\',cursive;font-weight:normal;font-style:normal;font-size:1.3em">NauNau</span>');
+          }
+        });
+        // Strikethrough "Plastic" in dark green
+        var subheadings = document.querySelectorAll('[id*="section_E9C4Fd"] h4');
+        subheadings.forEach(function(h) {
+          if (h.textContent.includes('Plastic')) {
+            h.innerHTML = h.innerHTML.replace(/Plastic/g, '<span style="text-decoration:line-through;text-decoration-color:#2F4F3A;color:#2F4F3A">Plastic</span>');
           }
         });
       });
