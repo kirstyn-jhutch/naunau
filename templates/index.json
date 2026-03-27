@@ -55,7 +55,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h1>Seal in the fun,</h1><h1>enjoy it <span style=\"font-family:'Chewy',cursive;font-weight:normal;font-style:normal\">NauNau</span></h1>",
+                "text": "<h1>Seal in the fun,</h1><h1>enjoy it NauNau</h1>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -80,11 +80,11 @@
             "text_bYcxaA": {
               "type": "text",
               "settings": {
-                "text": "<h4>NauNau bags are built to last for years — not landfills.</h4>",
+                "text": "<h4>Plastic Never Again</h4>",
                 "width": "fit-content",
                 "max_width": "narrow",
                 "alignment": "left",
-                "type_preset": "custom",
+                "type_preset": "h3",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
