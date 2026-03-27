@@ -45,7 +45,13 @@
         line-height: {{ section.settings.line2_line_height }};
         letter-spacing: {{ section.settings.line2_spacing }}px;
         margin-bottom: {{ section.settings.line2_margin_bottom }}px;
-      ">{{ section.settings.line2 }}</span>
+      ">{{ section.settings.line2 }}{% if section.settings.line2_accent != blank %} <span style="
+        color: {{ section.settings.line2_accent_color }};
+        font-family: 'Chewy', cursive;
+        font-weight: normal;
+        font-style: normal;
+        font-size: {{ section.settings.line2_accent_size }}px;
+      ">{{ section.settings.line2_accent }}</span>{% endif %}</span>
     {%- endif -%}
 
     {%- if section.settings.line3 != blank -%}
@@ -335,7 +341,29 @@
       "type": "text",
       "id": "line2",
       "label": "Text",
-      "default": "enjoy it NauNau"
+      "default": "enjoy it"
+    },
+    {
+      "type": "text",
+      "id": "line2_accent",
+      "label": "Accent word (Chewy font)",
+      "default": "NauNau"
+    },
+    {
+      "type": "color",
+      "id": "line2_accent_color",
+      "label": "Accent word colour",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "line2_accent_size",
+      "label": "Accent word size",
+      "min": 12,
+      "max": 160,
+      "step": 1,
+      "default": 72,
+      "unit": "px"
     },
     {
       "type": "font_picker",
