@@ -221,6 +221,25 @@
         letter-spacing: normal !important;
       }
 
+      /* Animated strikethrough */
+      .naunau-strikethrough {
+        position: relative;
+        color: #731a47;
+      }
+      .naunau-strikethrough::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        height: 3px;
+        background: #731a47;
+        width: 0;
+        transition: width 0.8s ease;
+      }
+      .naunau-strikethrough.animate::after {
+        width: 100%;
+      }
+
       @media screen and (max-width: 749px) {
         [id*="section_E9C4Fd"] h1 {
           font-size: 2.2rem !important;
@@ -236,13 +255,26 @@
             h.innerHTML = h.innerHTML.replace(/NauNau/g, '<span style="font-family:\'Chewy\',cursive;font-weight:normal;font-style:normal;font-size:1.3em">NauNau</span>');
           }
         });
-        // Strikethrough "Plastic" in dark green
+        // Animated strikethrough "Plastic" in purple
         var subheadings = document.querySelectorAll('[id*="section_E9C4Fd"] h4');
         subheadings.forEach(function(h) {
           if (h.textContent.includes('Plastic')) {
-            h.innerHTML = h.innerHTML.replace(/Plastic/g, '<span style="text-decoration:line-through;text-decoration-color:#2F4F3A;color:#2F4F3A">Plastic</span>');
+            h.innerHTML = h.innerHTML.replace(/Plastic/g, '<span class="naunau-strikethrough">Plastic</span>');
           }
         });
+        // Trigger animation when visible
+        var strikeEl = document.querySelector('.naunau-strikethrough');
+        if (strikeEl) {
+          var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                obs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.5 });
+          obs.observe(strikeEl);
+        }
       });
     </script>
     {% render 'naunau-custom-css' %}
