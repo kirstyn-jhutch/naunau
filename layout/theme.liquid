@@ -153,6 +153,13 @@
         --header-height: 45px !important;
         transition: all 0.3s ease !important;
         background: rgba(115, 26, 71, 0.3) !important;
+        --color-background: transparent !important;
+      }
+      .header-section .header[data-sticky-state='active'] .section-background,
+      .header-section .header[data-sticky-state='active']::before,
+      .header-section .header[data-sticky-state='active']::after {
+        background: transparent !important;
+        background-color: transparent !important;
       }
 
       .header[data-sticky-state='active'] .header__logo img,
