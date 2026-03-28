@@ -114,12 +114,6 @@
         font-weight: normal !important;
       }
 
-      /* DM Sans Semi Bold for partial headings */
-      .dm-sans-heading {
-        font-family: 'DM Sans', sans-serif !important;
-        font-weight: 600 !important;
-      }
-
       /* Product media - rounded corners */
       .product-media-container,
       .product-media-container img,
@@ -278,18 +272,7 @@
             h.innerHTML = h.innerHTML.replace(/NauNau/g, '<span style="font-family:\'Chewy\',cursive;font-weight:normal;font-style:normal;font-size:1.3em">NauNau</span>');
           }
         });
-        // "Meet the" in DM Sans Semi Bold
-        document.querySelectorAll('h2').forEach(function(h) {
-          if (h.textContent.trim() === 'Meet the Family') {
-            h.innerHTML = h.innerHTML.replace(/Meet the/, '<span style="font-family:\'DM Sans\',sans-serif;font-weight:600">Meet the</span>');
-          }
-        });
-        // "Find your perfect" in DM Sans Semi Bold
-        document.querySelectorAll('h2').forEach(function(h) {
-          if (h.textContent.includes('Find your perfect')) {
-            h.innerHTML = h.innerHTML.replace(/Find your perfect/, '<span style="font-family:\'DM Sans\',sans-serif;font-weight:600">Find your perfect</span>');
-          }
-        });
+
         // Animated strikethrough "Plastic" in purple
         var subheadings = document.querySelectorAll('[id*="section_E9C4Fd"] h4');
         subheadings.forEach(function(h) {
